@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar Potion Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-deep: #1a0a2e;
+  --bg-dark: #0d1b2a;
+  --purple: #7b68ee;
+  --gold: #ffd700;
+  --green: #50c878;
+  --red: #e74c3c;
+  --parchment: #d4a574;
+  --parchment-dark: #8b6914;
+  --text: #f5f0e8;
+  --text-dim: #c4b89e;
+  --potion-be: #7b68ee;
+  --potion-action: #ff6347;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: linear-gradient(135deg, var(--bg-deep), var(--bg-dark));
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* ===== BACKGROUND ===== */
+#bg-image {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: url('lab_bg.png') center/cover no-repeat;
+  opacity: 0.25;
+  z-index: 0;
+}
+
+#game-container {
+  position: relative; z-index: 1;
+  max-width: 800px; margin: 0 auto; padding: 20px;
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+#game-container:has(#quiz-screen.active) {
+  justify-content: flex-start; padding-top: 10px;
+}
+
+/* ===== SCREENS ===== */
+.screen { display: none; width: 100%; text-align: center; animation: fadeIn 0.5s ease; }
+.screen.active { display: flex; flex-direction: column; align-items: center; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== LESSON SELECT SCREEN ===== */
+.lesson-grid {
+  display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+  margin: 1.5em 0;
+}
+.lesson-card {
+  background: rgba(26, 10, 46, 0.85);
+  border: 2px solid var(--purple);
+  border-radius: 16px; padding: 25px 30px;
+  width: 280px; cursor: pointer;
+  transition: all 0.3s; text-align: center;
+  position: relative;
+}
+.lesson-card:hover, .lesson-card:focus {
+  border-color: var(--gold);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(123, 104, 238, 0.4);
+  outline: none;
+}
+.lesson-card.loading { opacity: 0.6; pointer-events: none; }
+.lesson-number {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.8rem; color: var(--gold);
+  margin-bottom: 0.3em;
+}
+.lesson-topic { font-size: 1rem; color: var(--text); margin-bottom: 0.3em; }
+.lesson-chapters { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0.5em; }
+.lesson-score { font-size: 0.85rem; color: var(--text-dim); }
+.lesson-badge {
+  position: absolute; top: 12px; right: 12px;
+  font-size: 1.2rem;
+}
+.total-stats {
+  font-size: 0.9rem; color: var(--text-dim); margin-top: 0.5em;
+}
+
+/* ===== START SCREEN ===== */
+.game-title {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 2.5rem; color: var(--gold);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.2);
+  margin-bottom: 0.3em;
+}
+.game-subtitle { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 2em; }
+
+.cauldron-icon {
+  font-size: 5rem; margin-bottom: 1em;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.btn-start {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.4rem; padding: 15px 50px;
+  background: linear-gradient(135deg, var(--purple), #5a3fd4);
+  color: white; border: 2px solid var(--gold);
+  border-radius: 12px; cursor: pointer;
+  transition: all 0.3s;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.btn-start:hover, .btn-start:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(123, 104, 238, 0.6);
+  outline: none;
+}
+.key-hint { font-size: 0.85rem; color: #b8ad96; margin-top: 1em; }
+
+.back-btn {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.9rem; padding: 8px 20px;
+  background: transparent; color: var(--text-dim);
+  border: 1px solid rgba(196, 184, 158, 0.3);
+  border-radius: 8px; cursor: pointer;
+  transition: all 0.3s; margin-top: 1.5em;
+}
+.back-btn:hover, .back-btn:focus {
+  color: var(--gold); border-color: var(--gold); outline: none;
+}
+
+/* ===== INTRO SCREEN ===== */
+#intro-screen .wizard-speech {
+  background: rgba(26, 10, 46, 0.85);
+  border: 2px solid var(--gold);
+  border-radius: 16px; padding: 30px 35px;
+  max-width: 650px; text-align: left;
+  font-size: 1.1rem; line-height: 1.8;
+  position: relative;
+}
+.wizard-emoji { font-size: 3rem; margin-bottom: 0.5em; text-align: center; }
+#intro-text { min-height: 3em; }
+.typewriter-cursor { display: inline-block; width: 2px; height: 1.2em; background: var(--gold); animation: blink 0.7s infinite; vertical-align: text-bottom; margin-left: 2px; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ===== CHAPTER SELECT ===== */
+.chapter-cards { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 1.5em 0; }
+.chapter-card {
+  background: rgba(26, 10, 46, 0.8);
+  border: 2px solid var(--purple);
+  border-radius: 16px; padding: 25px 30px;
+  width: 280px; cursor: pointer;
+  transition: all 0.3s; text-align: center;
+}
+.chapter-card:hover, .chapter-card:focus {
+  border-color: var(--gold);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(123, 104, 238, 0.4);
+  outline: none;
+}
+.chapter-card.completed { border-color: var(--green); opacity: 0.7; }
+.chapter-card.completed::after { content: ' ✓'; color: var(--green); }
+.chapter-card.locked { opacity: 0.4; pointer-events: none; border-color: #555; }
+.chapter-card .ch-icon { font-size: 2.5rem; margin-bottom: 0.5em; }
+.chapter-card .ch-name { font-family: 'Cinzel Decorative', cursive; font-size: 1.2rem; color: var(--gold); }
+.chapter-card .ch-name-ko { font-size: 0.95rem; color: #d4c8ae; margin-top: 0.3em; }
+
+/* ===== RECIPE (LEARNING) SCREEN ===== */
+.scroll-container {
+  background: linear-gradient(135deg, var(--parchment), #c49a6c);
+  border: 3px solid var(--parchment-dark);
+  border-radius: 12px; padding: 30px 35px;
+  max-width: 700px; width: 100%;
+  color: #2c1810; text-align: left;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  max-height: 70vh; overflow-y: auto;
+}
+.scroll-container::-webkit-scrollbar { width: 8px; }
+.scroll-container::-webkit-scrollbar-thumb { background: var(--parchment-dark); border-radius: 4px; }
+
+.recipe-header {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.3rem; color: #4a2800;
+  border-bottom: 2px solid var(--parchment-dark);
+  padding-bottom: 10px; margin-bottom: 15px;
+}
+.recipe-step-indicator { font-size: 0.85rem; color: #7a5a3a; margin-bottom: 10px; }
+.recipe-content { font-size: 1rem; line-height: 1.8; margin-bottom: 15px; }
+.recipe-content em { color: #8b0000; font-style: normal; font-weight: 700; }
+.recipe-content strong { color: #4a2800; }
+.recipe-content u { text-decoration: none; color: #8b0000; font-weight: 700; border-bottom: 2px solid #8b0000; }
+
+.example-box {
+  background: rgba(255,255,255,0.4);
+  border-left: 4px solid var(--parchment-dark);
+  padding: 12px 16px; margin: 10px 0;
+  border-radius: 0 8px 8px 0;
+}
+.example-en { font-size: 1rem; margin-bottom: 3px; }
+.example-ko { font-size: 0.88rem; color: #5a4a3a; }
+
+.grammar-table {
+  width: 100%; border-collapse: collapse; margin: 12px 0;
+  font-size: 0.95rem;
+}
+.grammar-table th {
+  background: var(--parchment-dark); color: var(--parchment);
+  padding: 8px 12px; text-align: center;
+}
+.grammar-table td {
+  padding: 8px 12px; border: 1px solid #b08950;
+  text-align: center; background: rgba(255,255,255,0.3);
+}
+
+.transform-box {
+  display: flex; align-items: center; gap: 10px;
+  margin: 8px 0; font-size: 0.95rem;
+}
+.transform-before { color: #8b0000; font-weight: 700; }
+.transform-arrow { color: #4a2800; }
+.transform-after { color: #006400; font-weight: 700; }
+
+.pattern-box {
+  background: rgba(255,255,255,0.5); border-radius: 8px;
+  padding: 15px; margin: 12px 0; text-align: center;
+  font-size: 1rem;
+}
+.pattern-box .pattern-q { font-weight: 700; color: #4a2800; margin-bottom: 5px; }
+.pattern-box .pattern-yes { color: #006400; }
+.pattern-box .pattern-no { color: #8b0000; }
+
+.recipe-nav {
+  display: flex; justify-content: space-between; margin-top: 20px;
+  padding-top: 15px; border-top: 1px solid rgba(139,105,20,0.3);
+}
+
+/* ===== QUIZ SCREEN ===== */
+.quiz-area { width: 100%; max-width: 700px; }
+
+.cauldron-visual {
+  position: relative; margin: 0 auto 20px;
+  width: 160px; height: 120px;
+}
+.cauldron-body {
+  width: 120px; height: 80px; margin: 0 auto;
+  background: #2a2a2a; border-radius: 0 0 50% 50%;
+  border: 3px solid #444;
+  position: relative; overflow: hidden;
+}
+.potion-liquid {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 0%; background: var(--purple);
+  transition: height 0.8s ease, background-color 0.8s ease;
+  border-radius: 0 0 50% 50%;
+}
+.cauldron-rim {
+  width: 140px; height: 16px; margin: 0 auto;
+  background: #3a3a3a; border-radius: 8px;
+  border: 2px solid #555;
+  position: relative; z-index: 2;
+}
+.bubbles {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 100%;
+  pointer-events: none; overflow: hidden;
+}
+.bubble {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  animation: rise 2s ease-in infinite;
+}
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.6; }
+  100% { transform: translateY(-80px) scale(0.3); opacity: 0; }
+}
+
+.progress-text { font-size: 0.9rem; color: #c4b89e; margin-bottom: 15px; }
+.score-display { font-size: 0.9rem; color: var(--gold); margin-bottom: 5px; }
+.streak-display { font-size: 0.85rem; color: var(--green); margin-bottom: 15px; min-height: 1.2em; }
+
+.question-card {
+  background: rgba(26, 10, 46, 0.85);
+  border: 2px solid var(--purple);
+  border-radius: 16px; padding: 25px;
+  margin-bottom: 15px; text-align: left;
+  width: 100%;
+}
+.question-label { font-size: 0.85rem; color: var(--gold); margin-bottom: 8px; }
+.question-text { font-size: 1.05rem; line-height: 1.7; margin-bottom: 5px; white-space: pre-line; color: #ffffff; }
+.question-text u { color: var(--gold); text-decoration-color: var(--gold); }
+.context-text {
+  font-size: 0.95rem; color: #e0d8c8;
+  background: rgba(255,255,255,0.08); padding: 10px 14px;
+  border-radius: 8px; margin: 10px 0; white-space: pre-line;
+  line-height: 1.7;
+}
+.context-text u { color: var(--gold); text-decoration-color: var(--gold); }
+
+/* Options */
+.options-list { list-style: none; width: 100%; }
+.option-item {
+  background: rgba(123, 104, 238, 0.15);
+  border: 2px solid rgba(123, 104, 238, 0.4);
+  border-radius: 10px; padding: 12px 16px;
+  margin-bottom: 8px; cursor: pointer;
+  transition: all 0.2s; font-size: 0.95rem;
+  display: flex; align-items: center; gap: 10px;
+  line-height: 1.5;
+  color: #ffffff;
+}
+.option-item:hover, .option-item:focus {
+  border-color: var(--purple); background: rgba(123, 104, 238, 0.2);
+  outline: none;
+}
+.option-key {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; min-width: 28px;
+  background: rgba(123, 104, 238, 0.3);
+  border-radius: 6px; font-weight: 700; font-size: 0.85rem;
+}
+.option-item.correct { border-color: var(--green); background: rgba(80, 200, 120, 0.2); }
+.option-item.wrong { border-color: var(--red); background: rgba(231, 76, 60, 0.2); }
+.option-item.disabled { pointer-events: none; opacity: 0.5; }
+
+/* Multi-select */
+.option-item .checkbox {
+  width: 22px; height: 22px; min-width: 22px;
+  border: 2px solid var(--purple); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.option-item.checked .checkbox { background: var(--purple); border-color: var(--gold); }
+.option-item.checked .checkbox::after { content: '✓'; color: white; font-size: 0.8rem; }
+.multi-confirm-hint { font-size: 0.85rem; color: var(--text-dim); margin-top: 10px; }
+
+/* Word blocks */
+.word-block-area { width: 100%; }
+.wb-prompt { font-size: 1rem; margin-bottom: 10px; line-height: 1.7; }
+.wb-prompt u { color: var(--red); }
+.wb-sentence {
+  font-size: 1.1rem; padding: 12px 16px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px; margin-bottom: 12px;
+  min-height: 2.5em; line-height: 1.7;
+}
+.wb-blank {
+  display: inline-block; min-width: 80px; height: 32px;
+  border-bottom: 2px dashed var(--gold);
+  margin: 0 4px; vertical-align: bottom;
+  text-align: center; font-weight: 700; color: var(--gold);
+  line-height: 32px;
+}
+.wb-blank.filled { border-bottom-style: solid; }
+.wb-blank.active { border-bottom-color: var(--green); animation: pulse 1s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+.blocks-container {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: center; margin-bottom: 12px;
+}
+.word-block {
+  padding: 8px 16px; border-radius: 8px;
+  background: rgba(123, 104, 238, 0.2);
+  border: 2px solid var(--purple);
+  color: #ffffff;
+  cursor: pointer; transition: all 0.2s;
+  font-size: 0.95rem; font-weight: 500;
+}
+.word-block:hover, .word-block:focus {
+  background: rgba(123, 104, 238, 0.4);
+  transform: translateY(-2px); outline: none;
+}
+.word-block.selected { opacity: 0.3; pointer-events: none; }
+.word-block.correct-block { border-color: var(--green); background: rgba(80,200,120,0.2); }
+.word-block.wrong-block { border-color: var(--red); background: rgba(231,76,60,0.2); }
+
+.wb-sub-counter { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px; }
+
+/* Result banner */
+.result-banner {
+  padding: 15px 20px; border-radius: 12px;
+  margin: 15px 0; font-size: 1rem;
+  animation: slideIn 0.3s ease;
+}
+@keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.result-banner.correct-banner {
+  background: rgba(80, 200, 120, 0.15);
+  border: 2px solid var(--green); color: var(--green);
+}
+.result-banner.wrong-banner {
+  background: rgba(231, 76, 60, 0.15);
+  border: 2px solid var(--red); color: var(--red);
+}
+.explanation-text { font-size: 0.9rem; color: #f0ebe0; margin-top: 8px; line-height: 1.6; }
+
+/* ===== END SCREEN ===== */
+.end-title {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 2rem; color: var(--gold); margin-bottom: 0.5em;
+}
+.end-stars { font-size: 3rem; margin-bottom: 0.5em; }
+.end-score { font-size: 1.5rem; color: var(--text); margin-bottom: 0.3em; }
+.end-stats { font-size: 0.95rem; color: var(--text-dim); margin-bottom: 1.5em; line-height: 1.8; }
+.end-wizard-msg {
+  font-size: 1.1rem; color: var(--gold);
+  font-style: italic; margin-bottom: 1.5em;
+  max-width: 500px;
+}
+.end-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+/* ===== COMMON BUTTONS ===== */
+.btn {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem; font-weight: 500;
+  padding: 10px 30px; border-radius: 10px;
+  border: 2px solid var(--purple);
+  background: rgba(123, 104, 238, 0.2);
+  color: var(--text); cursor: pointer;
+  transition: all 0.3s;
+}
+.btn:hover, .btn:focus {
+  background: rgba(123, 104, 238, 0.4);
+  border-color: var(--gold); outline: none;
+}
+.btn:disabled { opacity: 0.35; pointer-events: none; }
+.btn-gold {
+  background: linear-gradient(135deg, #b8860b, #daa520);
+  border-color: var(--gold); color: #1a0a2e; font-weight: 700;
+}
+.btn-gold:hover, .btn-gold:focus {
+  background: linear-gradient(135deg, #daa520, #ffd700);
+}
+.btn-outline {
+  background: transparent;
+  border-color: rgba(196, 184, 158, 0.4);
+  color: var(--text-dim);
+}
+.btn-outline:hover, .btn-outline:focus {
+  border-color: var(--gold); color: var(--gold);
+}
+
+/* ===== PARTICLES ===== */
+.particle {
+  position: fixed; pointer-events: none; z-index: 100;
+  border-radius: 50%;
+}
+
+/* ===== BG SOUND TOGGLE ===== */
+.bg-sound-btn {
+  position: fixed; top: 15px; right: 15px; z-index: 50;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(26, 10, 46, 0.8);
+  border: 2px solid var(--purple);
+  color: var(--text); font-size: 1.3rem;
+  cursor: pointer; transition: all 0.3s;
+  display: flex; align-items: center; justify-content: center;
+}
+.bg-sound-btn:hover, .bg-sound-btn:focus {
+  border-color: var(--gold); background: rgba(123, 104, 238, 0.3);
+  outline: none;
+}
+.bg-sound-btn.muted { opacity: 0.5; }
+
+/* ===== SR ANNOUNCE ===== */
+#sr-announce {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+/* ===== RESPONSIVE ===== */
+button, .option-item, .word-block, .chapter-card, .lesson-card { touch-action: manipulation; }
+
+@media (max-width: 600px) {
+  .game-title { font-size: 1.8rem; }
+  .game-subtitle { font-size: 0.95rem; }
+  #game-container { padding: 12px; }
+  .scroll-container { padding: 18px; max-height: 65vh; }
+  .recipe-header { font-size: 1.1rem; }
+  .recipe-content { font-size: 0.92rem; }
+  .example-box { padding: 10px 12px; }
+  .grammar-table { font-size: 0.85rem; }
+  .grammar-table th, .grammar-table td { padding: 6px 8px; }
+  .question-card { padding: 16px; }
+  .question-text { font-size: 0.95rem; }
+  .context-text { font-size: 0.88rem; padding: 8px 12px; }
+  .chapter-cards { flex-direction: column; align-items: center; }
+  .chapter-card { width: 100%; max-width: 300px; padding: 20px; }
+  .lesson-grid { flex-direction: column; align-items: center; }
+  .lesson-card { width: 100%; max-width: 300px; padding: 20px; }
+  .lesson-number { font-size: 1.4rem; }
+  .cauldron-icon { font-size: 3.5rem; }
+  .option-item { font-size: 0.88rem; padding: 12px 14px; min-height: 48px; }
+  .word-block { padding: 10px 18px; min-height: 44px; font-size: 0.9rem; }
+  .btn { padding: 12px 24px; min-height: 48px; font-size: 0.95rem; }
+  .btn-start { padding: 14px 40px; font-size: 1.2rem; }
+  .bg-sound-btn { width: 40px; height: 40px; font-size: 1.1rem; top: 10px; right: 10px; }
+  .cauldron-visual { transform: scale(0.8); margin-bottom: 10px; }
+  .score-display { font-size: 0.85rem; }
+  .streak-display { font-size: 0.8rem; }
+  .progress-text { font-size: 0.8rem; margin-bottom: 10px; }
+  .recipe-nav { gap: 10px; padding-top: 12px; }
+  .recipe-nav .btn { flex: 1; text-align: center; }
+  .wb-blank { min-width: 60px; }
+  .wb-prompt { font-size: 0.92rem; }
+  .wb-sentence { font-size: 0.95rem; }
+  .wb-sub-counter { font-size: 0.8rem; }
+  .result-banner { padding: 12px 16px; font-size: 0.9rem; }
+  .explanation-text { font-size: 0.85rem; }
+  .end-title { font-size: 1.5rem; }
+  .end-score { font-size: 1.2rem; }
+  .end-stats { font-size: 0.88rem; }
+  .end-wizard-msg { font-size: 0.95rem; }
+}
+</style>
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="game-container">
+
+  <!-- LESSON SELECT SCREEN -->
+  <div id="lesson-select-screen" class="screen active" role="main" aria-label="Grammar Potion Lab 레슨 선택">
+    <div class="cauldron-icon" role="img" aria-label="마법 가마솥">🧪</div>
+    <h1 class="game-title">Grammar Potion Lab</h1>
+    <p class="game-subtitle">영어 문법 물약 연구소</p>
+    <div class="lesson-grid" id="lesson-grid" role="list" aria-label="레슨 목록"></div>
+    <div class="total-stats" id="total-stats"></div>
+    <p class="key-hint">레슨을 선택하여 연구소에 입장하세요</p>
+  </div>
+
+  <!-- START SCREEN -->
+  <div id="start-screen" class="screen" role="main">
+    <div class="cauldron-icon" role="img" aria-label="마법 가마솥">🧪</div>
+    <h1 class="game-title">Grammar Potion Lab</h1>
+    <p class="game-subtitle" id="start-subtitle"></p>
+    <button class="btn-start" id="btn-start" tabindex="0">START</button>
+    <p class="key-hint">Space 또는 Enter를 눌러 시작</p>
+    <button class="back-btn" id="back-from-start">← LESSONS</button>
+  </div>
+
+  <!-- INTRO SCREEN -->
+  <div id="intro-screen" class="screen" role="main">
+    <div class="wizard-speech">
+      <div class="wizard-emoji">🧙‍♂️</div>
+      <div id="intro-text"></div>
+      <span class="typewriter-cursor" id="intro-cursor"></span>
+    </div>
+    <button class="btn btn-gold" id="btn-intro-next" tabindex="0" style="margin-top:1em;padding:10px 30px;font-size:1rem;">계속 →</button>
+    <p class="key-hint" style="margin-top:0.5em">또는 Space를 눌러 계속</p>
+  </div>
+
+  <!-- CHAPTER SELECT SCREEN -->
+  <div id="chapter-screen" class="screen" role="main">
+    <h2 class="game-title" style="font-size:1.8rem; margin-bottom:0.5em;">Choose Your Potion</h2>
+    <p class="game-subtitle">만들 물약을 선택하세요</p>
+    <div class="chapter-cards" id="chapter-cards"></div>
+    <p class="key-hint">1~2 키로 선택 | Esc 레슨 목록</p>
+  </div>
+
+  <!-- RECIPE (LEARNING) SCREEN -->
+  <div id="recipe-screen" class="screen" role="main">
+    <div class="scroll-container" id="scroll-container"></div>
+    <div class="recipe-nav">
+      <button class="btn" id="btn-recipe-back" tabindex="0">← 뒤로</button>
+      <button class="btn btn-gold" id="btn-recipe-next" tabindex="0">다음 →</button>
+    </div>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="quiz-screen" class="screen" role="main">
+    <div class="quiz-area">
+      <div class="cauldron-visual">
+        <div class="cauldron-rim"></div>
+        <div class="cauldron-body">
+          <div class="potion-liquid" id="potion-liquid">
+            <div class="bubbles" id="bubbles"></div>
+          </div>
+        </div>
+      </div>
+      <div class="score-display" id="score-display">Score: 0</div>
+      <div class="streak-display" id="streak-display"></div>
+      <div class="progress-text" id="progress-text"></div>
+      <div class="question-card" id="question-card"></div>
+      <div id="options-area"></div>
+      <div id="result-area"></div>
+    </div>
+  </div>
+
+  <!-- END SCREEN -->
+  <div id="end-screen" class="screen" role="main">
+    <div class="cauldron-icon" style="animation-duration:2s;">✨</div>
+    <h2 class="end-title" id="end-title">Grammar Wizard!</h2>
+    <div class="end-stars" id="end-stars"></div>
+    <div class="end-score" id="end-score"></div>
+    <div class="end-stats" id="end-stats"></div>
+    <div class="end-wizard-msg" id="end-wizard-msg"></div>
+    <div class="end-buttons">
+      <button class="btn btn-gold" id="btn-restart" tabindex="0">다시 도전</button>
+      <button class="btn btn-gold" id="btn-next-lesson" tabindex="0" style="display:none;">다음 레슨 →</button>
+      <button class="btn btn-outline" id="btn-lesson-list" tabindex="0">레슨 목록으로</button>
+    </div>
+  </div>
+</div>
+
+<!-- BG Sound Toggle -->
+<button id="bg-sound-toggle" class="bg-sound-btn" aria-label="배경 효과음 끄기" title="배경 효과음 켜기/끄기">🔊</button>
+
+<div id="sr-announce" role="status" aria-live="assertive" aria-atomic="true"></div>
+
+<script src="grammar_data.js"></script>
+<script src="sfx_data.js"></script>
+<script>
+// ===== LESSON STATE =====
+let activeLesson = null;
+let activeAudioData = null;
+
+// ===== AUDIO LOADER (Word Bomb pattern) =====
+function loadLessonAudio(lessonId) {
+  return new Promise((resolve) => {
+    const varName = 'AUDIO_L' + lessonId;
+    if (window[varName]) {
+      activeAudioData = window[varName];
+      resolve();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'audio_L' + lessonId + '.js';
+    script.onload = () => {
+      activeAudioData = window[varName];
+      resolve();
+    };
+    script.onerror = () => {
+      activeAudioData = {};
+      resolve();
+    };
+    document.head.appendChild(script);
+  });
+}
+
+// ===== LOCALSTORAGE =====
+function loadScores() {
+  try { return JSON.parse(localStorage.getItem('grammar_potion_scores') || '{}'); }
+  catch (e) { return {}; }
+}
+
+function saveScore(lessonId, score, correct, total, chaptersCompleted) {
+  try {
+    const scores = loadScores();
+    const key = 'L' + lessonId;
+    const pct = Math.round((correct / total) * 100);
+    const prev = scores[key] || { bestScore: 0, bestPct: 0, chapters: [], attempts: 0 };
+    scores[key] = {
+      bestScore: Math.max(prev.bestScore, score),
+      bestPct: Math.max(prev.bestPct, pct),
+      chapters: [...new Set([...prev.chapters, ...chaptersCompleted])],
+      attempts: prev.attempts + 1,
+      lastPlayed: new Date().toISOString().slice(0, 10)
+    };
+    localStorage.setItem('grammar_potion_scores', JSON.stringify(scores));
+  } catch (e) {}
+}
+
+// ===== AUDIO MANAGER =====
+const AudioMgr = {
+  ctx: null,
+  cache: {},
+  bgLoop: null,
+  _currentTTS: null,
+  _currentSFX: null,
+  getCtx() {
+    if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if (this.ctx.state === 'suspended') this.ctx.resume();
+    return this.ctx;
+  },
+  _stopNode(node) {
+    if (node) { try { node.source.stop(); } catch(e){} }
+  },
+  async play(key, dataObj, loop = false) {
+    const src = dataObj?.[key];
+    if (!src) return null;
+    try {
+      const ctx = this.getCtx();
+      if (!this.cache[src]) {
+        const resp = await fetch(src);
+        const buf = await resp.arrayBuffer();
+        this.cache[src] = await ctx.decodeAudioData(buf);
+      }
+      const source = ctx.createBufferSource();
+      source.buffer = this.cache[src];
+      source.loop = loop;
+      const gain = ctx.createGain();
+      gain.gain.value = loop ? 0.15 : 0.5;
+      source.connect(gain).connect(ctx.destination);
+      source.start();
+      return { source, gain };
+    } catch (e) { console.warn('Audio play failed:', key, e); return null; }
+  },
+  async playSFX(key) {
+    this._stopNode(this._currentSFX);
+    const node = await this.play(key, typeof SFX_DATA !== 'undefined' ? SFX_DATA : {});
+    this._currentSFX = node;
+    return node;
+  },
+  async playTTS(key) {
+    this._stopNode(this._currentTTS);
+    const node = await this.play(key, activeAudioData || {});
+    this._currentTTS = node;
+    return node;
+  },
+  async startBgLoop() {
+    if (this.bgLoop) return;
+    this.bgLoop = await this.play('bubbling', typeof SFX_DATA !== 'undefined' ? SFX_DATA : {}, true);
+    if (this.bgLoop && this.bgMuted) this.bgLoop.gain.gain.value = 0;
+  },
+  stopBgLoop() {
+    if (this.bgLoop) { try { this.bgLoop.source.stop(); } catch(e){} this.bgLoop = null; }
+  },
+  bgMuted: false,
+  toggleBgMute() {
+    this.bgMuted = !this.bgMuted;
+    const btn = document.getElementById('bg-sound-toggle');
+    if (this.bgMuted) {
+      if (this.bgLoop) this.bgLoop.gain.gain.value = 0;
+      btn.textContent = '🔇';
+      btn.classList.add('muted');
+      btn.setAttribute('aria-label', '배경 효과음 켜기');
+    } else {
+      if (this.bgLoop) this.bgLoop.gain.gain.value = 0.15;
+      btn.textContent = '🔊';
+      btn.classList.remove('muted');
+      btn.setAttribute('aria-label', '배경 효과음 끄기');
+    }
+  }
+};
+
+document.getElementById('bg-sound-toggle').addEventListener('click', () => AudioMgr.toggleBgMute());
+
+// ===== GAME STATE =====
+const State = {
+  score: 0,
+  streak: 0,
+  maxStreak: 0,
+  totalCorrect: 0,
+  totalQuestions: 0,
+  chaptersCompleted: [],
+  currentChapter: null,
+  currentExIndex: 0,
+  currentSubQ: 0,
+  answered: false,
+  multiSelections: new Set(),
+  blockSelections: [],
+};
+
+function resetState() {
+  State.score = 0;
+  State.streak = 0;
+  State.maxStreak = 0;
+  State.totalCorrect = 0;
+  State.totalQuestions = 0;
+  State.chaptersCompleted = [];
+  State.currentChapter = null;
+  State.currentExIndex = 0;
+  State.currentSubQ = 0;
+  State.answered = false;
+  State.multiSelections = new Set();
+  State.blockSelections = [];
+}
+
+// ===== SCREEN MANAGEMENT =====
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const screen = document.getElementById(id);
+  screen.classList.add('active');
+  setTimeout(() => {
+    const focusable = screen.querySelector('button, [tabindex="0"]');
+    if (focusable) focusable.focus();
+  }, 100);
+}
+
+function announce(text) {
+  const el = document.getElementById('sr-announce');
+  el.textContent = '';
+  setTimeout(() => el.textContent = text, 50);
+}
+
+// ===== LESSON SELECT =====
+function showLessonSelect() {
+  AudioMgr.stopBgLoop();
+  showScreen('lesson-select-screen');
+  renderLessonGrid();
+  announce('Grammar Potion Lab. 레슨을 선택하세요.');
+}
+
+function renderLessonGrid() {
+  const grid = document.getElementById('lesson-grid');
+  const scores = loadScores();
+  grid.innerHTML = '';
+
+  let completedCount = 0;
+
+  GRAMMAR_LESSONS.forEach((lesson, i) => {
+    const key = 'L' + lesson.id;
+    const data = scores[key] || {};
+    const chaptersDone = (data.chapters || []).length;
+    const totalChapters = lesson.chapters.length;
+    const isComplete = chaptersDone >= totalChapters;
+    if (isComplete) completedCount++;
+
+    const card = document.createElement('button');
+    card.className = 'lesson-card';
+    card.setAttribute('role', 'listitem');
+    card.setAttribute('aria-label', `Lesson ${lesson.id}: ${lesson.subtitle}${isComplete ? ' (완료)' : ''}`);
+
+    let badge = '';
+    if (data.bestPct >= 90) badge = '⭐⭐⭐';
+    else if (data.bestPct >= 70) badge = '⭐⭐';
+    else if (data.bestPct >= 50) badge = '⭐';
+    else if (isComplete) badge = '✓';
+
+    card.innerHTML = `
+      <div class="lesson-number">L${lesson.id}</div>
+      <div class="lesson-topic">${lesson.subtitle}</div>
+      <div class="lesson-chapters">${totalChapters} chapters</div>
+      <div class="lesson-score">${data.bestScore ? `Best: ${data.bestScore}점` : '--'}</div>
+      ${badge ? `<div class="lesson-badge">${badge}</div>` : ''}
+    `;
+    card.addEventListener('click', () => selectLesson(lesson.id));
+    grid.appendChild(card);
+  });
+
+  document.getElementById('total-stats').textContent =
+    `${completedCount} / ${GRAMMAR_LESSONS.length} 레슨 완료`;
+}
+
+async function selectLesson(lessonId) {
+  const lesson = GRAMMAR_LESSONS.find(l => l.id === lessonId);
+  if (!lesson) return;
+
+  activeLesson = lesson;
+  resetState();
+
+  // Show loading state on the card
+  const cards = document.querySelectorAll('.lesson-card');
+  const idx = GRAMMAR_LESSONS.findIndex(l => l.id === lessonId);
+  if (cards[idx]) cards[idx].classList.add('loading');
+
+  await loadLessonAudio(lessonId);
+
+  if (cards[idx]) cards[idx].classList.remove('loading');
+
+  // Show start screen with lesson info
+  document.getElementById('start-subtitle').textContent =
+    `Lesson ${lesson.id} — ${lesson.subtitle}`;
+  showScreen('start-screen');
+  announce(`Lesson ${lesson.id}: ${lesson.subtitle}. Space를 눌러 시작하세요.`);
+}
+
+// ===== START SCREEN =====
+document.getElementById('btn-start').addEventListener('click', startGame);
+document.getElementById('back-from-start').addEventListener('click', showLessonSelect);
+
+function startGame() {
+  AudioMgr.playSFX('wizard_greeting');
+  showIntro();
+}
+
+// ===== INTRO (TYPEWRITER) =====
+let typewriterTimeout;
+let introLineIndex = 0;
+let introCharIndex = 0;
+let introFullText = '';
+let introSkipped = false;
+
+function showIntro() {
+  showScreen('intro-screen');
+  AudioMgr.playTTS('intro_1');
+  introLineIndex = 0;
+  introCharIndex = 0;
+  introFullText = '';
+  introSkipped = false;
+  document.getElementById('intro-text').innerHTML = '';
+  document.getElementById('intro-cursor').style.display = 'inline-block';
+  typeNextChar();
+}
+
+function typeNextChar() {
+  if (introSkipped) return;
+  const introLines = activeLesson.introLines;
+  if (introLineIndex >= introLines.length) {
+    document.getElementById('intro-cursor').style.display = 'none';
+    return;
+  }
+  const line = introLines[introLineIndex];
+  if (introCharIndex < line.length) {
+    introFullText += line[introCharIndex];
+    document.getElementById('intro-text').innerHTML = introFullText.replace(/\n/g, '<br>');
+    introCharIndex++;
+    typewriterTimeout = setTimeout(typeNextChar, 30);
+  } else {
+    introFullText += '\n';
+    introLineIndex++;
+    introCharIndex = 0;
+    typewriterTimeout = setTimeout(typeNextChar, 150);
+  }
+}
+
+function skipIntro() {
+  introSkipped = true;
+  clearTimeout(typewriterTimeout);
+  document.getElementById('intro-text').innerHTML = activeLesson.introLines.join('<br>');
+  document.getElementById('intro-cursor').style.display = 'none';
+}
+
+document.getElementById('btn-intro-next').addEventListener('click', () => {
+  if (!introSkipped && introLineIndex < activeLesson.introLines.length) {
+    skipIntro();
+  } else {
+    showChapterSelect();
+  }
+});
+
+// ===== CHAPTER SELECT =====
+function showChapterSelect() {
+  showScreen('chapter-screen');
+  AudioMgr.startBgLoop();
+  renderChapterCards();
+}
+
+function renderChapterCards() {
+  const container = document.getElementById('chapter-cards');
+  container.innerHTML = '';
+  activeLesson.chapters.forEach((ch, i) => {
+    const completed = State.chaptersCompleted.includes(ch.id);
+    const locked = i > 0 && !State.chaptersCompleted.includes(activeLesson.chapters[i-1].id);
+    const card = document.createElement('div');
+    card.className = 'chapter-card' + (completed ? ' completed' : '') + (locked ? ' locked' : '');
+    card.tabIndex = locked ? -1 : 0;
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', `Chapter ${i+1}: ${ch.name} - ${ch.nameKo}${completed ? ' (완료)' : ''}${locked ? ' (잠김)' : ''}`);
+    card.innerHTML = `
+      <div class="ch-icon">${i === 0 ? '🧪' : '⚗️'}</div>
+      <div class="ch-name">Chapter ${i+1}: ${ch.name}</div>
+      <div class="ch-name-ko">${ch.nameKo} (${ch.topic})</div>
+    `;
+    if (!locked) {
+      card.addEventListener('click', () => startChapter(ch.id));
+    }
+    container.appendChild(card);
+  });
+}
+
+// ===== RECIPE LEARNING =====
+let recipeStepIndex = 0;
+let currentChapterData = null;
+
+function startChapter(chapterId) {
+  currentChapterData = activeLesson.chapters.find(c => c.id === chapterId);
+  State.currentChapter = chapterId;
+  recipeStepIndex = 0;
+  showRecipeStep();
+}
+
+function showRecipeStep() {
+  showScreen('recipe-screen');
+  AudioMgr.playSFX('scroll_open');
+  const step = currentChapterData.recipe[recipeStepIndex];
+  const total = currentChapterData.recipe.length;
+  const container = document.getElementById('scroll-container');
+
+  let html = `
+    <div class="recipe-step-indicator">📜 Step ${recipeStepIndex + 1} / ${total} — ${currentChapterData.name}</div>
+    <h3 class="recipe-header">${step.title} <span style="font-size:0.8em;color:#7a5a3a">${step.titleEn}</span></h3>
+    <div class="recipe-content">${step.content}</div>
+  `;
+
+  if (step.table) {
+    html += '<table class="grammar-table"><thead><tr>';
+    step.table.headers.forEach(h => html += `<th>${h}</th>`);
+    html += '</tr></thead><tbody>';
+    step.table.rows.forEach(row => {
+      html += '<tr>';
+      row.forEach(cell => html += `<td>${cell}</td>`);
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+  }
+
+  if (step.transform) {
+    step.transform.forEach(t => {
+      html += `<div class="transform-box">
+        <span class="transform-before">${t.before}</span>
+        <span class="transform-arrow">→</span>
+        <span class="transform-after">${t.after}</span>
+      </div>`;
+    });
+  }
+
+  if (step.pattern) {
+    html += `<div class="pattern-box">
+      <div class="pattern-q">❓ ${step.pattern.question}</div>
+      <div class="pattern-yes">✅ ${step.pattern.yesAnswer}</div>
+      <div class="pattern-no">❌ ${step.pattern.noAnswer}</div>
+    </div>`;
+  }
+
+  if (step.examples) {
+    step.examples.forEach(ex => {
+      html += `<div class="example-box">
+        <div class="example-en">${ex.en}</div>
+        <div class="example-ko">${ex.ko}</div>
+      </div>`;
+    });
+  }
+
+  container.innerHTML = html;
+  container.scrollTop = 0;
+
+  document.getElementById('btn-recipe-back').style.display = recipeStepIndex > 0 ? '' : 'none';
+  const nextBtn = document.getElementById('btn-recipe-next');
+  nextBtn.textContent = recipeStepIndex < total - 1 ? '다음 →' : '🧪 물약 조합 시작!';
+
+  AudioMgr.playTTS(step.audioKey);
+  announce(`레시피 스텝 ${recipeStepIndex + 1}: ${step.title}`);
+}
+
+document.getElementById('btn-recipe-next').addEventListener('click', nextRecipeStep);
+document.getElementById('btn-recipe-back').addEventListener('click', prevRecipeStep);
+
+function nextRecipeStep() {
+  AudioMgr.playSFX('page_flip');
+  if (recipeStepIndex < currentChapterData.recipe.length - 1) {
+    recipeStepIndex++;
+    showRecipeStep();
+  } else {
+    startQuiz();
+  }
+}
+function prevRecipeStep() {
+  if (recipeStepIndex > 0) {
+    recipeStepIndex--;
+    showRecipeStep();
+  } else {
+    showChapterSelect();
+  }
+}
+
+// ===== QUIZ ENGINE =====
+function startQuiz() {
+  State.currentExIndex = 0;
+  State.currentSubQ = 0;
+  updatePotionLevel();
+  showScreen('quiz-screen');
+  loadExercise();
+}
+
+function loadExercise() {
+  const exercises = currentChapterData.exercises;
+  if (State.currentExIndex >= exercises.length) {
+    completeChapter();
+    return;
+  }
+  const ex = exercises[State.currentExIndex];
+  State.answered = false;
+  State.multiSelections = new Set();
+  State.blockSelections = [];
+
+  updateScoreDisplay();
+  const total = exercises.length;
+  document.getElementById('progress-text').textContent = `문제 ${State.currentExIndex + 1} / ${total}`;
+  document.getElementById('result-area').innerHTML = '';
+
+  AudioMgr.playSFX('cauldron_stir');
+  AudioMgr.playTTS(ex.audioKey);
+
+  if (ex.type === 'multiple_choice') {
+    renderMultipleChoice(ex);
+  } else if (ex.type === 'multi_select') {
+    renderMultiSelect(ex);
+  } else if (ex.type === 'word_blocks') {
+    renderWordBlocks(ex);
+  }
+
+  announce(`문제 ${State.currentExIndex + 1}: ${ex.question.replace(/<[^>]+>/g, '')}`);
+}
+
+// --- Multiple Choice ---
+function renderMultipleChoice(ex) {
+  const qCard = document.getElementById('question-card');
+  let qHtml = `<div class="question-label">Q${State.currentExIndex + 1}</div>`;
+  qHtml += `<div class="question-text">${ex.question}</div>`;
+  if (ex.context) qHtml += `<div class="context-text">${ex.context}</div>`;
+  if (ex.contextHint) qHtml += `<div style="font-size:0.85rem;color:var(--text-dim);margin-top:4px">${ex.contextHint}</div>`;
+  qCard.innerHTML = qHtml;
+
+  const optArea = document.getElementById('options-area');
+  optArea.innerHTML = '<ul class="options-list" id="options-list"></ul>';
+  const list = document.getElementById('options-list');
+
+  ex.options.forEach((opt, i) => {
+    const li = document.createElement('li');
+    li.className = 'option-item';
+    li.tabIndex = 0;
+    li.setAttribute('role', 'button');
+    li.innerHTML = `<span class="option-key">${i+1}</span><span>${opt}</span>`;
+    li.addEventListener('click', () => selectMCOption(i, ex));
+    list.appendChild(li);
+  });
+}
+
+function selectMCOption(index, ex) {
+  if (State.answered) return;
+  State.answered = true;
+  State.totalQuestions++;
+
+  const items = document.querySelectorAll('.option-item');
+  const isCorrect = index === ex.answer;
+
+  items.forEach((item, i) => {
+    item.classList.add('disabled');
+    if (i === ex.answer) item.classList.add('correct');
+    if (i === index && !isCorrect) item.classList.add('wrong');
+  });
+
+  handleResult(isCorrect, ex.explanation, 10);
+}
+
+// --- Multi Select ---
+function renderMultiSelect(ex) {
+  const qCard = document.getElementById('question-card');
+  let qHtml = `<div class="question-label">Q${State.currentExIndex + 1}</div>`;
+  qHtml += `<div class="question-text">${ex.question}</div>`;
+  qCard.innerHTML = qHtml;
+
+  const optArea = document.getElementById('options-area');
+  optArea.innerHTML = '<ul class="options-list" id="options-list"></ul><div class="multi-confirm-hint">선택 후 Enter로 확인 | 1~5로 토글</div>';
+  const list = document.getElementById('options-list');
+
+  ex.options.forEach((opt, i) => {
+    const li = document.createElement('li');
+    li.className = 'option-item';
+    li.tabIndex = 0;
+    li.setAttribute('role', 'checkbox');
+    li.setAttribute('aria-checked', 'false');
+    li.innerHTML = `<span class="option-key">${i+1}</span><span class="checkbox"></span><span>${opt}</span>`;
+    li.addEventListener('click', () => toggleMultiOption(i));
+    list.appendChild(li);
+  });
+}
+
+function toggleMultiOption(index) {
+  if (State.answered) return;
+  if (State.multiSelections.has(index)) {
+    State.multiSelections.delete(index);
+  } else {
+    State.multiSelections.add(index);
+  }
+  const items = document.querySelectorAll('.option-item');
+  items.forEach((item, i) => {
+    item.classList.toggle('checked', State.multiSelections.has(i));
+    item.setAttribute('aria-checked', State.multiSelections.has(i));
+  });
+}
+
+function confirmMultiSelect() {
+  if (State.answered || State.multiSelections.size === 0) return;
+  State.answered = true;
+  State.totalQuestions++;
+
+  const ex = currentChapterData.exercises[State.currentExIndex];
+  const selected = [...State.multiSelections].sort();
+  const correct = [...ex.answers].sort();
+  const isCorrect = JSON.stringify(selected) === JSON.stringify(correct);
+  const isPartial = !isCorrect && selected.some(s => correct.includes(s));
+
+  const items = document.querySelectorAll('.option-item');
+  items.forEach((item, i) => {
+    item.classList.add('disabled');
+    if (correct.includes(i)) item.classList.add('correct');
+    if (State.multiSelections.has(i) && !correct.includes(i)) item.classList.add('wrong');
+  });
+
+  let expText = ex.explanations ? ex.explanations.join('<br>') : '';
+  if (isPartial) {
+    handleResult(true, expText, 8, false);
+  } else {
+    handleResult(isCorrect, expText, 15);
+  }
+}
+
+// --- Word Blocks ---
+function renderWordBlocks(ex) {
+  const subQ = ex.subQuestions[State.currentSubQ];
+  const qCard = document.getElementById('question-card');
+  let qHtml = `<div class="question-label">Q${State.currentExIndex + 1}</div>`;
+  qHtml += `<div class="question-text">${ex.question}</div>`;
+  if (ex.context) qHtml += `<div class="context-text">${ex.context}</div>`;
+  qCard.innerHTML = qHtml;
+
+  const optArea = document.getElementById('options-area');
+  let html = '<div class="word-block-area">';
+  if (ex.subQuestions.length > 1) {
+    html += `<div class="wb-sub-counter">소문항 ${State.currentSubQ + 1} / ${ex.subQuestions.length}</div>`;
+  }
+  html += `<div class="wb-prompt">${subQ.prompt}</div>`;
+
+  const sentenceParts = subQ.sentence.split('_____');
+  html += '<div class="wb-sentence">';
+  sentenceParts.forEach((part, i) => {
+    html += part;
+    if (i < sentenceParts.length - 1) {
+      html += `<span class="wb-blank${i === 0 ? ' active' : ''}" data-idx="${i}"></span>`;
+    }
+  });
+  html += '</div>';
+
+  const shuffled = [...subQ.blocks].sort(() => Math.random() - 0.5);
+  html += '<div class="blocks-container">';
+  shuffled.forEach((block, i) => {
+    html += `<button class="word-block" tabindex="0" data-block="${i}" data-text="${block}">${block}</button>`;
+  });
+  html += '</div></div>';
+
+  optArea.innerHTML = html;
+  State.blockSelections = [];
+
+  document.querySelectorAll('.word-block').forEach(btn => {
+    btn.addEventListener('click', () => selectBlock(btn, subQ));
+  });
+}
+
+function selectBlock(btn, subQ) {
+  if (State.answered || btn.classList.contains('selected')) return;
+
+  const text = btn.dataset.text;
+  const blankIdx = State.blockSelections.length;
+  const blanks = document.querySelectorAll('.wb-blank');
+
+  if (blankIdx >= blanks.length) return;
+
+  btn.classList.add('selected');
+  blanks[blankIdx].textContent = text;
+  blanks[blankIdx].classList.add('filled');
+  blanks[blankIdx].classList.remove('active');
+  State.blockSelections.push(text);
+
+  if (blankIdx + 1 < blanks.length) {
+    blanks[blankIdx + 1].classList.add('active');
+  }
+
+  if (State.blockSelections.length === blanks.length) {
+    checkWordBlocks(subQ);
+  }
+}
+
+function checkWordBlocks(subQ) {
+  State.answered = true;
+  State.totalQuestions++;
+
+  const isCorrect = JSON.stringify(State.blockSelections) === JSON.stringify(subQ.answer);
+  const isAlt = subQ.altAnswer && JSON.stringify(State.blockSelections) === JSON.stringify(subQ.altAnswer);
+
+  const blocks = document.querySelectorAll('.word-block');
+  blocks.forEach(b => {
+    if (b.classList.contains('selected')) {
+      b.classList.add((isCorrect || isAlt) ? 'correct-block' : 'wrong-block');
+    }
+  });
+
+  if (!isCorrect && !isAlt) {
+    const blanks = document.querySelectorAll('.wb-blank');
+    blanks.forEach((bl, i) => {
+      bl.textContent = subQ.answer[i] || '';
+      bl.style.color = 'var(--green)';
+    });
+  }
+
+  handleResult(isCorrect || isAlt, subQ.explanation, 12, true, true);
+}
+
+// ===== RESULT HANDLER =====
+function handleResult(isCorrect, explanation, basePoints, fullCorrect = true, isWordBlock = false) {
+  let earnedPoints = 0;
+  let multiplier = 1;
+
+  if (isCorrect) {
+    if (State.streak >= 2) multiplier = State.streak >= 3 ? 2 : 1.5;
+    earnedPoints = Math.round(basePoints * multiplier);
+    State.score += earnedPoints;
+    State.streak++;
+    State.totalCorrect++;
+    if (State.streak > State.maxStreak) State.maxStreak = State.streak;
+
+    AudioMgr.playSFX('ingredient_drop');
+    if (fullCorrect) AudioMgr.playSFX('feedback_correct');
+    if (State.streak >= 3) AudioMgr.playSFX('magic_sparkle');
+    spawnParticles(true);
+
+    if (!isWordBlock || fullCorrect) {
+      document.getElementById('result-area').innerHTML = `
+        <div class="result-banner correct-banner">
+          ✨ 정답! +${earnedPoints}점${multiplier > 1 ? ` (x${multiplier} 콤보!)` : ''}
+          <div class="explanation-text">${explanation}</div>
+        </div>`;
+    }
+  } else {
+    State.streak = 0;
+    AudioMgr.playSFX('explosion_smoke');
+    AudioMgr.playSFX('feedback_wrong');
+    spawnParticles(false);
+
+    if (!isWordBlock) {
+      document.getElementById('result-area').innerHTML = `
+        <div class="result-banner wrong-banner">
+          💨 오답!
+          <div class="explanation-text">${explanation}</div>
+        </div>`;
+    }
+  }
+
+  updateScoreDisplay();
+  updatePotionLevel();
+
+  setTimeout(() => {
+    const resultArea = document.getElementById('result-area');
+    const nextHtml = `<button class="btn btn-gold" id="btn-next-q" tabindex="0" style="margin-top:10px">다음 → (Space)</button>`;
+    resultArea.innerHTML += nextHtml;
+    document.getElementById('btn-next-q').addEventListener('click', nextQuestion);
+    document.getElementById('btn-next-q').focus();
+  }, 800);
+}
+
+function nextQuestion() {
+  const ex = currentChapterData.exercises[State.currentExIndex];
+
+  if (ex.type === 'word_blocks' && State.currentSubQ < ex.subQuestions.length - 1) {
+    State.currentSubQ++;
+    State.answered = false;
+    document.getElementById('result-area').innerHTML = '';
+    renderWordBlocks(ex);
+    return;
+  }
+
+  State.currentExIndex++;
+  State.currentSubQ = 0;
+  loadExercise();
+}
+
+function updateScoreDisplay() {
+  document.getElementById('score-display').textContent = `Score: ${State.score}`;
+  const streakEl = document.getElementById('streak-display');
+  if (State.streak >= 2) {
+    streakEl.textContent = `🔥 ${State.streak}연속 정답! (x${State.streak >= 3 ? '2' : '1.5'})`;
+  } else {
+    streakEl.textContent = '';
+  }
+}
+
+function updatePotionLevel() {
+  const exercises = currentChapterData ? currentChapterData.exercises : [];
+  const total = exercises.length || 1;
+  const progress = Math.min(State.currentExIndex / total * 100, 100);
+  const liquid = document.getElementById('potion-liquid');
+  liquid.style.height = progress + '%';
+  liquid.style.background = currentChapterData ? currentChapterData.potionColor : 'var(--purple)';
+
+  const bubblesEl = document.getElementById('bubbles');
+  bubblesEl.innerHTML = '';
+  for (let i = 0; i < 5; i++) {
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    b.style.cssText = `
+      left: ${20 + Math.random() * 60}%;
+      bottom: ${Math.random() * 30}%;
+      width: ${4 + Math.random() * 8}px;
+      height: ${4 + Math.random() * 8}px;
+      animation-delay: ${Math.random() * 2}s;
+      animation-duration: ${1.5 + Math.random() * 1.5}s;
+    `;
+    bubblesEl.appendChild(b);
+  }
+}
+
+// ===== CHAPTER COMPLETE =====
+function completeChapter() {
+  if (!State.chaptersCompleted.includes(currentChapterData.id)) {
+    State.chaptersCompleted.push(currentChapterData.id);
+  }
+  AudioMgr.playSFX('potion_success');
+
+  if (State.chaptersCompleted.length >= activeLesson.chapters.length) {
+    showEndScreen();
+  } else {
+    const resultArea = document.getElementById('result-area');
+    document.getElementById('question-card').innerHTML = `
+      <div style="text-align:center;padding:20px">
+        <div style="font-size:3rem;margin-bottom:0.5em">🧪</div>
+        <h3 style="color:var(--gold);font-family:'Cinzel Decorative',cursive;font-size:1.3rem">
+          ${currentChapterData.name} Complete!
+        </h3>
+        <p style="color:var(--text-dim);margin-top:0.5em">${currentChapterData.nameKo} 완성!</p>
+      </div>
+    `;
+    document.getElementById('options-area').innerHTML = '';
+    resultArea.innerHTML = `
+      <button class="btn btn-gold" id="btn-next-chapter" tabindex="0" style="margin-top:15px">
+        다음 물약으로 → (Space)
+      </button>
+    `;
+    document.getElementById('btn-next-chapter').addEventListener('click', showChapterSelect);
+    document.getElementById('btn-next-chapter').focus();
+  }
+}
+
+// ===== END SCREEN =====
+function showEndScreen() {
+  AudioMgr.stopBgLoop();
+  AudioMgr.playSFX('master_potion');
+  AudioMgr.playTTS('finale');
+  showScreen('end-screen');
+
+  const totalPossible = calculateMaxScore();
+  const pct = Math.round(State.score / totalPossible * 100);
+  const stars = pct >= 90 ? '⭐⭐⭐' : pct >= 70 ? '⭐⭐' : pct >= 50 ? '⭐' : '';
+
+  document.getElementById('end-title').textContent =
+    pct >= 90 ? 'Master Wizard!' : pct >= 70 ? 'Grammar Wizard!' : pct >= 50 ? 'Apprentice Wizard' : 'Keep Practicing!';
+  document.getElementById('end-stars').textContent = stars || '🧪';
+  document.getElementById('end-score').textContent = `${State.score}점`;
+  document.getElementById('end-stats').innerHTML = `
+    정답률: ${State.totalCorrect} / ${State.totalQuestions}<br>
+    최고 연속 정답: ${State.maxStreak}회
+  `;
+  document.getElementById('end-wizard-msg').textContent =
+    pct >= 90 ? '"Magnificent! You have mastered both potions perfectly!"' :
+    pct >= 70 ? '"Well done! You are now a Grammar Wizard!"' :
+    pct >= 50 ? '"Good effort! Practice more to become a true wizard."' :
+    '"Don\'t give up! Every wizard starts somewhere."';
+
+  // Save score
+  saveScore(activeLesson.id, State.score, State.totalCorrect, State.totalQuestions, State.chaptersCompleted);
+
+  // Show/hide "다음 레슨" button
+  const nextIdx = GRAMMAR_LESSONS.findIndex(l => l.id === activeLesson.id) + 1;
+  const btnNext = document.getElementById('btn-next-lesson');
+  btnNext.style.display = nextIdx < GRAMMAR_LESSONS.length ? '' : 'none';
+
+  spawnConfetti();
+}
+
+function calculateMaxScore() {
+  let max = 0;
+  activeLesson.chapters.forEach(ch => {
+    ch.exercises.forEach(ex => {
+      if (ex.type === 'multiple_choice') max += 10;
+      else if (ex.type === 'multi_select') max += 15;
+      else if (ex.type === 'word_blocks') {
+        max += ex.subQuestions.length * 12;
+      }
+    });
+  });
+  return max;
+}
+
+// End screen buttons
+document.getElementById('btn-restart').addEventListener('click', () => {
+  resetState();
+  document.getElementById('start-subtitle').textContent =
+    `Lesson ${activeLesson.id} — ${activeLesson.subtitle}`;
+  showScreen('start-screen');
+});
+
+document.getElementById('btn-next-lesson').addEventListener('click', () => {
+  const nextIdx = GRAMMAR_LESSONS.findIndex(l => l.id === activeLesson.id) + 1;
+  if (nextIdx < GRAMMAR_LESSONS.length) {
+    selectLesson(GRAMMAR_LESSONS[nextIdx].id);
+  }
+});
+
+document.getElementById('btn-lesson-list').addEventListener('click', () => {
+  resetState();
+  showLessonSelect();
+});
+
+// ===== GLOBAL KEY HANDLER =====
+function getActiveScreen() {
+  const active = document.querySelector('.screen.active');
+  return active ? active.id : null;
+}
+
+document.addEventListener('keydown', (e) => {
+  const screen = getActiveScreen();
+
+  // ---- LESSON SELECT SCREEN ----
+  if (screen === 'lesson-select-screen') {
+    const num = parseInt(e.key);
+    if (num >= 1 && num <= GRAMMAR_LESSONS.length) {
+      e.preventDefault();
+      selectLesson(GRAMMAR_LESSONS[num - 1].id);
+    }
+    return;
+  }
+
+  // ---- START SCREEN ----
+  if (screen === 'start-screen') {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      startGame();
+    }
+    if (e.key === 'Escape') {
+      showLessonSelect();
+    }
+    return;
+  }
+
+  // ---- INTRO SCREEN ----
+  if (screen === 'intro-screen') {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      if (!introSkipped && introLineIndex < activeLesson.introLines.length) {
+        skipIntro();
+      } else {
+        showChapterSelect();
+      }
+    }
+    if (e.key === 'Escape') {
+      introSkipped = true;
+      clearTimeout(typewriterTimeout);
+      showScreen('start-screen');
+    }
+    return;
+  }
+
+  // ---- CHAPTER SELECT ----
+  if (screen === 'chapter-screen') {
+    if (e.key === '1' || e.key === '2') {
+      e.preventDefault();
+      const idx = parseInt(e.key) - 1;
+      const ch = activeLesson.chapters[idx];
+      if (!ch) return;
+      const locked = idx > 0 && !State.chaptersCompleted.includes(activeLesson.chapters[idx-1].id);
+      if (!locked) startChapter(ch.id);
+    }
+    if (e.key === 'Escape') {
+      showLessonSelect();
+      AudioMgr.stopBgLoop();
+    }
+    return;
+  }
+
+  // ---- RECIPE SCREEN ----
+  if (screen === 'recipe-screen') {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      nextRecipeStep();
+    }
+    if (e.key === 'Escape' || e.key === 'Backspace') {
+      e.preventDefault();
+      prevRecipeStep();
+    }
+    return;
+  }
+
+  // ---- QUIZ SCREEN ----
+  if (screen === 'quiz-screen') {
+    const ex = currentChapterData?.exercises[State.currentExIndex];
+    if (!ex) return;
+
+    if (e.key >= '1' && e.key <= '5') {
+      e.preventDefault();
+      const idx = parseInt(e.key) - 1;
+
+      if (ex.type === 'multiple_choice' && !State.answered) {
+        if (idx < ex.options.length) selectMCOption(idx, ex);
+      } else if (ex.type === 'multi_select' && !State.answered) {
+        if (idx < ex.options.length) toggleMultiOption(idx);
+      } else if (ex.type === 'word_blocks' && !State.answered) {
+        const blocks = document.querySelectorAll('.word-block:not(.selected)');
+        if (idx < blocks.length) blocks[idx].click();
+      }
+    }
+
+    if (e.key === 'Enter' && ex.type === 'multi_select' && !State.answered) {
+      e.preventDefault();
+      confirmMultiSelect();
+    }
+
+    if ((e.key === ' ' || e.key === 'Enter') && State.answered) {
+      e.preventDefault();
+      const nextBtn = document.getElementById('btn-next-q') || document.getElementById('btn-next-chapter');
+      if (nextBtn) nextBtn.click();
+    }
+
+    if (e.key === 'Escape' && State.currentExIndex === 0 && !State.answered) {
+      showRecipeStep();
+    }
+    return;
+  }
+
+  // ---- END SCREEN ----
+  if (screen === 'end-screen') {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      document.getElementById('btn-restart').click();
+    }
+    if (e.key === 'Escape') {
+      showLessonSelect();
+    }
+    return;
+  }
+});
+
+// ===== PARTICLES =====
+function spawnParticles(isCorrect) {
+  const colors = isCorrect ? ['#50c878', '#ffd700', '#7b68ee'] : ['#e74c3c', '#ff6347', '#8b0000'];
+  for (let i = 0; i < 12; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = 4 + Math.random() * 8;
+    p.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      left: ${40 + Math.random() * 20}%;
+      top: ${30 + Math.random() * 20}%;
+    `;
+    document.body.appendChild(p);
+    p.animate([
+      { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+      { transform: `translate(${(Math.random()-0.5)*200}px, ${-50-Math.random()*150}px) scale(0)`, opacity: 0 }
+    ], { duration: 800 + Math.random() * 400, easing: 'ease-out' }).onfinish = () => p.remove();
+  }
+}
+
+function spawnConfetti() {
+  const colors = ['#ffd700', '#7b68ee', '#50c878', '#ff6347', '#e8e0d0'];
+  for (let i = 0; i < 50; i++) {
+    setTimeout(() => {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = 5 + Math.random() * 8;
+      p.style.cssText = `
+        width: ${size}px; height: ${size * 2}px;
+        background: ${colors[Math.floor(Math.random() * colors.length)]};
+        left: ${Math.random() * 100}%;
+        top: -10px;
+        border-radius: 2px;
+      `;
+      document.body.appendChild(p);
+      p.animate([
+        { transform: `rotate(0deg) translateY(0)`, opacity: 1 },
+        { transform: `rotate(${360 + Math.random()*360}deg) translateY(${window.innerHeight + 50}px)`, opacity: 0.5 }
+      ], { duration: 2000 + Math.random() * 2000, easing: 'ease-in' }).onfinish = () => p.remove();
+    }, Math.random() * 1000);
+  }
+}
+
+// ===== INIT =====
+renderLessonGrid();
+announce('Grammar Potion Lab. 레슨을 선택하세요.');
+</script>
+</body>
+</html>
