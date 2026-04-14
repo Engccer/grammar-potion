@@ -79,7 +79,7 @@ body {
 .lesson-card.loading { opacity: 0.6; pointer-events: none; }
 .lesson-number {
   font-family: 'Cinzel Decorative', cursive;
-  font-size: 1.8rem; color: var(--gold);
+  font-size: 1.3rem; color: var(--gold);
   margin-bottom: 0.3em;
 }
 .lesson-topic { font-size: 1rem; color: var(--text); margin-bottom: 0.3em; }
@@ -827,7 +827,7 @@ function renderLessonGrid() {
     else if (isComplete) badge = '✓';
 
     card.innerHTML = `
-      <div class="lesson-number">L${lesson.id}</div>
+      <div class="lesson-number">Lesson ${lesson.id}</div>
       <div class="lesson-topic">${lesson.subtitle}</div>
       <div class="lesson-chapters">${totalChapters} chapters</div>
       <div class="lesson-score">${data.bestScore ? `Best: ${data.bestScore}점` : '--'}</div>
