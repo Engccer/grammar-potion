@@ -138,6 +138,7 @@ body {
 .back-btn:hover, .back-btn:focus {
   color: var(--gold); border-color: var(--gold); outline: none;
 }
+.back-btn { min-height: 44px; }
 
 /* ===== INTRO SCREEN ===== */
 #intro-screen .wizard-speech {
@@ -532,7 +533,7 @@ button, .option-item, .word-block, .chapter-card, .lesson-card { touch-action: m
     <div class="cauldron-icon" role="img" aria-label="마법 가마솥">🧪</div>
     <h1 class="game-title">Grammar Potion Lab</h1>
     <p class="game-subtitle">영어 문법 물약 연구소</p>
-    <div class="lesson-grid" id="lesson-grid" role="list" aria-label="레슨 목록"></div>
+    <div class="lesson-grid" id="lesson-grid" aria-label="레슨 목록"></div>
     <div class="total-stats" id="total-stats"></div>
     <p class="key-hint">레슨을 선택하여 연구소에 입장하세요</p>
   </div>
@@ -789,7 +790,7 @@ function showScreen(id) {
 function announce(text) {
   const el = document.getElementById('sr-announce');
   el.textContent = '';
-  setTimeout(() => el.textContent = text, 50);
+  requestAnimationFrame(() => { el.textContent = text; });
 }
 
 // ===== LESSON SELECT =====
@@ -817,7 +818,6 @@ function renderLessonGrid() {
 
     const card = document.createElement('button');
     card.className = 'lesson-card';
-    card.setAttribute('role', 'listitem');
     card.setAttribute('aria-label', `Lesson ${lesson.id}: ${lesson.subtitle}${isComplete ? ' (완료)' : ''}`);
 
     let badge = '';
@@ -838,7 +838,7 @@ function renderLessonGrid() {
   });
 
   document.getElementById('total-stats').textContent =
-    `${completedCount} / ${GRAMMAR_LESSONS.length} 레슨 완료`;
+    `${completedCount} / ${GRAMMAR_LESSONS.length} lessons completed`;
 }
 
 async function selectLesson(lessonId) {
