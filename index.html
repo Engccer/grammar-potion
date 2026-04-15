@@ -1141,7 +1141,8 @@ function renderMultiSelect(ex) {
   qCard.innerHTML = qHtml;
 
   const optArea = document.getElementById('options-area');
-  optArea.innerHTML = '<ul class="options-list" id="options-list"></ul><div class="multi-confirm-hint">선택 후 Enter로 확인 | 1~5로 토글</div>';
+  optArea.innerHTML = '<ul class="options-list" id="options-list"></ul><button class="btn btn-gold" id="btn-multi-confirm" tabindex="0" style="margin-top:10px" disabled>확인 (Enter)</button><div class="multi-confirm-hint">선택 후 확인 버튼 또는 Enter | 1~5로 토글</div>';
+  document.getElementById('btn-multi-confirm').addEventListener('click', confirmMultiSelect);
   const list = document.getElementById('options-list');
 
   ex.options.forEach((opt, i) => {
@@ -1168,6 +1169,8 @@ function toggleMultiOption(index) {
     item.classList.toggle('checked', State.multiSelections.has(i));
     item.setAttribute('aria-checked', State.multiSelections.has(i));
   });
+  const confirmBtn = document.getElementById('btn-multi-confirm');
+  if (confirmBtn) confirmBtn.disabled = State.multiSelections.size === 0;
 }
 
 function confirmMultiSelect() {
@@ -1317,13 +1320,11 @@ function handleResult(isCorrect, explanation, basePoints, fullCorrect = true, is
     AudioMgr.playSFX('feedback_wrong');
     spawnParticles(false);
 
-    if (!isWordBlock) {
-      document.getElementById('result-area').innerHTML = `
-        <div class="result-banner wrong-banner">
-          💨 오답!
-          <div class="explanation-text">${explanation}</div>
-        </div>`;
-    }
+    document.getElementById('result-area').innerHTML = `
+      <div class="result-banner wrong-banner">
+        💨 오답!
+        <div class="explanation-text">${explanation}</div>
+      </div>`;
   }
 
   updateScoreDisplay();
@@ -1593,6 +1594,7 @@ document.addEventListener('keydown', (e) => {
       confirmMultiSelect();
     }
 
+    if (e.key === ' ') e.preventDefault();
     if ((e.key === ' ' || e.key === 'Enter') && State.answered) {
       e.preventDefault();
       const nextBtn = document.getElementById('btn-next-q') || document.getElementById('btn-next-chapter');
