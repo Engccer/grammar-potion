@@ -632,10 +632,11 @@ const GRAMMAR_LESSONS = [
             context: "· I am _____ a sandwich for lunch now.\n· Are they _____ a good time at the amusement park?",
             subQuestions: [
               {
-                prompt: "공통으로 들어갈 말은?",
+                prompt: "공통으로 들어갈 말은? (같은 말을 두 빈칸에 모두 넣으세요)",
                 sentence: "I am _____ a sandwich / Are they _____ a good time",
                 blocks: ["having", "has", "have", "hasing"],
-                answer: ["having"],
+                answer: ["having", "having"],
+                allowReuse: true,
                 explanation: "have가 '먹다' 또는 '경험하다'의 뜻일 때는 진행형으로 쓸 수 있습니다. having이 공통으로 들어갑니다."
               }
             ],

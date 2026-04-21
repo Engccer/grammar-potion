@@ -759,6 +759,7 @@ const State = {
   answered: false,
   multiSelections: new Set(),
   blockSelections: [],
+  blockSelectionBtns: [],
 };
 
 function resetState() {
@@ -774,6 +775,7 @@ function resetState() {
   State.answered = false;
   State.multiSelections = new Set();
   State.blockSelections = [];
+  State.blockSelectionBtns = [];
 }
 
 // ===== SCREEN MANAGEMENT =====
@@ -1072,6 +1074,7 @@ function loadExercise() {
   State.answered = false;
   State.multiSelections = new Set();
   State.blockSelections = [];
+  State.blockSelectionBtns = [];
 
   updateScoreDisplay();
   const total = exercises.length;
@@ -1234,6 +1237,7 @@ function renderWordBlocks(ex) {
 
   optArea.innerHTML = html;
   State.blockSelections = [];
+  State.blockSelectionBtns = [];
 
   document.querySelectorAll('.word-block').forEach(btn => {
     btn.addEventListener('click', () => selectBlock(btn, subQ));
@@ -1241,7 +1245,8 @@ function renderWordBlocks(ex) {
 }
 
 function selectBlock(btn, subQ) {
-  if (State.answered || btn.classList.contains('selected')) return;
+  if (State.answered) return;
+  if (!subQ.allowReuse && btn.classList.contains('selected')) return;
 
   const text = btn.dataset.text;
   const blankIdx = State.blockSelections.length;
@@ -1249,7 +1254,8 @@ function selectBlock(btn, subQ) {
 
   if (blankIdx >= blanks.length) return;
 
-  btn.classList.add('selected');
+  if (!subQ.allowReuse) btn.classList.add('selected');
+  State.blockSelectionBtns.push(btn);
   blanks[blankIdx].textContent = text;
   blanks[blankIdx].classList.add('filled');
   blanks[blankIdx].classList.remove('active');
@@ -1271,12 +1277,8 @@ function checkWordBlocks(subQ) {
   const isCorrect = JSON.stringify(State.blockSelections) === JSON.stringify(subQ.answer);
   const isAlt = subQ.altAnswer && JSON.stringify(State.blockSelections) === JSON.stringify(subQ.altAnswer);
 
-  const blocks = document.querySelectorAll('.word-block');
-  blocks.forEach(b => {
-    if (b.classList.contains('selected')) {
-      b.classList.add((isCorrect || isAlt) ? 'correct-block' : 'wrong-block');
-    }
-  });
+  const feedbackClass = (isCorrect || isAlt) ? 'correct-block' : 'wrong-block';
+  State.blockSelectionBtns.forEach(b => b.classList.add(feedbackClass));
 
   if (!isCorrect && !isAlt) {
     const blanks = document.querySelectorAll('.wb-blank');
