@@ -942,20 +942,17 @@ function renderChapterCards() {
   container.innerHTML = '';
   activeLesson.chapters.forEach((ch, i) => {
     const completed = State.chaptersCompleted.includes(ch.id);
-    const locked = i > 0 && !State.chaptersCompleted.includes(activeLesson.chapters[i-1].id);
     const card = document.createElement('div');
-    card.className = 'chapter-card' + (completed ? ' completed' : '') + (locked ? ' locked' : '');
-    card.tabIndex = locked ? -1 : 0;
+    card.className = 'chapter-card' + (completed ? ' completed' : '');
+    card.tabIndex = 0;
     card.setAttribute('role', 'button');
-    card.setAttribute('aria-label', `Chapter ${i+1}: ${ch.name} - ${ch.nameKo}${completed ? ' (완료)' : ''}${locked ? ' (잠김)' : ''}`);
+    card.setAttribute('aria-label', `Chapter ${i+1}: ${ch.name} - ${ch.nameKo}${completed ? ' (완료)' : ''}`);
     card.innerHTML = `
       <div class="ch-icon">${i === 0 ? '🧪' : '⚗️'}</div>
       <div class="ch-name">Chapter ${i+1}: ${ch.name}</div>
       <div class="ch-name-ko">${ch.nameKo} (${ch.topic})</div>
     `;
-    if (!locked) {
-      card.addEventListener('click', () => startChapter(ch.id));
-    }
+    card.addEventListener('click', () => startChapter(ch.id));
     container.appendChild(card);
   });
 }
@@ -1549,8 +1546,7 @@ document.addEventListener('keydown', (e) => {
       const idx = parseInt(e.key) - 1;
       const ch = activeLesson.chapters[idx];
       if (!ch) return;
-      const locked = idx > 0 && !State.chaptersCompleted.includes(activeLesson.chapters[idx-1].id);
-      if (!locked) startChapter(ch.id);
+      startChapter(ch.id);
     }
     if (e.key === 'Escape') {
       showLessonSelect();
