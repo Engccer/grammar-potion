@@ -743,6 +743,10 @@ const AudioMgr = {
     this._currentTTS = node;
     return node;
   },
+  stopTTS() {
+    this._stopNode(this._currentTTS);
+    this._currentTTS = null;
+  },
   async startBgLoop() {
     if (this.bgLoop) return;
     this.bgLoop = await this.play('bubbling', typeof SFX_DATA !== 'undefined' ? SFX_DATA : {}, true);
@@ -828,6 +832,7 @@ function announce(text) {
 // ===== LESSON SELECT =====
 function showLessonSelect() {
   AudioMgr.stopBgLoop();
+  AudioMgr.stopTTS();
   showScreen('lesson-select-screen');
   renderLessonGrid();
   announce('Grammar Potion Lab. 레슨을 선택하세요.');
@@ -900,10 +905,7 @@ async function selectLesson(lessonId) {
 document.getElementById('btn-start').addEventListener('click', startGame);
 document.getElementById('back-from-start').addEventListener('click', showLessonSelect);
 
-document.getElementById('back-to-lessons').addEventListener('click', () => {
-  AudioMgr.stopBgLoop();
-  showLessonSelect();
-});
+document.getElementById('back-to-lessons').addEventListener('click', showLessonSelect);
 
 function startGame() {
   AudioMgr.playSFX('wizard_greeting');
@@ -972,6 +974,7 @@ document.getElementById('btn-intro-next').addEventListener('click', () => {
 
 // ===== CHAPTER SELECT =====
 function showChapterSelect() {
+  AudioMgr.stopTTS();
   showScreen('chapter-screen');
   AudioMgr.startBgLoop();
   renderChapterCards();
@@ -1094,6 +1097,7 @@ function prevRecipeStep() {
 
 // ===== QUIZ ENGINE =====
 function startQuiz() {
+  AudioMgr.stopTTS();
   State.currentExIndex = 0;
   State.currentSubQ = 0;
   updatePotionLevel();
@@ -1578,6 +1582,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       introSkipped = true;
       clearTimeout(typewriterTimeout);
+      AudioMgr.stopTTS();
       showScreen('start-screen');
     }
     return;
