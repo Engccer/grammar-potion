@@ -471,6 +471,26 @@ body {
 }
 .bg-sound-btn.muted { opacity: 0.5; }
 
+.back-to-lessons-btn {
+  position: fixed; top: 15px; left: 15px; z-index: 50;
+  min-height: 44px; padding: 8px 16px;
+  background: rgba(26, 10, 46, 0.85);
+  border: 2px solid var(--purple);
+  border-radius: 22px; cursor: pointer;
+  color: #ffffff; font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.9rem; font-weight: 500;
+  transition: all 0.3s;
+  display: none; align-items: center; gap: 4px;
+}
+.back-to-lessons-btn.visible { display: inline-flex; }
+.back-to-lessons-btn:hover, .back-to-lessons-btn:focus {
+  border-color: var(--gold); color: var(--gold);
+  background: rgba(123, 104, 238, 0.3); outline: none;
+}
+@media (max-width: 600px) {
+  .back-to-lessons-btn { top: 10px; left: 10px; font-size: 0.8rem; padding: 6px 12px; }
+}
+
 /* ===== SR ANNOUNCE ===== */
 #sr-announce {
   position: absolute; width: 1px; height: 1px;
@@ -614,6 +634,9 @@ button, .option-item, .word-block, .chapter-card, .lesson-card { touch-action: m
     </div>
   </div>
 </div>
+
+<!-- Back to Lesson Select (shown on chapter/recipe screens) -->
+<button id="back-to-lessons" class="back-to-lessons-btn" aria-label="레슨 목록으로 돌아가기" title="레슨 목록으로 돌아가기">← LESSONS</button>
 
 <!-- BG Sound Toggle -->
 <button id="bg-sound-toggle" class="bg-sound-btn" aria-label="배경 효과음 끄기" title="배경 효과음 켜기/끄기">🔊</button>
@@ -786,6 +809,10 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   const screen = document.getElementById(id);
   screen.classList.add('active');
+  const backBtn = document.getElementById('back-to-lessons');
+  if (backBtn) {
+    backBtn.classList.toggle('visible', id === 'chapter-screen' || id === 'recipe-screen');
+  }
   setTimeout(() => {
     const focusable = screen.querySelector('button, [tabindex="0"]');
     if (focusable) focusable.focus();
@@ -872,6 +899,11 @@ async function selectLesson(lessonId) {
 // ===== START SCREEN =====
 document.getElementById('btn-start').addEventListener('click', startGame);
 document.getElementById('back-from-start').addEventListener('click', showLessonSelect);
+
+document.getElementById('back-to-lessons').addEventListener('click', () => {
+  AudioMgr.stopBgLoop();
+  showLessonSelect();
+});
 
 function startGame() {
   AudioMgr.playSFX('wizard_greeting');
