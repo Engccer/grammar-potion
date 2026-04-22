@@ -13,10 +13,12 @@ Word Bomb 통합 앱과 동일 패턴:
 
 | 레슨 | TTS 엔진 | 음성 | 포맷 |
 |------|---------|------|------|
-| L1 | Gemini TTS | Kore | WAV (audio/wav) |
+| L1 | ElevenLabs v3 | Seojin | MP3 (audio/mpeg) |
 | L2 | ElevenLabs v3 | Seojin | MP3 (audio/mpeg) |
 
-feedback_correct/wrong은 L1의 Gemini Kore WAV — sfx_data.js에 포함.
+두 레슨 모두 Seojin(`BaW4Cx7nYOh1XNVQBrK2`) 보이스로 통일. 한국어 중심 나레이션, intro는 영어+한국어 혼합. 이전 Gemini Kore WAV 원본은 `audio/L1-gemini-backup/`에 보관.
+
+feedback_correct/wrong은 sfx_data.js에 Gemini Kore WAV로 포함 (효과음이라 L1 재생성 대상 아님).
 
 ## 새 레슨 추가 절차
 
