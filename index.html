@@ -555,8 +555,11 @@ button, .option-item, .word-block, .chapter-card, .lesson-card { touch-action: m
       <div id="intro-text"></div>
       <span class="typewriter-cursor" id="intro-cursor"></span>
     </div>
-    <button class="btn btn-gold" id="btn-intro-next" tabindex="0" style="margin-top:1em;padding:10px 30px;font-size:1rem;">계속 →</button>
-    <p class="key-hint" style="margin-top:0.5em">또는 Space를 눌러 계속</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:1em;">
+      <button class="btn" id="btn-intro-listen" tabindex="0" style="padding:10px 24px;font-size:1rem;" aria-label="레슨 소개 음성 듣기">🔊 레슨 소개 듣기</button>
+      <button class="btn btn-gold" id="btn-intro-next" tabindex="0" style="padding:10px 30px;font-size:1rem;">계속 →</button>
+    </div>
+    <p class="key-hint" style="margin-top:0.5em">L 레슨 소개 듣기 | Space 계속</p>
   </div>
 
   <!-- CHAPTER SELECT SCREEN -->
@@ -921,6 +924,11 @@ function skipIntro() {
   document.getElementById('intro-text').innerHTML = activeLesson.introLines.join('<br>');
   document.getElementById('intro-cursor').style.display = 'none';
 }
+
+document.getElementById('btn-intro-listen').addEventListener('click', (e) => {
+  AudioMgr.playTTS('intro_2');
+  e.stopPropagation();
+});
 
 document.getElementById('btn-intro-next').addEventListener('click', () => {
   if (!introSkipped && introLineIndex < activeLesson.introLines.length) {
@@ -1530,6 +1538,10 @@ document.addEventListener('keydown', (e) => {
       } else {
         showChapterSelect();
       }
+    }
+    if (e.key === 'l' || e.key === 'L') {
+      e.preventDefault();
+      AudioMgr.playTTS('intro_2');
     }
     if (e.key === 'Escape') {
       introSkipped = true;
