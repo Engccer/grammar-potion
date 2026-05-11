@@ -928,5 +928,512 @@ const GRAMMAR_LESSONS = [
         ]
       }
     ]
+  },
+
+  // ===== LESSON 3: 과거시제 & 명령문 =====
+  {
+    id: 3,
+    title: "Grammar Potion Lab",
+    subtitle: "과거시제 & 명령문",
+    introLines: [
+      "Welcome back, master apprentice! Time bends to your will.",
+      "오늘은 시간을 되돌리고, 마법으로 명령을 내리는 두 가지 물약을 만듭니다.",
+      "🧪 Potion of the Past (시간의 물약) — 과거시제의 비밀",
+      "⚗️ Potion of Command (명령의 물약) — 명령문의 힘",
+      "레시피를 배우고, 퀴즈를 풀어 물약을 완성하세요!"
+    ],
+    chapters: [
+      // ===== CHAPTER 1: 과거시제 =====
+      {
+        id: 1,
+        name: "Potion of the Past",
+        nameKo: "시간의 물약",
+        topic: "과거시제",
+        potionColor: "#9370db",
+        recipe: [
+          {
+            step: 1,
+            title: "기본 개념",
+            titleEn: "What is the Past Tense?",
+            content: "과거시제는 <em>말하는 시점 이전에 일어난 일</em>을 나타냅니다. 과거의 특정 시점을 나타내는 부사(구)와 주로 쓰입니다. <strong>yesterday, last night, an hour ago, last week</strong> 등이 자주 함께 쓰입니다.",
+            audioKey: "recipe_past_1"
+          },
+          {
+            step: 2,
+            title: "be동사의 과거형",
+            titleEn: "Past Forms of Be",
+            content: "과거의 사실이나 상태를 나타내며 <strong>'~이었다/했다'</strong>, <strong>'~(에) 있었다'</strong>라는 뜻으로 쓰입니다. am과 is의 과거형은 <strong>was</strong>, are의 과거형은 <strong>were</strong>입니다. 부정문은 be동사 뒤에 not을 붙여 만들고, 의문문은 「Be동사+주어~?」로 씁니다.",
+            table: {
+              headers: ["주어", "현재형", "과거형", "축약 부정형"],
+              rows: [
+                ["I / He / She / It", "am / is", "was", "wasn't"],
+                ["You / We / They", "are", "were", "weren't"]
+              ]
+            },
+            examples: [
+              { en: "I <u>was</u> sick yesterday.", ko: "나는 어제 아팠습니다.", highlight: "was" },
+              { en: "They <u>were</u> at the park last night.", ko: "그들은 어젯밤에 공원에 있었습니다.", highlight: "were" },
+              { en: "Mia <u>was not</u> at the party.", ko: "Mia는 파티에 없었습니다.", highlight: "was not" },
+              { en: "Mia <u>wasn't</u> at the party.", ko: "(축약형)", highlight: "wasn't" },
+              { en: "<u>Were</u> you late again?", ko: "당신은 또 늦었나요?", highlight: "Were" }
+            ],
+            audioKey: "recipe_past_2"
+          },
+          {
+            step: 3,
+            title: "일반동사의 과거형",
+            titleEn: "Past Forms of General Verbs",
+            content: "일반동사의 과거형은 과거의 동작이나 상태를 나타내며 <strong>'~했다'</strong>라는 뜻으로 쓰입니다. 만드는 방법은 규칙·불규칙에 따라 다양합니다.",
+            table: {
+              headers: ["규칙", "변환", "예시"],
+              rows: [
+                ["대부분의 동사", "동사원형 + -ed (또는 -d)", "watch → watched, like → liked"],
+                ["「자음+y」로 끝나는 동사", "y를 i로 바꾸고 -ed", "cry → cried, study → studied"],
+                ["「모음+y」로 끝나는 동사", "그대로 -ed", "play → played, stay → stayed"],
+                ["「단모음+단자음」으로 끝나는 동사", "마지막 자음 한 번 더 + -ed", "plan → planned, stop → stopped"],
+                ["불규칙 동사", "규칙 없이 다양한 형태", "cut → cut, put → put, lose → lost, go → went, eat → ate"]
+              ]
+            },
+            examples: [
+              { en: "He <u>called</u> me an hour ago.", ko: "그는 한 시간 전에 나에게 전화했습니다.", highlight: "called" },
+              { en: "They <u>stayed</u> home last night.", ko: "그들은 어젯밤에 집에 머물렀습니다.", highlight: "stayed" },
+              { en: "I <u>cried</u> last night.", ko: "나는 어젯밤에 울었습니다.", highlight: "cried" },
+              { en: "She <u>planned</u> a party.", ko: "그녀는 파티를 계획했습니다.", highlight: "planned" },
+              { en: "He <u>put</u> the books on the table.", ko: "그는 책을 탁자 위에 두었습니다.", highlight: "put" },
+              { en: "I <u>lost</u> my phone.", ko: "나는 휴대폰을 잃어버렸습니다.", highlight: "lost" }
+            ],
+            audioKey: "recipe_past_3"
+          },
+          {
+            step: 4,
+            title: "일반동사 과거형의 부정문과 의문문",
+            titleEn: "Negatives & Questions in the Past",
+            content: "<strong>부정문</strong>은 「주어+didn't[did not]+동사원형」의 형태이고 <strong>'~하지 않았다'</strong>라는 뜻입니다. did not은 <strong>didn't</strong>로 줄여 쓸 수 있습니다. <strong>의문문</strong>은 「Did+주어+동사원형~?」의 형태이고 <strong>'~했니?'</strong>라는 뜻입니다. 부정문과 의문문에서는 동사가 반드시 <em>원형</em>으로 돌아갑니다.",
+            pattern: {
+              question: "Did + 주어 + 동사원형 ~?",
+              yesAnswer: "Yes, 주어 + did.",
+              noAnswer: "No, 주어 + didn't."
+            },
+            examples: [
+              { en: "She <u>didn't clean</u> her room.", ko: "그녀는 방을 청소하지 않았습니다.", highlight: "didn't clean" },
+              { en: "I <u>did not finish</u> my homework.", ko: "나는 숙제를 끝내지 않았습니다.", highlight: "did not finish" },
+              { en: "A: <u>Did</u> you enjoy the TV show?", ko: "TV 쇼를 즐겼나요?", highlight: "Did" },
+              { en: "B: Yes, I <u>did</u>. / No, I <u>didn't</u>.", ko: "네, 그랬어요. / 아니요, 그렇지 않았어요.", highlight: "did" }
+            ],
+            audioKey: "recipe_past_4"
+          }
+        ],
+        exercises: [
+          {
+            id: 1,
+            type: "multiple_choice",
+            question: "다음 빈칸에 들어갈 말이 나머지와 <em>다른</em> 하나는?",
+            options: [
+              "① Your answer _____ right.",
+              "② Mr. Kim _____ angry at me.",
+              "③ She _____ tired after school.",
+              "④ The concert _____ wonderful.",
+              "⑤ The books _____ on the table."
+            ],
+            answer: 4,
+            explanation: "①~④의 주어는 3인칭 단수이므로 was가 들어갑니다. ⑤ The books는 복수이므로 were가 들어갑니다.",
+            audioKey: "quiz_a_1"
+          },
+          {
+            id: 2,
+            type: "multiple_choice",
+            question: "빈칸에 들어갈 말로 알맞지 <em>않은</em> 것은?",
+            context: "Sarah _____ this morning / last Friday.",
+            options: [
+              "① was busy",
+              "② stay at home",
+              "③ ran in the park",
+              "④ made spaghetti",
+              "⑤ cleaned her room"
+            ],
+            answer: 1,
+            explanation: "과거 시점(this morning, last Friday)이므로 과거형이 와야 합니다. ② stay at home은 현재형(원형)이므로 stayed at home으로 바꿔야 합니다.",
+            audioKey: "quiz_a_2"
+          },
+          {
+            id: 3,
+            type: "multiple_choice",
+            question: "밑줄 친 부분이 어법상 올바른 것은?",
+            options: [
+              "① She didn't <u>felt</u> good all day.",
+              "② I <u>bought</u> a new bike last week.",
+              "③ Did they <u>finished</u> their homework?",
+              "④ He <u>sended</u> me an email last night.",
+              "⑤ The dog <u>run</u> in the park this morning."
+            ],
+            answer: 1,
+            explanation: "① didn't 뒤에는 원형 → feel ③ Did 뒤에는 원형 → finish ④ send의 과거형은 sent ⑤ this morning(과거) → ran. ② bought는 buy의 과거형으로 올바릅니다.",
+            audioKey: "quiz_a_3"
+          },
+          {
+            id: 4,
+            type: "word_blocks",
+            question: "괄호 안에서 알맞은 것을 골라 문장을 완성하시오.",
+            subQuestions: [
+              {
+                prompt: "(1) ( Are / Were ) you at home yesterday?",
+                sentence: "_____ you at home yesterday?",
+                blocks: ["Are", "Were", "Did", "Was"],
+                answer: ["Were"],
+                explanation: "yesterday(과거) + 주어 you → 과거형 Were (you의 be동사 과거형은 were)"
+              },
+              {
+                prompt: "(2) ( Do / Did ) you enjoy the TV show last night?",
+                sentence: "_____ you enjoy the TV show last night?",
+                blocks: ["Do", "Did", "Were", "Are"],
+                answer: ["Did"],
+                explanation: "last night(과거) + 일반동사 의문문 → Did"
+              },
+              {
+                prompt: "(3) He ( wasn't / weren't ) a teacher 10 years ago.",
+                sentence: "He _____ a teacher 10 years ago.",
+                blocks: ["wasn't", "weren't", "didn't", "isn't"],
+                answer: ["wasn't"],
+                explanation: "He(3인칭 단수) + 과거 부정 → wasn't"
+              },
+              {
+                prompt: "(4) The students ( was / were ) excited about the trip last week.",
+                sentence: "The students _____ excited about the trip last week.",
+                blocks: ["was", "were", "are", "did"],
+                answer: ["were"],
+                explanation: "The students(복수) + 과거 → were"
+              }
+            ],
+            audioKey: "quiz_a_4"
+          },
+          {
+            id: 5,
+            type: "multiple_choice",
+            question: "다음 중 빈칸에 yesterday를 쓸 수 <em>없는</em> 것은?",
+            options: [
+              "① Was it snowy in Seoul _____ ?",
+              "② Did you take the train _____ ?",
+              "③ The team wins the game _____ .",
+              "④ She didn't meet her friends _____ .",
+              "⑤ They watched a good movie _____ ."
+            ],
+            answer: 2,
+            explanation: "yesterday는 과거를 나타내므로 과거시제와 함께 써야 합니다. ③ wins는 현재형이므로 yesterday와 함께 쓸 수 없습니다. (won으로 고쳐야 함)",
+            audioKey: "quiz_a_5"
+          },
+          {
+            id: 6,
+            type: "word_blocks",
+            question: "다음 문장에서 어법상 틀린 부분을 찾아 바르게 고쳐 쓰시오.",
+            subQuestions: [
+              {
+                prompt: "(1) We <u>eated</u> ice cream yesterday.",
+                sentence: "eated → _____",
+                blocks: ["ate", "eated", "eaten", "eat"],
+                answer: ["ate"],
+                explanation: "eat은 불규칙 동사 → 과거형 ate"
+              },
+              {
+                prompt: "(2) The baby <u>cryed</u> loudly last night.",
+                sentence: "cryed → _____",
+                blocks: ["cried", "cryed", "cryied", "cry"],
+                answer: ["cried"],
+                explanation: "「자음+y」 → y를 i로 바꾸고 -ed → cried"
+              },
+              {
+                prompt: "(3) He <u>putted</u> the boxes in the car a few minutes ago.",
+                sentence: "putted → _____",
+                blocks: ["put", "putted", "puted", "puts"],
+                answer: ["put"],
+                explanation: "put은 불규칙 동사 → 원형과 과거형 동일 → put"
+              }
+            ],
+            audioKey: "quiz_a_6"
+          },
+          {
+            id: 7,
+            type: "multiple_choice",
+            question: "다음 대화의 빈칸에 들어갈 말이 순서대로 바르게 짝지어진 것은?",
+            context: "A: What _____ you do last weekend?\nB: I _____ camping with my family. It _____ fun.",
+            options: [
+              "① do – go – is",
+              "② did – go – was",
+              "③ were – went – is",
+              "④ do – went – was",
+              "⑤ did – went – was"
+            ],
+            answer: 4,
+            explanation: "last weekend(과거) → 일반동사 의문문 Did. go의 과거형은 went. It은 단수 + 과거 → was. ⑤ did – went – was가 올바릅니다.",
+            audioKey: "quiz_a_7"
+          },
+          {
+            id: 8,
+            type: "word_blocks",
+            question: "빈칸에 알맞은 말을 <보기>에서 골라 어법상 올바른 형태로 바꿔 쓰시오.",
+            context: "<보기>  come    lose    plan",
+            subQuestions: [
+              {
+                prompt: "(1) She _____ to Korea last month.",
+                sentence: "She _____ to Korea last month.",
+                blocks: ["came", "comed", "come", "comes"],
+                answer: ["came"],
+                explanation: "come은 불규칙 동사 → 과거형 came"
+              },
+              {
+                prompt: "(2) I _____ a surprise party for my friend yesterday.",
+                sentence: "I _____ a surprise party for my friend yesterday.",
+                blocks: ["planned", "planed", "plan", "plans"],
+                answer: ["planned"],
+                explanation: "「단모음+단자음」 → 자음 한 번 더 + -ed → planned"
+              },
+              {
+                prompt: "(3) My brother _____ his phone last night.",
+                sentence: "My brother _____ his phone last night.",
+                blocks: ["lost", "losed", "lose", "loses"],
+                answer: ["lost"],
+                explanation: "lose는 불규칙 동사 → 과거형 lost"
+              }
+            ],
+            audioKey: "quiz_a_8"
+          }
+        ]
+      },
+
+      // ===== CHAPTER 2: 명령문 =====
+      {
+        id: 2,
+        name: "Potion of Command",
+        nameKo: "명령의 물약",
+        topic: "명령문",
+        potionColor: "#ff8c00",
+        recipe: [
+          {
+            step: 1,
+            title: "기본 개념",
+            titleEn: "What is an Imperative?",
+            content: "명령문은 상대방에게 <em>명령, 지시, 금지</em>하는 말을 나타냅니다. 명령을 듣는 사람인 주어 <strong>You는 생략</strong>합니다.",
+            examples: [
+              { en: "<u>Be</u> quiet.", ko: "조용히 해라.", highlight: "Be" },
+              { en: "<u>Come</u> to my room.", ko: "내 방으로 와라.", highlight: "Come" },
+              { en: "<u>Don't eat</u> too fast.", ko: "너무 빨리 먹지 마라.", highlight: "Don't eat" }
+            ],
+            audioKey: "recipe_imp_1"
+          },
+          {
+            step: 2,
+            title: "긍정 명령문",
+            titleEn: "Positive Imperatives",
+            content: "문장의 맨 처음에 <strong>동사원형</strong>을 사용하여 나타내고, <strong>'~해라'</strong>의 뜻으로 쓰입니다. 명령문의 앞이나 끝에 <strong>please</strong>를 붙이면 좀 더 공손한 표현이 됩니다.",
+            examples: [
+              { en: "<u>Be</u> honest.", ko: "정직해라.", highlight: "Be" },
+              { en: "<u>Wash</u> your hands.", ko: "손을 씻어라.", highlight: "Wash" },
+              { en: "<u>Stay</u> here, please.", ko: "여기 머물러 주세요.", highlight: "Stay" }
+            ],
+            audioKey: "recipe_imp_2"
+          },
+          {
+            step: 3,
+            title: "부정 명령문",
+            titleEn: "Negative Imperatives",
+            content: "동사원형 앞에 <strong>Don't[Do not]</strong>를 붙입니다. <strong>'~하지 마라'</strong>의 뜻으로 쓰입니다. be동사 명령문도 부정할 때 <strong>Don't be ~</strong>의 형태로 씁니다.",
+            examples: [
+              { en: "<u>Don't be</u> around the oven.", ko: "오븐 근처에 있지 마라.", highlight: "Don't be" },
+              { en: "<u>Don't worry</u> about it.", ko: "그것에 대해 걱정하지 마라.", highlight: "Don't worry" },
+              { en: "<u>Don't speak</u> loudly, please.", ko: "큰 소리로 말하지 말아 주세요.", highlight: "Don't speak" }
+            ],
+            audioKey: "recipe_imp_3"
+          },
+          {
+            step: 4,
+            title: "Never로 강한 금지 나타내기",
+            titleEn: "Stronger Prohibition: Never",
+            content: "동사원형 앞에 Don't 대신 <strong>Never</strong>를 써서 부정 명령문을 만들 수 있습니다. <strong>Never는 Don't보다 더 강한 금지</strong>를 나타냅니다.",
+            transform: [
+              { before: "Don't go there.", after: "Never go there. (더 강한 금지)" },
+              { before: "Don't be late again.", after: "Never be late again. (더 강한 금지)" }
+            ],
+            examples: [
+              { en: "<u>Don't go</u> there.", ko: "거기에 가지 마라.", highlight: "Don't go" },
+              { en: "<u>Never go</u> there.", ko: "거기에 절대 가지 마라.", highlight: "Never go" },
+              { en: "<u>Don't be</u> late again.", ko: "다시는 늦지 마라.", highlight: "Don't be" },
+              { en: "<u>Never be</u> late again.", ko: "다시는 절대 늦지 마라.", highlight: "Never be" }
+            ],
+            audioKey: "recipe_imp_4"
+          }
+        ],
+        exercises: [
+          {
+            id: 1,
+            type: "word_blocks",
+            question: "괄호 안에서 알맞은 것을 골라 문장을 완성하시오.",
+            subQuestions: [
+              {
+                prompt: "(1) ( Be / Do ) quiet.",
+                sentence: "_____ quiet.",
+                blocks: ["Be", "Do", "Don't", "Are"],
+                answer: ["Be"],
+                explanation: "형용사 quiet 앞 → be동사 명령문 → Be quiet."
+              },
+              {
+                prompt: "(2) ( Never / Not ) touch the flowers.",
+                sentence: "_____ touch the flowers.",
+                blocks: ["Never", "Not", "No", "Don't be"],
+                answer: ["Never"],
+                explanation: "부정 명령문에서 Not 단독으로는 쓸 수 없음. Never는 강한 금지를 나타냅니다."
+              },
+              {
+                prompt: "(3) ( Not / Don't ) use your phone in class.",
+                sentence: "_____ use your phone in class.",
+                blocks: ["Don't", "Not", "No", "Be not"],
+                answer: ["Don't"],
+                explanation: "부정 명령문 → 동사원형 앞에 Don't"
+              }
+            ],
+            audioKey: "quiz_b_1"
+          },
+          {
+            id: 2,
+            type: "multi_select",
+            question: "빈칸에 들어갈 수 있는 말을 <em>모두</em> 고르시오.",
+            context: "Don't be _____ scared.",
+            options: [
+              "① shy",
+              "② talk",
+              "③ too",
+              "④ run",
+              "⑤ so"
+            ],
+            answers: [2, 4],
+            explanations: [
+              "① shy는 형용사. \"Don't be shy scared.\" → 두 형용사 연속은 어색 (✗)",
+              "② talk은 동사. be 뒤에 동사원형이 올 수 없음 (✗)",
+              "③ too는 부사. \"Don't be too scared.\" → 자연스러움 (✓)",
+              "④ run은 동사. be 뒤에 동사원형이 올 수 없음 (✗)",
+              "⑤ so는 부사. \"Don't be so scared.\" → 자연스러움 (✓)"
+            ],
+            audioKey: "quiz_b_2"
+          },
+          {
+            id: 3,
+            type: "multiple_choice",
+            question: "밑줄 친 부분이 어법상 올바른 것은?",
+            options: [
+              "① <u>Not be</u> nervous.",
+              "② <u>Be never</u> worried.",
+              "③ Please <u>be careful</u>.",
+              "④ <u>Not run</u> in the classroom.",
+              "⑤ <u>Don't be feed</u> the animals."
+            ],
+            answer: 2,
+            explanation: "① Not be → Don't be ② Be never → Never be ④ Not run → Don't run ⑤ Don't be feed → Don't feed (be 불필요). ③ Please be careful이 올바릅니다.",
+            audioKey: "quiz_b_3"
+          },
+          {
+            id: 4,
+            type: "multiple_choice",
+            question: "빈칸에 들어갈 말로 어법상 올바른 것은?",
+            context: "_____ Everything will be okay.",
+            options: [
+              "① Don't afraid.",
+              "② Never afraid.",
+              "③ Be not afraid.",
+              "④ Not be afraid.",
+              "⑤ Don't be afraid."
+            ],
+            answer: 4,
+            explanation: "afraid는 형용사이므로 be동사가 필요합니다. be동사 명령문의 부정형은 「Don't be + 형용사」 → ⑤ Don't be afraid.가 올바릅니다.",
+            audioKey: "quiz_b_4"
+          },
+          {
+            id: 5,
+            type: "multiple_choice",
+            question: "다음 중 어법상 <em>틀린</em> 것은?",
+            options: [
+              "① Do your best.",
+              "② Always be honest.",
+              "③ Have a seat, please.",
+              "④ Don't never eat the cake.",
+              "⑤ Please don't lock the door."
+            ],
+            answer: 3,
+            explanation: "④ Don't와 never는 둘 다 부정이므로 이중부정입니다. Don't eat the cake. 또는 Never eat the cake.로 써야 합니다.",
+            audioKey: "quiz_b_5"
+          },
+          {
+            id: 6,
+            type: "multiple_choice",
+            question: "다음 어법상 틀린 문장을 바르게 고친 것은?",
+            options: [
+              "① Keeps your promise. → Keep your promise.",
+              "② Please your eyes close. → Please closing your eyes.",
+              "③ Don't be walk too fast. → Never don't walk too fast.",
+              "④ Don't noisy in the library. → Not be noisy in the library.",
+              "⑤ Writing your name, please. → Be writing your name, please."
+            ],
+            answer: 0,
+            explanation: "명령문은 동사원형으로 시작합니다. ① Keeps → Keep으로 고친 것이 올바릅니다. 나머지는 모두 잘못된 수정입니다.",
+            audioKey: "quiz_b_6"
+          },
+          {
+            id: 7,
+            type: "word_blocks",
+            question: "다음 문장을 괄호 안의 지시대로 바꿀 때 빈칸에 알맞은 말을 쓰시오.",
+            subQuestions: [
+              {
+                prompt: "(1) You wash your hands often. (긍정 명령문)\n→ _____ _____ _____ often.",
+                sentence: "_____ _____ _____ often.",
+                blocks: ["Wash", "your", "hands", "You", "Don't", "Be"],
+                answer: ["Wash", "your", "hands"],
+                explanation: "긍정 명령문 → 주어 You 생략 + 동사원형으로 시작 → Wash your hands often."
+              },
+              {
+                prompt: "(2) You don't take photos during the concert. (부정 명령문)\n→ _____ _____ _____ during the concert.",
+                sentence: "_____ _____ _____ during the concert.",
+                blocks: ["Don't", "take", "photos", "You", "Not", "be"],
+                answer: ["Don't", "take", "photos"],
+                explanation: "부정 명령문 → 주어 You 생략 + Don't + 동사원형 → Don't take photos during the concert."
+              }
+            ],
+            audioKey: "quiz_b_7"
+          },
+          {
+            id: 8,
+            type: "word_blocks",
+            question: "괄호 안에 주어진 말을 이용하여 학교생활에 대한 명령문을 완성하시오.",
+            subQuestions: [
+              {
+                prompt: "(1) _____ (be) late for school. (Don't로 시작하는 부정 명령문으로)",
+                sentence: "_____ _____ late for school.",
+                blocks: ["Don't", "be", "Be", "Aren't", "Do", "not"],
+                answer: ["Don't", "be"],
+                explanation: "지각하지 말 것 → 부정 명령문 + be동사 → Don't be late for school."
+              },
+              {
+                prompt: "(2) _____ (listen) carefully to your teacher.",
+                sentence: "_____ carefully to your teacher.",
+                blocks: ["Listen", "Listens", "Listening", "Don't listen"],
+                answer: ["Listen"],
+                explanation: "긍정 명령문 → 동사원형으로 시작 → Listen carefully to your teacher."
+              },
+              {
+                prompt: "(3) _____ (talk) during class. (Don't로 시작하는 부정 명령문으로)",
+                sentence: "_____ _____ during class.",
+                blocks: ["Don't", "talk", "Talk", "Be", "Doesn't", "not"],
+                answer: ["Don't", "talk"],
+                explanation: "수업 중에는 말하지 말 것 → 부정 명령문 → Don't talk during class."
+              },
+              {
+                prompt: "(4) _____ (forget) your homework. (Don't로 시작하는 부정 명령문으로)",
+                sentence: "_____ _____ your homework.",
+                blocks: ["Don't", "forget", "Forget", "Be", "Aren't", "not"],
+                answer: ["Don't", "forget"],
+                explanation: "숙제를 잊지 말 것 → 부정 명령문 → Don't forget your homework."
+              }
+            ],
+            audioKey: "quiz_b_8"
+          }
+        ]
+      }
+    ]
   }
 ];

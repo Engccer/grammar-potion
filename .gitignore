@@ -1,0 +1,8 @@
+# Audio sources (only base64 bundles audio_L*.js and sfx_data.js are tracked)
+audio/
+sfx/
+
+# Windows / editor artifacts
+desktop.ini
+_server.log
+.playwright-mcp/
