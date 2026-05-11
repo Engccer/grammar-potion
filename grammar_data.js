@@ -1029,14 +1029,14 @@ const GRAMMAR_LESSONS = [
             type: "multiple_choice",
             question: "다음 빈칸에 들어갈 말이 나머지와 <em>다른</em> 하나는?",
             options: [
-              "① Your answer _____ right.",
-              "② Mr. Kim _____ angry at me.",
-              "③ She _____ tired after school.",
-              "④ The concert _____ wonderful.",
-              "⑤ The books _____ on the table."
+              "① I _____ very busy last week.",
+              "② She _____ tired yesterday.",
+              "③ He _____ at the concert last night.",
+              "④ The weather _____ sunny yesterday.",
+              "⑤ They _____ my classmates last year."
             ],
             answer: 4,
-            explanation: "①~④의 주어는 3인칭 단수이므로 was가 들어갑니다. ⑤ The books는 복수이므로 were가 들어갑니다.",
+            explanation: "①~④의 주어는 단수(I·She·He·weather)이므로 was, ⑤의 주어 They는 복수이므로 were가 들어갑니다.",
             audioKey: "quiz_a_1"
           },
           {
