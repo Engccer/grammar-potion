@@ -1294,7 +1294,7 @@ const GRAMMAR_LESSONS = [
           {
             id: 2,
             type: "multi_select",
-            question: "빈칸에 들어갈 수 있는 말을 <em>모두</em> 고르시오.",
+            question: "빈칸에 들어갈 말로 <strong>부정 명령문</strong>을 만들 수 있는 것을 <em>모두</em> 고르시오.",
             context: "_____ be scared.",
             options: [
               "① Not",
@@ -1306,7 +1306,7 @@ const GRAMMAR_LESSONS = [
             answers: [2, 4],
             explanations: [
               "① Not 단독으로는 부정 명령문을 만들 수 없음 (✗)",
-              "② Do는 긍정 보조동사. 부정 명령문 시작어로 부적절 (✗)",
+              "② Do be ~ 는 \"정말로 ~해라\"라는 긍정 강조 명령문. 부정 명령문이 아님 (✗)",
               "③ Don't be scared. → 부정 명령문 \"무서워하지 마\" (✓)",
               "④ Does는 3인칭 단수 일반동사 형태. 명령문은 동사원형으로 시작 (✗)",
               "⑤ Never be scared. → 강한 부정 명령문 \"절대 무서워하지 마\" (✓)"
