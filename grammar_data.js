@@ -1295,21 +1295,21 @@ const GRAMMAR_LESSONS = [
             id: 2,
             type: "multi_select",
             question: "빈칸에 들어갈 수 있는 말을 <em>모두</em> 고르시오.",
-            context: "Don't be _____ scared.",
+            context: "_____ be scared.",
             options: [
-              "① shy",
-              "② talk",
-              "③ too",
-              "④ run",
-              "⑤ so"
+              "① Not",
+              "② Do",
+              "③ Don't",
+              "④ Does",
+              "⑤ Never"
             ],
             answers: [2, 4],
             explanations: [
-              "① shy는 형용사. \"Don't be shy scared.\" → 두 형용사 연속은 어색 (✗)",
-              "② talk은 동사. be 뒤에 동사원형이 올 수 없음 (✗)",
-              "③ too는 부사. \"Don't be too scared.\" → 자연스러움 (✓)",
-              "④ run은 동사. be 뒤에 동사원형이 올 수 없음 (✗)",
-              "⑤ so는 부사. \"Don't be so scared.\" → 자연스러움 (✓)"
+              "① Not 단독으로는 부정 명령문을 만들 수 없음 (✗)",
+              "② Do는 긍정 보조동사. 부정 명령문 시작어로 부적절 (✗)",
+              "③ Don't be scared. → 부정 명령문 \"무서워하지 마\" (✓)",
+              "④ Does는 3인칭 단수 일반동사 형태. 명령문은 동사원형으로 시작 (✗)",
+              "⑤ Never be scared. → 강한 부정 명령문 \"절대 무서워하지 마\" (✓)"
             ],
             audioKey: "quiz_b_2"
           },
@@ -1404,7 +1404,7 @@ const GRAMMAR_LESSONS = [
               {
                 prompt: "(1) _____ _____ late for school. (be를 활용한 Don't 부정 명령문)",
                 sentence: "_____ _____ late for school.",
-                blocks: ["Don't", "be", "Be", "Aren't", "Do", "not"],
+                blocks: ["Don't", "be", "Aren't", "Do", "not", "Never"],
                 answer: ["Don't", "be"],
                 explanation: "지각하지 말 것 → 부정 명령문 + be동사 → Don't be late for school."
               },
@@ -1418,14 +1418,14 @@ const GRAMMAR_LESSONS = [
               {
                 prompt: "(3) _____ _____ during class. (talk을 활용한 Don't 부정 명령문)",
                 sentence: "_____ _____ during class.",
-                blocks: ["Don't", "talk", "Talk", "Be", "Doesn't", "not"],
+                blocks: ["Don't", "talk", "Be", "Doesn't", "not", "Aren't"],
                 answer: ["Don't", "talk"],
                 explanation: "수업 중에는 말하지 말 것 → 부정 명령문 → Don't talk during class."
               },
               {
                 prompt: "(4) _____ _____ your homework. (forget을 활용한 Don't 부정 명령문)",
                 sentence: "_____ _____ your homework.",
-                blocks: ["Don't", "forget", "Forget", "Be", "Aren't", "not"],
+                blocks: ["Don't", "forget", "Be", "Aren't", "Doesn't", "not"],
                 answer: ["Don't", "forget"],
                 explanation: "숙제를 잊지 말 것 → 부정 명령문 → Don't forget your homework."
               }
