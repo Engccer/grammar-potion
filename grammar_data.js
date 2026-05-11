@@ -1402,28 +1402,28 @@ const GRAMMAR_LESSONS = [
             question: "괄호 안에 주어진 말을 이용하여 학교생활에 대한 명령문을 완성하시오.",
             subQuestions: [
               {
-                prompt: "(1) _____ (be) late for school. (Don't로 시작하는 부정 명령문으로)",
+                prompt: "(1) _____ _____ late for school. (be를 활용한 Don't 부정 명령문)",
                 sentence: "_____ _____ late for school.",
                 blocks: ["Don't", "be", "Be", "Aren't", "Do", "not"],
                 answer: ["Don't", "be"],
                 explanation: "지각하지 말 것 → 부정 명령문 + be동사 → Don't be late for school."
               },
               {
-                prompt: "(2) _____ (listen) carefully to your teacher.",
+                prompt: "(2) _____ carefully to your teacher. (listen 활용)",
                 sentence: "_____ carefully to your teacher.",
                 blocks: ["Listen", "Listens", "Listening", "Don't listen"],
                 answer: ["Listen"],
                 explanation: "긍정 명령문 → 동사원형으로 시작 → Listen carefully to your teacher."
               },
               {
-                prompt: "(3) _____ (talk) during class. (Don't로 시작하는 부정 명령문으로)",
+                prompt: "(3) _____ _____ during class. (talk을 활용한 Don't 부정 명령문)",
                 sentence: "_____ _____ during class.",
                 blocks: ["Don't", "talk", "Talk", "Be", "Doesn't", "not"],
                 answer: ["Don't", "talk"],
                 explanation: "수업 중에는 말하지 말 것 → 부정 명령문 → Don't talk during class."
               },
               {
-                prompt: "(4) _____ (forget) your homework. (Don't로 시작하는 부정 명령문으로)",
+                prompt: "(4) _____ _____ your homework. (forget을 활용한 Don't 부정 명령문)",
                 sentence: "_____ _____ your homework.",
                 blocks: ["Don't", "forget", "Forget", "Be", "Aren't", "not"],
                 answer: ["Don't", "forget"],
