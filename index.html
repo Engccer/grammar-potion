@@ -863,7 +863,7 @@ function buildResultText() {
   const today = new Date().toISOString().slice(0, 10);
   const lessonId = activeLesson ? activeLesson.id : '';
   const subtitle = activeLesson ? (' — ' + activeLesson.subtitle) : '';
-  const chaptersDone = State.chaptersCompleted || 0;
+  const chaptersDone = Array.isArray(State.chaptersCompleted) ? State.chaptersCompleted.length : 0;
   const chapterTotal = activeLesson ? activeLesson.chapters.length : 0;
   return (
     '🧪 Grammar Potion Lab — Lesson ' + lessonId + subtitle + '\n' +
