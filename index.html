@@ -417,6 +417,31 @@ body {
   max-width: 500px;
 }
 .end-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.copy-result-btn {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.95rem; font-weight: 500;
+  padding: 10px 22px; margin-top: 1.2em;
+  border-radius: 22px;
+  border: 1.5px dashed var(--gold);
+  background: transparent;
+  color: var(--gold);
+  cursor: pointer;
+  min-height: 44px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+}
+.copy-result-btn:hover, .copy-result-btn:focus {
+  background: rgba(218, 165, 32, 0.18);
+  border-style: solid;
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+}
+.copy-result-btn.copied {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  border-color: #4ade80;
+  color: #052e16;
+  transform: scale(1.04);
+}
 
 /* ===== COMMON BUTTONS ===== */
 .btn {
@@ -632,6 +657,7 @@ button, .option-item, .word-block, .chapter-card, .lesson-card { touch-action: m
       <button class="btn btn-gold" id="btn-next-lesson" tabindex="0" style="display:none;">다음 레슨 →</button>
       <button class="btn btn-outline" id="btn-lesson-list" tabindex="0">레슨 목록으로</button>
     </div>
+    <button class="copy-result-btn" id="btn-copy-result" tabindex="0" aria-label="결과를 클립보드에 복사하여 다른 곳에 붙여넣기">📋 결과 복사</button>
   </div>
 </div>
 
@@ -827,6 +853,74 @@ function announce(text) {
   const el = document.getElementById('sr-announce');
   el.textContent = '';
   requestAnimationFrame(() => { el.textContent = text; });
+}
+
+// ===== RESULT COPY =====
+function buildResultText() {
+  const totalPossible = (typeof calculateMaxScore === 'function') ? calculateMaxScore() : 0;
+  const pct = totalPossible ? Math.round(State.score / totalPossible * 100) : 0;
+  const stars = pct >= 90 ? '⭐⭐⭐' : pct >= 70 ? '⭐⭐' : pct >= 50 ? '⭐' : '';
+  const today = new Date().toISOString().slice(0, 10);
+  const lessonId = activeLesson ? activeLesson.id : '';
+  const subtitle = activeLesson ? (' — ' + activeLesson.subtitle) : '';
+  const chaptersDone = State.chaptersCompleted || 0;
+  const chapterTotal = activeLesson ? activeLesson.chapters.length : 0;
+  return (
+    '🧪 Grammar Potion Lab — Lesson ' + lessonId + subtitle + '\n' +
+    '점수: ' + State.score + '점 ' + stars + '\n' +
+    '정답률: ' + State.totalCorrect + ' / ' + State.totalQuestions +
+      (State.totalQuestions ? ' (' + Math.round(State.totalCorrect / State.totalQuestions * 100) + '%)' : '') + '\n' +
+    '최고 연속 정답: x' + State.maxStreak + '\n' +
+    '완성한 물약: ' + chaptersDone + ' / ' + chapterTotal + '\n' +
+    '📅 ' + today + '\n' +
+    '🎮 https://engccer.github.io/grammar-potion/'
+  );
+}
+
+function copyResultToClipboard() {
+  const btn = document.getElementById('btn-copy-result');
+  const original = btn.dataset.originalText || btn.innerHTML;
+  btn.dataset.originalText = original;
+  const text = buildResultText();
+
+  const onSuccess = () => {
+    btn.innerHTML = '✓ 복사 완료!';
+    btn.classList.add('copied');
+    announce('결과가 클립보드에 복사되었습니다. 이제 Padlet이나 Google Classroom 등에 붙여넣으세요.');
+    setTimeout(() => {
+      btn.innerHTML = original;
+      btn.classList.remove('copied');
+    }, 2200);
+  };
+  const onFail = () => {
+    btn.innerHTML = '⚠ 복사 실패';
+    announce('복사에 실패했어요. 선생님께 말씀드려 주세요.');
+    setTimeout(() => { btn.innerHTML = original; }, 2200);
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(onSuccess).catch(() => fallbackCopy(text, onSuccess, onFail));
+  } else {
+    fallbackCopy(text, onSuccess, onFail);
+  }
+}
+
+function fallbackCopy(text, onSuccess, onFail) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    if (ok) onSuccess(); else onFail();
+  } catch (e) {
+    document.body.removeChild(ta);
+    onFail();
+  }
 }
 
 // ===== LESSON SELECT =====
@@ -1535,6 +1629,8 @@ document.getElementById('btn-lesson-list').addEventListener('click', () => {
   resetState();
   showLessonSelect();
 });
+
+document.getElementById('btn-copy-result').addEventListener('click', copyResultToClipboard);
 
 // ===== GLOBAL KEY HANDLER =====
 function getActiveScreen() {
