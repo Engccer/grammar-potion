@@ -962,7 +962,7 @@ const GRAMMAR_LESSONS = [
             step: 2,
             title: "be동사의 과거형",
             titleEn: "Past Forms of Be",
-            content: "과거의 사실이나 상태를 나타내며 <strong>'~이었다/했다'</strong>, <strong>'~(에) 있었다'</strong>라는 뜻으로 쓰입니다. am과 is의 과거형은 <strong>was</strong>, are의 과거형은 <strong>were</strong>입니다. 부정문은 be동사 뒤에 not을 붙여 만들고, 의문문은 「Be동사+주어~?」로 씁니다.",
+            content: "<strong>①</strong> be동사의 과거형은 과거의 사실이나 상태를 나타내며 <strong>'~이었다/했다'</strong>, <strong>'~(에) 있었다'</strong>라는 뜻으로 쓰입니다. <em>am과 is의 과거형은 was</em>, <em>are의 과거형은 were</em>입니다.<br><br><strong>②</strong> be동사 과거형의 <strong>부정문</strong>은 현재형과 마찬가지로 be동사 뒤에 <strong>not</strong>을 붙여 만듭니다. <strong>'~이 아니었다'</strong>, <strong>'~(에) 없었다'</strong>의 뜻이 됩니다. <strong>was not은 wasn't</strong>, <strong>were not은 weren't</strong>로 축약하여 쓸 수 있습니다. <strong>의문문</strong>도 현재형과 마찬가지로 <strong>「Be동사+주어~?」</strong>로 쓰고 <strong>'~이었니?'</strong>, <strong>'~(에) 있었니?'</strong>라고 해석합니다.",
             table: {
               headers: ["주어", "현재형", "과거형", "축약 부정형"],
               rows: [
@@ -973,8 +973,7 @@ const GRAMMAR_LESSONS = [
             examples: [
               { en: "I <u>was</u> sick yesterday.", ko: "나는 어제 아팠습니다.", highlight: "was" },
               { en: "They <u>were</u> at the park last night.", ko: "그들은 어젯밤에 공원에 있었습니다.", highlight: "were" },
-              { en: "Mia <u>was not</u> at the party.", ko: "Mia는 파티에 없었습니다.", highlight: "was not" },
-              { en: "Mia <u>wasn't</u> at the party.", ko: "(축약형)", highlight: "wasn't" },
+              { en: "Mia <u>was not</u> at the party. = Mia <u>wasn't</u> at the party.", ko: "Mia는 파티에 없었습니다. (축약 가능)", highlight: "was not" },
               { en: "<u>Were</u> you late again?", ko: "당신은 또 늦었나요?", highlight: "Were" }
             ],
             audioKey: "recipe_past_2"
@@ -983,32 +982,43 @@ const GRAMMAR_LESSONS = [
             step: 3,
             title: "일반동사의 과거형",
             titleEn: "Past Forms of General Verbs",
-            content: "일반동사의 과거형은 과거의 동작이나 상태를 나타내며 <strong>'~했다'</strong>라는 뜻으로 쓰입니다. 만드는 방법은 규칙·불규칙에 따라 다양합니다.",
-            table: {
-              headers: ["규칙", "변환", "예시"],
-              rows: [
-                ["대부분의 동사", "동사원형 + -ed (또는 -d)", "watch → watched, like → liked"],
-                ["「자음+y」로 끝나는 동사", "y를 i로 바꾸고 -ed", "cry → cried, study → studied"],
-                ["「모음+y」로 끝나는 동사", "그대로 -ed", "play → played, stay → stayed"],
-                ["「단모음+단자음」으로 끝나는 동사", "마지막 자음 한 번 더 + -ed", "plan → planned, stop → stopped"],
-                ["불규칙 동사", "규칙 없이 다양한 형태", "cut → cut, put → put, lose → lost, go → went, eat → ate"]
-              ]
-            },
+            content: "일반동사의 과거형은 과거의 <em>동작</em>이나 <em>상태</em>를 나타내며 <strong>'~했다'</strong>라는 뜻으로 쓰입니다.",
             examples: [
               { en: "He <u>called</u> me an hour ago.", ko: "그는 한 시간 전에 나에게 전화했습니다.", highlight: "called" },
-              { en: "They <u>stayed</u> home last night.", ko: "그들은 어젯밤에 집에 머물렀습니다.", highlight: "stayed" },
-              { en: "I <u>cried</u> last night.", ko: "나는 어젯밤에 울었습니다.", highlight: "cried" },
-              { en: "She <u>planned</u> a party.", ko: "그녀는 파티를 계획했습니다.", highlight: "planned" },
-              { en: "He <u>put</u> the books on the table.", ko: "그는 책을 탁자 위에 두었습니다.", highlight: "put" },
-              { en: "I <u>lost</u> my phone.", ko: "나는 휴대폰을 잃어버렸습니다.", highlight: "lost" }
+              { en: "They <u>stayed</u> home last night.", ko: "그들은 어젯밤에 집에 머물렀습니다.", highlight: "stayed" }
             ],
             audioKey: "recipe_past_3"
           },
           {
             step: 4,
+            title: "일반동사의 과거형 만드는 법",
+            titleEn: "How to Form the Past Tense",
+            content: "일반동사의 과거형은 네 가지 규칙으로 만듭니다.<br><br><strong>①</strong> 규칙동사는 끝에 <strong>'-ed'</strong>를 붙입니다. <em>e로 끝나는 동사</em>는 <strong>'d'</strong>를 붙입니다.<br><br><strong>②</strong> 규칙동사 중 <strong>「자음+y」</strong>로 끝나는 동사는 <em>y를 i로 바꾸고</em> <strong>'-ed'</strong>를 붙입니다. <strong>「모음+y」</strong>로 끝나는 동사는 그대로 <strong>'-ed'</strong>를 붙입니다.<br><br><strong>③</strong> 규칙동사 중 <strong>「단모음+단자음」</strong>으로 끝나는 동사는 <em>마지막 자음을 한 번 더 쓰고</em> <strong>'-ed'</strong>를 붙입니다.<br><br><strong>④</strong> <strong>불규칙 동사</strong>는 '-(e)d'를 붙이는 규칙을 따르지 않고 과거형을 쓰는 동사들입니다. 불규칙의 형태는 여러 가지 유형이 있습니다.",
+            table: {
+              headers: ["규칙", "변환", "예시"],
+              rows: [
+                ["① 대부분의 동사", "동사원형 + -ed (또는 -d)", "watch → watched, like → liked"],
+                ["② 「자음+y」로 끝나는 동사", "y를 i로 바꾸고 -ed", "cry → cried, study → studied"],
+                ["② 「모음+y」로 끝나는 동사", "그대로 -ed", "play → played, stay → stayed"],
+                ["③ 「단모음+단자음」으로 끝나는 동사", "마지막 자음 한 번 더 + -ed", "plan → planned, stop → stopped"],
+                ["④ 불규칙 동사", "규칙 없이 다양한 형태", "cut → cut, put → put, lose → lost, go → went, eat → ate"]
+              ]
+            },
+            examples: [
+              { en: "watch → <u>watched</u>", ko: "① 동사원형 + -ed", highlight: "watched" },
+              { en: "cry → <u>cried</u>", ko: "② 자음+y → y를 i로 바꾸고 -ed", highlight: "cried" },
+              { en: "plan → <u>planned</u>", ko: "③ 단모음+단자음 → 자음 한 번 더 + -ed", highlight: "planned" },
+              { en: "cut → <u>cut</u>", ko: "④ 불규칙 (원형과 동일)", highlight: "cut" },
+              { en: "put → <u>put</u>", ko: "④ 불규칙 (원형과 동일)", highlight: "put" },
+              { en: "lose → <u>lost</u>", ko: "④ 불규칙 (lose → lost)", highlight: "lost" }
+            ],
+            audioKey: "recipe_past_4"
+          },
+          {
+            step: 5,
             title: "일반동사 과거형의 부정문과 의문문",
             titleEn: "Negatives & Questions in the Past",
-            content: "<strong>부정문</strong>은 「주어+didn't[did not]+동사원형」의 형태이고 <strong>'~하지 않았다'</strong>라는 뜻입니다. did not은 <strong>didn't</strong>로 줄여 쓸 수 있습니다. <strong>의문문</strong>은 「Did+주어+동사원형~?」의 형태이고 <strong>'~했니?'</strong>라는 뜻입니다. 부정문과 의문문에서는 동사가 반드시 <em>원형</em>으로 돌아갑니다.",
+            content: "일반동사 과거형의 <strong>부정문</strong>은 <strong>「주어+didn't[did not]+동사원형」</strong>의 형태이고 <strong>'~하지 않았다'</strong>라는 뜻입니다. <strong>did not은 didn't</strong>로 줄여 쓸 수 있습니다. <strong>의문문</strong>은 <strong>「Did+주어+동사원형~?」</strong>의 형태이고 <strong>'~했니?'</strong>라는 뜻입니다. 부정문과 의문문에서는 동사가 반드시 <em>원형</em>으로 돌아갑니다.",
             pattern: {
               question: "Did + 주어 + 동사원형 ~?",
               yesAnswer: "Yes, 주어 + did.",
@@ -1020,7 +1030,7 @@ const GRAMMAR_LESSONS = [
               { en: "A: <u>Did</u> you enjoy the TV show?", ko: "TV 쇼를 즐겼나요?", highlight: "Did" },
               { en: "B: Yes, I <u>did</u>. / No, I <u>didn't</u>.", ko: "네, 그랬어요. / 아니요, 그렇지 않았어요.", highlight: "did" }
             ],
-            audioKey: "recipe_past_4"
+            audioKey: "recipe_past_5"
           }
         ],
         exercises: [
@@ -1235,30 +1245,21 @@ const GRAMMAR_LESSONS = [
             step: 3,
             title: "부정 명령문",
             titleEn: "Negative Imperatives",
-            content: "동사원형 앞에 <strong>Don't[Do not]</strong>를 붙입니다. <strong>'~하지 마라'</strong>의 뜻으로 쓰입니다. be동사 명령문도 부정할 때 <strong>Don't be ~</strong>의 형태로 씁니다.",
-            examples: [
-              { en: "<u>Don't be</u> around the oven.", ko: "오븐 근처에 있지 마라.", highlight: "Don't be" },
-              { en: "<u>Don't worry</u> about it.", ko: "그것에 대해 걱정하지 마라.", highlight: "Don't worry" },
-              { en: "<u>Don't speak</u> loudly, please.", ko: "큰 소리로 말하지 말아 주세요.", highlight: "Don't speak" }
-            ],
-            audioKey: "recipe_imp_3"
-          },
-          {
-            step: 4,
-            title: "Never로 강한 금지 나타내기",
-            titleEn: "Stronger Prohibition: Never",
-            content: "동사원형 앞에 Don't 대신 <strong>Never</strong>를 써서 부정 명령문을 만들 수 있습니다. <strong>Never는 Don't보다 더 강한 금지</strong>를 나타냅니다.",
+            content: "<strong>①</strong> 동사원형 앞에 <strong>Don't[Do not]</strong>를 붙입니다. <strong>'~하지 마라'</strong>의 뜻으로 쓰입니다.<br><br><strong>②</strong> 동사원형 앞에 Don't 대신 <strong>Never</strong>를 써서 부정 명령문을 만들 수 있습니다. <strong>Never는 Don't보다 더 강한 금지</strong>를 나타냅니다.",
             transform: [
               { before: "Don't go there.", after: "Never go there. (더 강한 금지)" },
               { before: "Don't be late again.", after: "Never be late again. (더 강한 금지)" }
             ],
             examples: [
-              { en: "<u>Don't go</u> there.", ko: "거기에 가지 마라.", highlight: "Don't go" },
-              { en: "<u>Never go</u> there.", ko: "거기에 절대 가지 마라.", highlight: "Never go" },
-              { en: "<u>Don't be</u> late again.", ko: "다시는 늦지 마라.", highlight: "Don't be" },
-              { en: "<u>Never be</u> late again.", ko: "다시는 절대 늦지 마라.", highlight: "Never be" }
+              { en: "<u>Don't be</u> around the oven.", ko: "① 오븐 근처에 있지 마라.", highlight: "Don't be" },
+              { en: "<u>Don't worry</u> about it.", ko: "① 그것에 대해 걱정하지 마라.", highlight: "Don't worry" },
+              { en: "<u>Don't speak</u> loudly, please.", ko: "① 큰 소리로 말하지 말아 주세요.", highlight: "Don't speak" },
+              { en: "<u>Don't go</u> there.", ko: "② 거기에 가지 마라.", highlight: "Don't go" },
+              { en: "<u>Never go</u> there.", ko: "② 거기에 절대 가지 마라. (강한 금지)", highlight: "Never go" },
+              { en: "<u>Don't be</u> late again.", ko: "② 다시는 늦지 마라.", highlight: "Don't be" },
+              { en: "<u>Never be</u> late again.", ko: "② 다시는 절대 늦지 마라. (강한 금지)", highlight: "Never be" }
             ],
-            audioKey: "recipe_imp_4"
+            audioKey: "recipe_imp_3"
           }
         ],
         exercises: [
