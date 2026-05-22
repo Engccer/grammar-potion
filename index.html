@@ -860,20 +860,15 @@ function buildResultText() {
   const totalPossible = (typeof calculateMaxScore === 'function') ? calculateMaxScore() : 0;
   const pct = totalPossible ? Math.round(State.score / totalPossible * 100) : 0;
   const stars = pct >= 90 ? '⭐⭐⭐' : pct >= 70 ? '⭐⭐' : pct >= 50 ? '⭐' : '';
-  const today = new Date().toISOString().slice(0, 10);
   const lessonId = activeLesson ? activeLesson.id : '';
-  const subtitle = activeLesson ? (' — ' + activeLesson.subtitle) : '';
   const chaptersDone = Array.isArray(State.chaptersCompleted) ? State.chaptersCompleted.length : 0;
   const chapterTotal = activeLesson ? activeLesson.chapters.length : 0;
+  const accPct = State.totalQuestions ? Math.round(State.totalCorrect / State.totalQuestions * 100) : 0;
   return (
-    '🧪 Grammar Potion Lab — Lesson ' + lessonId + subtitle + '\n' +
-    '점수: ' + State.score + '점 ' + stars + '\n' +
-    '정답률: ' + State.totalCorrect + ' / ' + State.totalQuestions +
-      (State.totalQuestions ? ' (' + Math.round(State.totalCorrect / State.totalQuestions * 100) + '%)' : '') + '\n' +
-    '최고 연속 정답: x' + State.maxStreak + '\n' +
-    '완성한 물약: ' + chaptersDone + ' / ' + chapterTotal + '\n' +
-    '📅 ' + today + '\n' +
-    '🎮 https://engccer.github.io/grammar-potion/'
+    '🧪 Grammar Potion — Lesson ' + lessonId + '\n' +
+    '- 점수: ' + State.score + '점' + (stars ? ' ' + stars : '') + '\n' +
+    '- 정답: ' + State.totalCorrect + '/' + State.totalQuestions + ' (' + accPct + '%)\n' +
+    '- 완성한 물약: ' + chaptersDone + '/' + chapterTotal
   );
 }
 
