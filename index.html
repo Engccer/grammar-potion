@@ -861,14 +861,15 @@ function buildResultText() {
   const pct = totalPossible ? Math.round(State.score / totalPossible * 100) : 0;
   const stars = pct >= 90 ? '⭐⭐⭐' : pct >= 70 ? '⭐⭐' : pct >= 50 ? '⭐' : '';
   const lessonId = activeLesson ? activeLesson.id : '';
-  const chaptersDone = Array.isArray(State.chaptersCompleted) ? State.chaptersCompleted.length : 0;
-  const chapterTotal = activeLesson ? activeLesson.chapters.length : 0;
   const accPct = State.totalQuestions ? Math.round(State.totalCorrect / State.totalQuestions * 100) : 0;
+  const pad = (n) => String(n).padStart(2, '0');
+  const d = new Date();
+  const stamp = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) +
+    ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
   return (
-    '🧪 Grammar Potion — Lesson ' + lessonId + '\n' +
-    '- 점수: ' + State.score + '점' + (stars ? ' ' + stars : '') + '\n' +
-    '- 정답: ' + State.totalCorrect + '/' + State.totalQuestions + ' (' + accPct + '%)\n' +
-    '- 완성한 물약: ' + chaptersDone + '/' + chapterTotal
+    '🧪 Grammar Potion — Lesson ' + lessonId + ' · ' + stamp + '\n' +
+    '점수 ' + State.score + '점' + (stars ? ' ' + stars : '') +
+    ' · 정답 ' + State.totalCorrect + '/' + State.totalQuestions + ' (' + accPct + '%)'
   );
 }
 
