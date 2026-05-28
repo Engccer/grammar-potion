@@ -1437,5 +1437,442 @@ const GRAMMAR_LESSONS = [
         ]
       }
     ]
+  },
+  {
+    id: 4,
+    title: "Grammar Potion Lab",
+    subtitle: "동명사 & be going to",
+    introLines: [
+      "Welcome back, grand apprentice! Today we bend grammar to your will.",
+      "오늘은 동사를 명사로 바꾸고, 미래를 미리 그려 보는 두 가지 물약을 만듭니다.",
+      "🧪 Potion of Naming (이름의 물약) — 동명사의 비밀",
+      "⚗️ Potion of Future (미래의 물약) — be going to의 힘",
+      "레시피를 배우고, 퀴즈를 풀어 물약을 완성하세요!"
+    ],
+    chapters: [
+      // ===== CHAPTER 1: 동명사 =====
+      {
+        id: 1,
+        name: "Potion of Naming",
+        nameKo: "이름의 물약",
+        topic: "동명사",
+        potionColor: "#5db8a1",
+        recipe: [
+          {
+            // Section 1) 기본 개념
+            step: 1,
+            title: "기본 개념",
+            titleEn: "What is a Gerund?",
+            content: "동명사는 <strong>「동사원형 + -ing」</strong>의 형태로 문장에서 <em>명사의 역할</em>을 합니다. 해석은 <strong>'~하는 것'</strong>, <strong>'~하기'</strong>와 같이 합니다.",
+            examples: [
+              { en: "<u>Walking</u> is good for health.", ko: "걷는 것은 건강에 좋습니다.", highlight: "Walking" },
+              { en: "She enjoys <u>reading</u> books.", ko: "그녀는 책 읽기를 즐깁니다.", highlight: "reading" },
+              { en: "My hobby is <u>cooking</u>.", ko: "제 취미는 요리하는 것입니다.", highlight: "cooking" }
+            ],
+            audioKey: "recipe_ger_1"
+          },
+          {
+            // Section 2) 주어로 쓰이는 동명사
+            step: 2,
+            title: "주어로 쓰이는 동명사",
+            titleEn: "Gerund as a Subject",
+            content: "동명사는 문장에서 <strong>주어</strong>로 사용될 수 있습니다. 동명사가 문장의 주어 역할을 할 때는 <em>단수 취급</em>합니다.",
+            examples: [
+              { en: "<u>Making</u> friends is not easy.", ko: "친구를 사귀는 것은 쉽지 않습니다.", highlight: "Making" },
+              { en: "<u>Cleaning</u> the house takes a lot of time.", ko: "집 청소는 많은 시간이 걸립니다.", highlight: "Cleaning" },
+              { en: "<u>Learning</u> a new language can be interesting.", ko: "새로운 언어를 배우는 것은 흥미로울 수 있습니다.", highlight: "Learning" },
+              { en: "<u>Eating</u> healthy food is important for health.", ko: "건강한 음식을 먹는 것은 건강에 중요합니다.", highlight: "Eating" }
+            ],
+            audioKey: "recipe_ger_2"
+          },
+          {
+            // Section 3) 목적어로 쓰이는 동명사
+            step: 3,
+            title: "목적어로 쓰이는 동명사",
+            titleEn: "Gerund as an Object",
+            content: "동명사는 <strong>동사나 전치사의 목적어</strong>로 사용될 수 있습니다. 동사의 목적어로 쓰이는 경우 다른 목적어와 마찬가지로 <strong>'~을(를)'</strong>로 주로 해석합니다. 동명사만을 목적어로 취하는 동사에는 <strong>enjoy, finish, keep</strong> 등이 있습니다.",
+            examples: [
+              { en: "He enjoys <u>playing</u> video games.", ko: "그는 비디오 게임을 하는 것을 즐깁니다.", highlight: "playing" },
+              { en: "We finished <u>cleaning</u> the room.", ko: "우리는 방을 청소하는 것을 마쳤습니다.", highlight: "cleaning" },
+              { en: "Kate is interested in <u>learning</u> Spanish.", ko: "Kate는 스페인어를 배우는 것에 관심이 있습니다.", highlight: "learning" }
+            ],
+            audioKey: "recipe_ger_3"
+          },
+          {
+            // Section 4) 보어로 쓰이는 동명사
+            step: 4,
+            title: "보어로 쓰이는 동명사",
+            titleEn: "Gerund as a Complement",
+            content: "보어란 <em>주어나 목적어의 의미를 보충해주는 문장 요소</em>입니다. 동명사는 <strong>주어의 의미를 보충해주는 보어</strong>의 역할을 하기도 합니다.",
+            examples: [
+              { en: "My hobby is <u>taking</u> pictures.", ko: "저의 취미는 사진을 찍는 것입니다.", highlight: "taking" },
+              { en: "His favorite activity is <u>doing</u> science experiments.", ko: "그가 가장 좋아하는 활동은 과학 실험하는 것입니다.", highlight: "doing" },
+              { en: "The best part of my day is <u>talking</u> with my friends.", ko: "제 하루에서 가장 좋아하는 시간은 친구들과 이야기하는 것입니다.", highlight: "talking" }
+            ],
+            audioKey: "recipe_ger_4"
+          }
+        ],
+        exercises: [
+          {
+            id: 1,
+            type: "multiple_choice",
+            question: "밑줄 친 listen을 어법에 맞게 고친 것은?",
+            context: "Does she enjoy <u>listen</u> to K-pop?",
+            options: [
+              "① listen",
+              "② listens",
+              "③ to listen",
+              "④ listening",
+              "⑤ be listening"
+            ],
+            answer: 3,
+            explanation: "enjoy는 동명사만을 목적어로 취하는 동사입니다. 따라서 listen → listening.",
+            audioKey: "quiz_a_1"
+          },
+          {
+            id: 2,
+            type: "multiple_choice",
+            question: "빈칸에 들어갈 말이 순서대로 바르게 짝지어진 것은?",
+            context: "· I finished _____ my homework.\n· _____ photos is a good hobby.",
+            options: [
+              "① do – Take",
+              "② do – Taking",
+              "③ doing – Take",
+              "④ doing – Taking",
+              "⑤ to do – To take"
+            ],
+            answer: 3,
+            explanation: "finish는 동명사만을 목적어로 취하므로 첫 빈칸은 doing(⑤ to do는 부적절). 두 번째 빈칸은 주어 자리이므로 동명사 Taking(or To take도 가능하지만, ⑤가 첫 빈칸에서 이미 어법상 틀리므로 정답은 ④ doing – Taking).",
+            audioKey: "quiz_a_2"
+          },
+          {
+            id: 3,
+            type: "multiple_choice",
+            question: "밑줄 친 부분의 쓰임이 다음과 <em>다른</em> 것은?",
+            context: "We finished <u>solving</u> the math problems.",
+            contextHint: "(solving = 동명사, 목적어)",
+            options: [
+              "① I love <u>watching</u> movies.",
+              "② My hobby is <u>drawing</u> cartoons.",
+              "③ How about <u>joining</u> a book club?",
+              "④ Are you good at <u>speaking</u> English?",
+              "⑤ She is <u>walking</u> to school with her friends."
+            ],
+            answer: 4,
+            explanation: "보기와 ①②③④의 밑줄 친 말은 모두 동명사입니다. ⑤ walking은 「be동사 + -ing」 형태의 현재진행형으로 쓰인 현재분사이므로 쓰임이 다릅니다.",
+            audioKey: "quiz_a_3"
+          },
+          {
+            id: 4,
+            type: "multiple_choice",
+            question: "다음 중 어법상 <em>어색한</em> 문장은?",
+            options: [
+              "① I finished washing the dishes.",
+              "② The children stopped running.",
+              "③ Do you like visiting museums?",
+              "④ Exercising improves your health.",
+              "⑤ Eating vegetables are a good habit."
+            ],
+            answer: 4,
+            explanation: "⑤ Eating vegetables(동명사 주어)는 단수 취급하므로 are → is. 동명사 주어는 항상 단수 취급합니다.",
+            audioKey: "quiz_a_4"
+          },
+          {
+            id: 5,
+            type: "multiple_choice",
+            question: "빈칸에 들어갈 말로 알맞지 <em>않은</em> 것은?",
+            context: "We _____ playing basketball.",
+            options: [
+              "① like",
+              "② love",
+              "③ want",
+              "④ enjoy",
+              "⑤ are good at"
+            ],
+            answer: 2,
+            explanation: "like, love, enjoy는 동명사를 목적어로 취할 수 있고, are good at은 전치사 at 뒤에 동명사가 옵니다. ③ want는 to부정사만 목적어로 취하므로 동명사 playing과 함께 쓸 수 없습니다. (want to play로 써야 함)",
+            audioKey: "quiz_a_5"
+          },
+          {
+            id: 6,
+            type: "word_blocks",
+            question: "다음 문장에서 어법상 어색한 부분을 찾아 바르게 고쳐 쓰시오.",
+            subQuestions: [
+              {
+                prompt: "(1) Play outside is fun.",
+                sentence: "Play → _____",
+                blocks: ["Playing", "Plays", "To plays", "Played"],
+                answer: ["Playing"],
+                explanation: "Play는 동사원형이라 주어가 될 수 없습니다. 문장의 주어 자리이므로 동명사 Playing으로 바꿔야 합니다."
+              },
+              {
+                prompt: "(2) Thank you for <u>help</u> us.",
+                sentence: "help → _____",
+                blocks: ["helping", "helps", "to help", "helped"],
+                answer: ["helping"],
+                explanation: "전치사 for 뒤에는 동명사가 옵니다. help → helping."
+              },
+              {
+                prompt: "(3) Did you finish <u>to clean</u> your room?",
+                sentence: "to clean → _____",
+                blocks: ["cleaning", "cleans", "cleaned", "clean"],
+                answer: ["cleaning"],
+                explanation: "finish는 동명사만을 목적어로 취합니다. to clean → cleaning."
+              }
+            ],
+            audioKey: "quiz_a_6"
+          },
+          {
+            id: 7,
+            type: "word_blocks",
+            question: "빈칸에 알맞은 말을 <보기>에서 골라 어법상 올바른 형태로 바꿔 쓰시오.",
+            subQuestions: [
+              {
+                prompt: "<보기> cook   go   have\n(1) _____ is fun and easy for me.",
+                sentence: "_____ is fun and easy for me.",
+                blocks: ["Cooking", "Going", "Having", "Cooks"],
+                answer: ["Cooking"],
+                explanation: "주어 자리 + '재미있고 쉽다'는 의미 → 동명사 Cooking. (대문자로 시작)"
+              },
+              {
+                prompt: "(2) My parents are interested in _____ a pet.",
+                sentence: "My parents are interested in _____ a pet.",
+                blocks: ["having", "cooking", "going", "have"],
+                answer: ["having"],
+                explanation: "전치사 in 뒤에는 동명사. 'a pet을 키우는 것' → having."
+              },
+              {
+                prompt: "(3) Did you enjoy _____ camping last weekend?",
+                sentence: "Did you enjoy _____ camping last weekend?",
+                blocks: ["going", "having", "cooking", "go"],
+                answer: ["going"],
+                explanation: "enjoy는 동명사를 목적어로 취합니다. 'go camping(캠핑 가다)' → going."
+              }
+            ],
+            audioKey: "quiz_a_7"
+          },
+          {
+            id: 8,
+            type: "multiple_choice",
+            question: "다음 대화의 밑줄 친 ①~⑤ 중 쓰임이 나머지와 <em>다른</em> 하나는?",
+            context: "Emma: Hi, what do you like <u>①doing</u> in your free time?\nJack: I love <u>②playing</u> soccer. It's really <u>③exciting</u>. What about you?\nEmma: I enjoy <u>④baking</u> cookies. I'm also interested in <u>⑤reading</u> webtoons. They're fun.\nJack: That sounds great.",
+            options: [
+              "① doing",
+              "② playing",
+              "③ exciting",
+              "④ baking",
+              "⑤ reading"
+            ],
+            answer: 2,
+            explanation: "③ exciting은 '신나는, 흥미진진한'의 의미로 보어 자리에 쓰인 <em>형용사</em>입니다. 나머지 ①②④⑤는 모두 동사·전치사의 목적어로 쓰인 동명사이므로 ③의 쓰임이 다릅니다.",
+            audioKey: "quiz_a_8"
+          }
+        ]
+      },
+
+      // ===== CHAPTER 2: be going to =====
+      {
+        id: 2,
+        name: "Potion of Future",
+        nameKo: "미래의 물약",
+        topic: "be going to",
+        potionColor: "#f39c12",
+        recipe: [
+          {
+            // Section 1) 기본 개념
+            step: 1,
+            title: "기본 개념",
+            titleEn: "What is 'be going to'?",
+            content: "<strong>be going to</strong>는 <em>가까운 미래의 계획이나 예정</em>을 나타낼 때 사용하며 <strong>'~할 것이다'</strong>, <strong>'~할 예정이다'</strong>라고 해석합니다. 주로 미래의 시점을 나타내는 표현과 함께 쓰이고, <strong>be going to 뒤에는 동사원형</strong>을 씁니다.",
+            examples: [
+              { en: "I <u>am going to visit</u> Busan next week.", ko: "나는 다음 주에 부산을 방문할 것입니다.", highlight: "am going to visit" },
+              { en: "Jin <u>is going to play</u> soccer this weekend.", ko: "Jin은 이번 주말에 축구를 할 예정입니다.", highlight: "is going to play" },
+              { en: "I <u>was going to play</u> soccer, but it started raining.", ko: "나는 축구를 하려고 했지만, 비가 오기 시작했습니다.", highlight: "was going to play" }
+            ],
+            audioKey: "recipe_bgt_1"
+          },
+          {
+            // Section 2) be going to 부정문
+            step: 2,
+            title: "be going to 부정문",
+            titleEn: "Negative Sentences",
+            content: "<strong>be동사 뒤에 not</strong>을 붙인 형태로, <strong>'~하지 않을 것이다'</strong>라는 뜻입니다. <em>be와 not은 줄여 쓸 수 있습니다.</em>",
+            transform: [
+              { before: "is not going to", after: "isn't going to" },
+              { before: "are not going to", after: "aren't going to" }
+            ],
+            examples: [
+              { en: "He <u>is not going to</u> go to the museum.", ko: "그는 박물관에 가지 않을 것입니다.", highlight: "is not going to" },
+              { en: "= He <u>isn't going to</u> go to the museum.", ko: "(축약형)", highlight: "isn't going to" },
+              { en: "They <u>are not going to</u> leave tonight.", ko: "그들은 오늘 밤 떠나지 않을 것입니다.", highlight: "are not going to" },
+              { en: "= They <u>aren't going to</u> leave tonight.", ko: "(축약형)", highlight: "aren't going to" }
+            ],
+            audioKey: "recipe_bgt_2"
+          },
+          {
+            // Section 3) be going to 의문문
+            step: 3,
+            title: "be going to 의문문",
+            titleEn: "Questions with 'be going to'",
+            content: "<strong>「Be동사 + 주어 + going to ~?」</strong>의 형태로 씁니다. 대답은 <em>be동사 의문문의 대답</em>과 같습니다.",
+            pattern: {
+              question: "Be동사 + 주어 + going to + 동사원형 ~?",
+              yesAnswer: "Yes, 주어 + be동사.",
+              noAnswer: "No, 주어 + be동사 + not."
+            },
+            examples: [
+              { en: "A: <u>Are</u> you <u>going to</u> buy a shirt?", ko: "셔츠를 구매할 건가요?", highlight: "Are ~ going to" },
+              { en: "B: Yes, I am. / No, I'm not.", ko: "네, 그래요. / 아니요, 그렇지 않아요.", highlight: "Yes, I am" },
+              { en: "A: <u>Is</u> he <u>going to</u> run a marathon?", ko: "그는 마라톤을 뛸 예정인가요?", highlight: "Is ~ going to" },
+              { en: "B: Yes, he is. / No, he isn't.", ko: "네, 그래요. / 아니요, 그렇지 않아요.", highlight: "Yes, he is" }
+            ],
+            audioKey: "recipe_bgt_3"
+          }
+        ],
+        exercises: [
+          {
+            id: 1,
+            type: "multiple_choice",
+            question: "빈칸에 들어갈 말로 알맞지 <em>않은</em> 것은?",
+            context: "I'm going to play basketball _____.",
+            options: [
+              "① today",
+              "② yesterday",
+              "③ tomorrow",
+              "④ after school",
+              "⑤ next Sunday"
+            ],
+            answer: 1,
+            explanation: "be going to는 미래의 계획·예정을 나타내므로 미래 또는 현재 시점의 표현과 어울립니다. ② yesterday(어제)는 과거를 나타내므로 함께 쓸 수 없습니다.",
+            audioKey: "quiz_b_1"
+          },
+          {
+            id: 2,
+            type: "multiple_choice",
+            question: "다음 중 어법상 올바른 문장은?",
+            options: [
+              "① They are going to late.",
+              "② Is it going to rain tomorrow?",
+              "③ Are you going to having dinner?",
+              "④ The train are going to leave soon.",
+              "⑤ She is going not to wear a coat today."
+            ],
+            answer: 1,
+            explanation: "① late는 형용사 → going to be late. ③ going to 뒤에는 동사원형 → going to have. ④ The train(단수) → is going to. ⑤ 부정문은 be동사 뒤에 not → is not going to. ②는 「Be + 주어 + going to + 동사원형」의 올바른 의문문입니다.",
+            audioKey: "quiz_b_2"
+          },
+          {
+            id: 3,
+            type: "multiple_choice",
+            question: "다음 질문에 대한 응답으로 알맞지 <em>않은</em> 것은?",
+            context: "What are you going to do this weekend?",
+            options: [
+              "① I'm cleaning my room now.",
+              "② I'm going to visit my uncle.",
+              "③ I'm going to watch a movie.",
+              "④ I'm going to go shopping for jeans.",
+              "⑤ I'm going to bake cookies for my family."
+            ],
+            answer: 0,
+            explanation: "이번 주말 계획을 묻고 있으므로 미래 계획으로 답해야 합니다. ① 'I'm cleaning my room now.'는 현재진행형으로 지금 일어나는 일이므로 응답으로 알맞지 않습니다. ②~⑤는 모두 be going to로 미래 계획을 말하고 있습니다.",
+            audioKey: "quiz_b_3"
+          },
+          {
+            id: 4,
+            type: "multiple_choice",
+            question: "밑줄 친 부분의 쓰임이 나머지와 <em>다른</em> 하나는?",
+            options: [
+              "① She <u>is going to</u> be here soon.",
+              "② Are you <u>going to</u> school now?",
+              "③ He <u>is</u> not <u>going to</u> study for the exam today.",
+              "④ I'm <u>going to</u> make a poster for my science homework.",
+              "⑤ We're <u>going to</u> go to the new ice cream shop this afternoon."
+            ],
+            answer: 1,
+            explanation: "①③④⑤의 going to는 미래 계획을 나타내는 <strong>be going to</strong> 표현입니다. ② going to school은 '학교에 가는 중'이라는 뜻으로 현재진행형(<em>go to</em>의 진행형)입니다. 뒤에 동사원형이 아닌 명사(school)가 와서 쓰임이 다릅니다.",
+            audioKey: "quiz_b_4"
+          },
+          {
+            id: 5,
+            type: "multiple_choice",
+            question: "대화의 빈칸에 들어갈 말로 알맞은 것은?",
+            context: "A: Are you going to go out this evening?\nB: _____ I'm going to watch a movie at home.",
+            options: [
+              "① Yes, of course.",
+              "② Yes, I am.",
+              "③ No, I don't.",
+              "④ No, I'm not.",
+              "⑤ That's a good idea."
+            ],
+            answer: 3,
+            explanation: "뒤에 'I'm going to watch a movie at home(집에서 영화를 볼 거다)'이라고 했으므로 외출하지 않을 것입니다. Are you ~?에 대한 부정 대답은 'No, I'm not.'입니다.",
+            audioKey: "quiz_b_5"
+          },
+          {
+            id: 6,
+            type: "word_blocks",
+            question: "괄호 안의 우리말과 같도록 빈칸에 알맞은 말을 쓰시오.",
+            subQuestions: [
+              {
+                prompt: "(1) Mom is going _____ a new phone.\n(엄마는 새 휴대폰을 사실 거야.)",
+                // 워크시트 원본은 두 개정판 오버레이로 '전화기를휴대폰을'이 겹쳐 있음 — 후본인 '휴대폰'으로 정리
+                sentence: "Mom is going _____ a new phone.",
+                blocks: ["to buy", "buying", "buy", "to buys"],
+                answer: ["to buy"],
+                explanation: "be going to + 동사원형 → to buy (사다)."
+              },
+              {
+                prompt: "(2) My family is _____ go on a trip to Japan.\n(우리 가족은 일본으로 여행을 갈 거야.)",
+                sentence: "My family is _____ go on a trip to Japan.",
+                blocks: ["going to", "going", "go to", "to go"],
+                answer: ["going to"],
+                explanation: "is + going to + 동사원형(go) 패턴 → 빈칸에는 going to."
+              },
+              {
+                prompt: "(3) Jiho and his brother _____ to play baseball together.\n(지호와 동생은 함께 야구를 할 거야.)",
+                sentence: "Jiho and his brother _____ to play baseball together.",
+                blocks: ["are going", "is going", "going", "be going"],
+                answer: ["are going"],
+                explanation: "주어 Jiho and his brother(복수) → are. are going + to + 동사원형(play)."
+              }
+            ],
+            audioKey: "quiz_b_6"
+          },
+          {
+            id: 7,
+            type: "multiple_choice",
+            question: "어법상 빈칸에 들어갈 말로 알맞은 것은?",
+            context: "_____ next week.",
+            contextHint: "(next week는 미래를 나타냄)",
+            options: [
+              "① I went to the library",
+              "② We finished the report",
+              "③ He enjoys running a marathon",
+              "④ They have a good time at the party",
+              "⑤ She is going to move to another city"
+            ],
+            answer: 4,
+            explanation: "next week(미래)와 어울리려면 미래시제가 필요합니다. ① went(과거), ② finished(과거), ③ enjoys(현재), ④ have(현재) 모두 부적절. ⑤ is going to move는 미래 계획을 나타내므로 알맞습니다.",
+            audioKey: "quiz_b_7"
+          },
+          {
+            id: 8,
+            type: "word_blocks",
+            question: "밑줄 친 ①~⑤ 중 어법상 어색한 문장을 찾아 바르게 고쳐 쓰시오.",
+            context: "This weekend, ① I'm going to have a lot of fun. On Saturday, ② I'm going to visit an amusement park with my family. ③ We're going to ride the roller coaster. On Sunday, ④ I'm going to play computer games. ⑤ It's going to a great weekend!",
+            subQuestions: [
+              {
+                prompt: "어색한 문장을 고른 뒤, ⑤의 going to 다음에 들어갈 알맞은 말을 고르시오.",
+                sentence: "⑤ It's going to _____ a great weekend!",
+                blocks: ["be", "is", "being", "have"],
+                answer: ["be"],
+                explanation: "⑤ It's going to a great weekend!는 be going to 뒤에 동사원형이 빠진 형태입니다. 'a great weekend'는 명사이므로 앞에 동사 be가 필요합니다. → It's going to <strong>be</strong> a great weekend!"
+              }
+            ],
+            audioKey: "quiz_b_8"
+          }
+        ]
+      }
+    ]
   }
 ];
