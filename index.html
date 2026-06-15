@@ -813,6 +813,7 @@ const State = {
   currentExIndex: 0,
   currentSubQ: 0,
   answered: false,
+  retrying: false,
   multiSelections: new Set(),
   blockSelections: [],
   blockSelectionBtns: [],
@@ -829,6 +830,7 @@ function resetState() {
   State.currentExIndex = 0;
   State.currentSubQ = 0;
   State.answered = false;
+  State.retrying = false;
   State.multiSelections = new Set();
   State.blockSelections = [];
   State.blockSelectionBtns = [];
@@ -1203,6 +1205,7 @@ function loadExercise() {
   }
   const ex = exercises[State.currentExIndex];
   State.answered = false;
+  State.retrying = false;
   State.multiSelections = new Set();
   State.blockSelections = [];
   State.blockSelectionBtns = [];
@@ -1252,19 +1255,29 @@ function renderMultipleChoice(ex) {
 
 function selectMCOption(index, ex) {
   if (State.answered) return;
-  State.answered = true;
-  State.totalQuestions++;
 
   const items = document.querySelectorAll('.option-item');
+  if (items[index].classList.contains('disabled')) return;  // 이미 시도한 오답 선택지는 무시 (키보드 재선택 가드)
   const isCorrect = index === ex.answer;
 
+  if (!isCorrect) {
+    // 재도전: 고른 선택지만 비활성화, 정답 비공개, 화면 유지
+    if (!State.retrying) { State.retrying = true; State.streak = 0; updateScoreDisplay(); }
+    items[index].classList.add('disabled', 'wrong');
+    AudioMgr.playSFX('feedback_wrong');
+    announce('오답! 다시 시도해 보세요.');
+    return;
+  }
+
+  // 정답 (재도전 다회 시도여도 1문항으로 카운트)
+  State.answered = true;
+  State.totalQuestions++;
   items.forEach((item, i) => {
     item.classList.add('disabled');
     if (i === ex.answer) item.classList.add('correct');
-    if (i === index && !isCorrect) item.classList.add('wrong');
   });
 
-  handleResult(isCorrect, ex.explanation, 10);
+  handleResult(true, ex.explanation, 10);
 }
 
 // --- Multi Select ---
@@ -1404,38 +1417,49 @@ function selectBlock(btn, subQ) {
 }
 
 function checkWordBlocks(subQ) {
-  State.answered = true;
-  State.totalQuestions++;
-
   const isCorrect = JSON.stringify(State.blockSelections) === JSON.stringify(subQ.answer);
   const isAlt = subQ.altAnswer && JSON.stringify(State.blockSelections) === JSON.stringify(subQ.altAnswer);
 
-  const feedbackClass = (isCorrect || isAlt) ? 'correct-block' : 'wrong-block';
-  State.blockSelectionBtns.forEach(b => b.classList.add(feedbackClass));
-
   if (!isCorrect && !isAlt) {
-    const blanks = document.querySelectorAll('.wb-blank');
-    blanks.forEach((bl, i) => {
-      bl.textContent = subQ.answer[i] || '';
-      bl.style.color = 'var(--green)';
-    });
+    // 재도전: 조합 전체 빨강 표시 → 리셋 후 재배치, 정답 비공개
+    if (!State.retrying) { State.retrying = true; State.streak = 0; updateScoreDisplay(); }
+    State.blockSelectionBtns.forEach(b => b.classList.add('wrong-block'));
+    AudioMgr.playSFX('feedback_wrong');
+    announce('오답! 다시 시도해 보세요.');
+    const ex = currentChapterData.exercises[State.currentExIndex];
+    setTimeout(() => {
+      document.getElementById('result-area').innerHTML = '';
+      renderWordBlocks(ex);
+    }, 900);
+    return;
   }
 
-  handleResult(isCorrect || isAlt, subQ.explanation, 12, true, true);
+  // 정답 (재도전 다회 시도여도 1문항으로 카운트)
+  State.answered = true;
+  State.totalQuestions++;
+  State.blockSelectionBtns.forEach(b => b.classList.add('correct-block'));
+
+  handleResult(true, subQ.explanation, 12, true, true);
 }
 
 // ===== RESULT HANDLER =====
 function handleResult(isCorrect, explanation, basePoints, fullCorrect = true, isWordBlock = false) {
   let earnedPoints = 0;
   let multiplier = 1;
+  const wasRetrying = State.retrying;
+  State.retrying = false;
 
   if (isCorrect) {
-    if (State.streak >= 2) multiplier = State.streak >= 3 ? 2 : 1.5;
-    earnedPoints = Math.round(basePoints * multiplier);
+    if (wasRetrying) {
+      earnedPoints = Math.round(basePoints * 0.5);
+    } else {
+      if (State.streak >= 2) multiplier = State.streak >= 3 ? 2 : 1.5;
+      earnedPoints = Math.round(basePoints * multiplier);
+      State.streak++;
+      if (State.streak > State.maxStreak) State.maxStreak = State.streak;
+    }
     State.score += earnedPoints;
-    State.streak++;
     State.totalCorrect++;
-    if (State.streak > State.maxStreak) State.maxStreak = State.streak;
 
     AudioMgr.playSFX('ingredient_drop');
     if (fullCorrect) AudioMgr.playSFX('feedback_correct');
@@ -1445,7 +1469,7 @@ function handleResult(isCorrect, explanation, basePoints, fullCorrect = true, is
     if (!isWordBlock || fullCorrect) {
       document.getElementById('result-area').innerHTML = `
         <div class="result-banner correct-banner">
-          ✨ 정답! +${earnedPoints}점${multiplier > 1 ? ` (x${multiplier} 콤보!)` : ''}
+          ✨ 정답! +${earnedPoints}점${wasRetrying ? ' (재도전)' : (multiplier > 1 ? ` (x${multiplier} 콤보!)` : '')}
           <div class="explanation-text">${explanation}</div>
         </div>`;
     }
@@ -1480,6 +1504,7 @@ function nextQuestion() {
   if (ex.type === 'word_blocks' && State.currentSubQ < ex.subQuestions.length - 1) {
     State.currentSubQ++;
     State.answered = false;
+    State.retrying = false;
     document.getElementById('result-area').innerHTML = '';
     renderWordBlocks(ex);
     return;
