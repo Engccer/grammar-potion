@@ -1898,41 +1898,43 @@ const GRAMMAR_LESSONS = [
         potionColor: "#4fa3c7",
         recipe: [
           {
-            // Section 1) 비교급
+            // Section 1) 비교급 — 워크시트 sub-rule ①②③④ 번호 보존
+            // (① than/개념, ② -er, ③ more[워크시트는 ②로 오타], ④ 불규칙)
             step: 1,
             title: "비교급",
             titleEn: "Comparatives",
-            content: "<strong>비교급</strong>은 서로 다른 <em>두 대상</em>의 공통된 특징을 비교할 때 쓰며, 뒤에 <strong>than</strong>을 붙여 <strong>'~보다 더 ...한/하게'</strong>로 해석합니다.<br><br><strong>① 기본:</strong> 형용사·부사 뒤에 <strong>-er</strong>을 붙입니다.<br><strong>② 3음절 이상:</strong> 앞에 <strong>more</strong>를 씁니다.<br><strong>③ 불규칙:</strong> good → better, bad → worse",
+            content: "<strong>비교급</strong>은 서로 다른 <em>두 대상</em>을 비교하는 표현입니다.<br><br><strong>①</strong> 두 대상의 공통된 특징을 비교할 때 쓰며, 비교급 뒤에 <strong>than</strong>을 써서 <strong>'~보다 더 ...한/하게'</strong>의 뜻으로 씁니다.<br><strong>②</strong> 기본 형태는 형용사·부사 뒤에 <strong>-er</strong>을 붙입니다.<br><strong>③</strong> 3음절 이상의 형용사·부사는 앞에 <strong>more</strong>를 씁니다.<br><strong>④</strong> 불규칙: good → better, bad → worse",
             examples: [
-              { en: "Summer is <u>warmer than</u> winter.", ko: "여름은 겨울보다 더 따뜻합니다.", highlight: "warmer than" },
-              { en: "This book is <u>more interesting than</u> that one.", ko: "이 책은 저 책보다 더 흥미롭습니다.", highlight: "more interesting than" },
-              { en: "Leo runs <u>faster than</u> Sam.", ko: "Leo는 Sam보다 더 빨리 달립니다.", highlight: "faster than" },
-              { en: "① Bikes are <u>cheaper</u> than cars.", ko: "자전거는 자동차보다 더 쌉니다.", highlight: "cheaper" },
-              { en: "① Ted is <u>younger</u> than Olivia.", ko: "Ted는 Olivia보다 더 어립니다.", highlight: "younger" },
-              { en: "① I will arrive <u>earlier</u> than you.", ko: "나는 당신보다 더 일찍 도착할 겁니다.", highlight: "earlier" },
-              { en: "② You are <u>more beautiful</u> than the picture.", ko: "당신은 사진보다 (실물이) 더 아름답습니다.", highlight: "more beautiful" },
-              { en: "② Health is <u>more important</u> than wealth.", ko: "건강은 부보다 더 중요합니다.", highlight: "more important" },
-              { en: "③ Eating fruits is <u>better</u> than eating candies.", ko: "과일을 먹는 것이 사탕을 먹는 것보다 더 낫습니다.", highlight: "better" },
-              { en: "③ The food here is <u>worse</u> than the service.", ko: "이곳의 음식은 서비스보다 나쁩니다.", highlight: "worse" }
+              { en: "① Summer is <u>warmer than</u> winter.", ko: "여름은 겨울보다 더 따뜻합니다.", highlight: "warmer than" },
+              { en: "① This book is <u>more interesting than</u> that one.", ko: "이 책은 저 책보다 더 흥미롭습니다.", highlight: "more interesting than" },
+              { en: "① Leo runs <u>faster than</u> Sam.", ko: "Leo는 Sam보다 더 빨리 달립니다.", highlight: "faster than" },
+              { en: "② Bikes are <u>cheaper</u> than cars.", ko: "자전거는 자동차보다 더 쌉니다.", highlight: "cheaper" },
+              { en: "② Ted is <u>younger</u> than Olivia.", ko: "Ted는 Olivia보다 더 어립니다.", highlight: "younger" },
+              { en: "② I will arrive <u>earlier</u> than you.", ko: "나는 당신보다 더 일찍 도착할 겁니다.", highlight: "earlier" },
+              { en: "③ You are <u>more beautiful</u> than the picture.", ko: "당신은 사진보다 (실물이) 더 아름답습니다.", highlight: "more beautiful" },
+              { en: "③ Health is <u>more important</u> than wealth.", ko: "건강은 부보다 더 중요합니다.", highlight: "more important" },
+              { en: "④ Eating fruits is <u>better</u> than eating candies.", ko: "과일을 먹는 것이 사탕을 먹는 것보다 더 낫습니다.", highlight: "better" },
+              { en: "④ The food here is <u>worse</u> than the service.", ko: "이곳의 음식은 서비스보다 나쁩니다.", highlight: "worse" }
             ],
             audioKey: "recipe_cmp_1"
           },
           {
-            // Section 2) 최상급
+            // Section 2) 최상급 — 워크시트 sub-rule ①②③④ 번호 보존
+            // (① 개념, ② the+-est+in/of, ③ the most, ④ 불규칙)
             step: 2,
             title: "최상급",
             titleEn: "Superlatives",
-            content: "<strong>최상급</strong>은 여러 대상 중 정도가 <em>가장 높은</em> 것을 나타내며 <strong>'가장 ~한/하게'</strong>로 해석합니다. 「<strong>the + 형용사·부사 + -est</strong>」 형태로 쓰고, 뒤에 주로 <strong>in</strong>+장소·범위 또는 <strong>of</strong>+비교 대상을 붙입니다.<br><br><strong>① 기본:</strong> the + <strong>-est</strong><br><strong>② 3음절 이상:</strong> <strong>the most</strong><br><strong>③ 불규칙:</strong> good → best, bad → worst",
+            content: "<strong>최상급</strong>은 여러 대상 중 정도가 <em>가장 높은</em> 것을 나타냅니다.<br><br><strong>①</strong> 여러 대상 중 정도가 가장 높은 것을 나타낼 때 쓰고 <strong>'가장 ~한/하게'</strong>의 뜻입니다.<br><strong>②</strong> 「<strong>the + 형용사·부사 + -est</strong>」 형태로 쓰고, 뒤에 주로 <strong>in</strong>+장소·범위 또는 <strong>of</strong>+비교 대상을 붙입니다.<br><strong>③</strong> 3음절 이상의 형용사·부사는 앞에 <strong>the most</strong>를 씁니다.<br><strong>④</strong> 불규칙: good → best, bad → worst",
             examples: [
-              { en: "Mark is <u>the tallest</u> student in his class.", ko: "Mark는 그의 반에서 가장 키가 큽니다.", highlight: "the tallest" },
-              { en: "Mt. Everest is <u>the highest</u> in the world.", ko: "에베레스트산은 세계에서 가장 높습니다.", highlight: "the highest" },
-              { en: "I like this shirt <u>the most</u>.", ko: "나는 이 셔츠가 가장 좋습니다.", highlight: "the most" },
-              { en: "① Jim is <u>the strongest</u> in the town.", ko: "Jim은 마을에서 가장 힘이 셉니다.", highlight: "the strongest" },
-              { en: "① She is <u>the smartest</u> of all.", ko: "그녀는 모두 중 가장 똑똑합니다.", highlight: "the smartest" },
-              { en: "② Health is <u>the most important</u>.", ko: "건강이 가장 중요합니다.", highlight: "the most important" },
-              { en: "② The red dress is <u>the most expensive</u> of all.", ko: "그 빨간 드레스는 모든 것 중에서 가장 비쌉니다.", highlight: "the most expensive" },
-              { en: "③ Love is <u>the best</u>.", ko: "사랑이 최고입니다.", highlight: "the best" },
-              { en: "③ The weather was <u>the worst</u> in the morning.", ko: "아침에는 날씨가 최악이었습니다.", highlight: "the worst" }
+              { en: "① Mark is <u>the tallest</u> student in his class.", ko: "Mark는 그의 반에서 가장 키가 큽니다.", highlight: "the tallest" },
+              { en: "① Mt. Everest is <u>the highest</u> in the world.", ko: "에베레스트산은 세계에서 가장 높습니다.", highlight: "the highest" },
+              { en: "① I like this shirt <u>the most</u>.", ko: "나는 이 셔츠가 가장 좋습니다.", highlight: "the most" },
+              { en: "② Jim is <u>the strongest</u> in the town.", ko: "Jim은 마을에서 가장 힘이 셉니다.", highlight: "the strongest" },
+              { en: "② She is <u>the smartest</u> of all.", ko: "그녀는 모두 중 가장 똑똑합니다.", highlight: "the smartest" },
+              { en: "③ Health is <u>the most important</u>.", ko: "건강이 가장 중요합니다.", highlight: "the most important" },
+              { en: "③ The red dress is <u>the most expensive</u> of all.", ko: "그 빨간 드레스는 모든 것 중에서 가장 비쌉니다.", highlight: "the most expensive" },
+              { en: "④ Love is <u>the best</u>.", ko: "사랑이 최고입니다.", highlight: "the best" },
+              { en: "④ The weather was <u>the worst</u> in the morning.", ko: "아침에는 날씨가 최악이었습니다.", highlight: "the worst" }
             ],
             audioKey: "recipe_cmp_2"
           }
