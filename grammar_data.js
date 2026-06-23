@@ -1874,5 +1874,475 @@ const GRAMMAR_LESSONS = [
         ]
       }
     ]
+  },
+
+  // ===== LESSON 5: 비교급과 최상급 & There is/are =====
+  {
+    id: 5,
+    title: "Grammar Potion Lab",
+    subtitle: "비교급과 최상급 & There is/are",
+    introLines: [
+      "Welcome back, master apprentice! Two grand potions await you today.",
+      "오늘은 사물을 견주어 보는 물약과, 무언가가 '있다'를 밝히는 물약을 만듭니다.",
+      "🧪 Potion of Comparison (비교의 물약) — 비교급과 최상급의 비밀",
+      "⚗️ Potion of Presence (존재의 물약) — There is/are의 힘",
+      "레시피를 배우고, 퀴즈를 풀어 물약을 완성하세요!"
+    ],
+    chapters: [
+      // ===== CHAPTER 1: 비교급과 최상급 =====
+      {
+        id: 1,
+        name: "Potion of Comparison",
+        nameKo: "비교의 물약",
+        topic: "비교급과 최상급",
+        potionColor: "#4fa3c7",
+        recipe: [
+          {
+            // Section 1) 비교급
+            step: 1,
+            title: "비교급",
+            titleEn: "Comparatives",
+            content: "<strong>비교급</strong>은 서로 다른 <em>두 대상</em>의 공통된 특징을 비교할 때 쓰며, 뒤에 <strong>than</strong>을 붙여 <strong>'~보다 더 ...한/하게'</strong>로 해석합니다.<br><br><strong>① 기본:</strong> 형용사·부사 뒤에 <strong>-er</strong>을 붙입니다.<br><strong>② 3음절 이상:</strong> 앞에 <strong>more</strong>를 씁니다.<br><strong>③ 불규칙:</strong> good → better, bad → worse",
+            examples: [
+              { en: "Summer is <u>warmer than</u> winter.", ko: "여름은 겨울보다 더 따뜻합니다.", highlight: "warmer than" },
+              { en: "This book is <u>more interesting than</u> that one.", ko: "이 책은 저 책보다 더 흥미롭습니다.", highlight: "more interesting than" },
+              { en: "Leo runs <u>faster than</u> Sam.", ko: "Leo는 Sam보다 더 빨리 달립니다.", highlight: "faster than" },
+              { en: "① Bikes are <u>cheaper</u> than cars.", ko: "자전거는 자동차보다 더 쌉니다.", highlight: "cheaper" },
+              { en: "① Ted is <u>younger</u> than Olivia.", ko: "Ted는 Olivia보다 더 어립니다.", highlight: "younger" },
+              { en: "① I will arrive <u>earlier</u> than you.", ko: "나는 당신보다 더 일찍 도착할 겁니다.", highlight: "earlier" },
+              { en: "② You are <u>more beautiful</u> than the picture.", ko: "당신은 사진보다 (실물이) 더 아름답습니다.", highlight: "more beautiful" },
+              { en: "② Health is <u>more important</u> than wealth.", ko: "건강은 부보다 더 중요합니다.", highlight: "more important" },
+              { en: "③ Eating fruits is <u>better</u> than eating candies.", ko: "과일을 먹는 것이 사탕을 먹는 것보다 더 낫습니다.", highlight: "better" },
+              { en: "③ The food here is <u>worse</u> than the service.", ko: "이곳의 음식은 서비스보다 나쁩니다.", highlight: "worse" }
+            ],
+            audioKey: "recipe_cmp_1"
+          },
+          {
+            // Section 2) 최상급
+            step: 2,
+            title: "최상급",
+            titleEn: "Superlatives",
+            content: "<strong>최상급</strong>은 여러 대상 중 정도가 <em>가장 높은</em> 것을 나타내며 <strong>'가장 ~한/하게'</strong>로 해석합니다. 「<strong>the + 형용사·부사 + -est</strong>」 형태로 쓰고, 뒤에 주로 <strong>in</strong>+장소·범위 또는 <strong>of</strong>+비교 대상을 붙입니다.<br><br><strong>① 기본:</strong> the + <strong>-est</strong><br><strong>② 3음절 이상:</strong> <strong>the most</strong><br><strong>③ 불규칙:</strong> good → best, bad → worst",
+            examples: [
+              { en: "Mark is <u>the tallest</u> student in his class.", ko: "Mark는 그의 반에서 가장 키가 큽니다.", highlight: "the tallest" },
+              { en: "Mt. Everest is <u>the highest</u> in the world.", ko: "에베레스트산은 세계에서 가장 높습니다.", highlight: "the highest" },
+              { en: "I like this shirt <u>the most</u>.", ko: "나는 이 셔츠가 가장 좋습니다.", highlight: "the most" },
+              { en: "① Jim is <u>the strongest</u> in the town.", ko: "Jim은 마을에서 가장 힘이 셉니다.", highlight: "the strongest" },
+              { en: "① She is <u>the smartest</u> of all.", ko: "그녀는 모두 중 가장 똑똑합니다.", highlight: "the smartest" },
+              { en: "② Health is <u>the most important</u>.", ko: "건강이 가장 중요합니다.", highlight: "the most important" },
+              { en: "② The red dress is <u>the most expensive</u> of all.", ko: "그 빨간 드레스는 모든 것 중에서 가장 비쌉니다.", highlight: "the most expensive" },
+              { en: "③ Love is <u>the best</u>.", ko: "사랑이 최고입니다.", highlight: "the best" },
+              { en: "③ The weather was <u>the worst</u> in the morning.", ko: "아침에는 날씨가 최악이었습니다.", highlight: "the worst" }
+            ],
+            audioKey: "recipe_cmp_2"
+          }
+        ],
+        exercises: [
+          {
+            id: 1,
+            type: "multiple_choice",
+            question: "빈칸에 들어갈 말로 알맞은 것은?",
+            context: "My backpack is ________ than your backpack.",
+            options: [
+              "① heavy",
+              "② heavier",
+              "③ heavyer",
+              "④ the heavy",
+              "⑤ the heavier"
+            ],
+            answer: 1,
+            explanation: "than이 있으므로 비교급이 필요합니다. heavy는 「자음+y」로 끝나므로 y를 i로 바꾸고 -er을 붙여 heavier가 됩니다. (heavyer는 틀린 철자, the heavier는 최상급 형태로 부적절)",
+            audioKey: "quiz_a_1"
+          },
+          {
+            id: 2,
+            type: "multiple_choice",
+            question: "빈칸에 공통으로 알맞은 것은?",
+            context: "∙ My new phone is ________ than my old one.\n∙ She sings ________ than her sister.",
+            options: [
+              "① well",
+              "② good",
+              "③ best",
+              "④ better",
+              "⑤ more good"
+            ],
+            answer: 3,
+            explanation: "두 빈칸 모두 than이 있어 비교급이 필요합니다. good(좋은)과 well(잘)의 비교급은 모두 불규칙형 better입니다. (more good은 틀린 형태)",
+            audioKey: "quiz_a_2"
+          },
+          {
+            id: 3,
+            type: "multiple_choice",
+            question: "대화의 빈칸에 들어갈 말로 어법상 가장 알맞은 것은?",
+            context: "A: Is Minsu taller than you?\nB: Yes, he is. ________",
+            options: [
+              "① He is tallest student of my class.",
+              "② He is the tallest student in my class.",
+              "③ He is the best tall student of my class.",
+              "④ He is the very tallest student of my class.",
+              "⑤ He is the most tallest student in my class."
+            ],
+            answer: 1,
+            explanation: "최상급에는 앞에 the를 붙이고, 반·범위를 나타낼 때는 in을 씁니다. ① the 없음, ③ best tall(어색), ④ very + 최상급(불가), ⑤ most + tallest(중복) 모두 틀립니다. → the tallest student in my class.",
+            audioKey: "quiz_a_3"
+          },
+          {
+            id: 4,
+            type: "multiple_choice",
+            question: "다음 중 비교급이 올바르게 사용된 문장은?",
+            options: [
+              "① She looks the more tired today.",
+              "② The air was more bad than last week.",
+              "③ Math is the harder than English for me.",
+              "④ This question is more easy than that one.",
+              "⑤ John speaks louder than his brother."
+            ],
+            answer: 4,
+            explanation: "⑤ loud의 비교급 louder + than으로 올바릅니다. ① the more tired(비교급에 the 불필요), ② more bad → worse, ③ the harder(비교급에 the 불필요), ④ more easy → easier 로 고쳐야 합니다.",
+            audioKey: "quiz_a_4"
+          },
+          {
+            id: 5,
+            type: "multiple_choice",
+            question: "다음 중 최상급이 올바르게 사용된 문장은?",
+            options: [
+              "① That movie is the best of the year.",
+              "② They arrived the most earliest of all.",
+              "③ This is the more largest building in the city.",
+              "④ This book is the more interesting of the two.",
+              "⑤ Her dress was the beautifulest one at the party."
+            ],
+            answer: 0,
+            explanation: "① good의 불규칙 최상급 the best + of로 올바릅니다. ② most + earliest(중복), ③ more + largest(중복), ④ the more interesting(최상급 자리에 비교급), ⑤ beautifulest → the most beautiful 로 고쳐야 합니다.",
+            audioKey: "quiz_a_5"
+          },
+          {
+            id: 6,
+            type: "word_blocks",
+            question: "다음 문장의 밑줄 친 부분을 바르게 고쳐 쓰시오.",
+            subQuestions: [
+              {
+                prompt: "(1) He runs <u>the fastest</u> than the other players.",
+                sentence: "the fastest → _____",
+                blocks: ["faster", "fastest", "more fast", "the faster"],
+                answer: ["faster"],
+                explanation: "than이 있으므로 최상급(the fastest)이 아니라 비교급이 와야 합니다. fast의 비교급은 faster입니다."
+              },
+              {
+                prompt: "(2) This restaurant is <u>the more expensive</u> in town.",
+                sentence: "the more expensive → _____",
+                blocks: ["the most expensive", "more expensive", "the expensive", "expensiver"],
+                answer: ["the most expensive"],
+                explanation: "in town(범위)이 있으므로 최상급이 와야 합니다. expensive는 3음절 이상이므로 the most expensive입니다."
+              },
+              {
+                prompt: "(3) My dog is <u>more smarter</u> than my friend's dog.",
+                sentence: "more smarter → _____",
+                blocks: ["smarter", "more smart", "the smartest", "smartest"],
+                answer: ["smarter"],
+                explanation: "more와 -er을 함께 쓰면 비교급 중복입니다. smart는 -er만 붙여 smarter로 씁니다."
+              }
+            ],
+            audioKey: "quiz_a_6"
+          },
+          {
+            id: 7,
+            type: "word_blocks",
+            question: "괄호 안에 주어진 말의 알맞은 형태를 빈칸에 쓰시오.",
+            subQuestions: [
+              {
+                prompt: "(1) I got _____ score in my class. (high)",
+                sentence: "I got _____ score in my class. (high)",
+                blocks: ["the highest", "higher", "highest", "more high"],
+                answer: ["the highest"],
+                explanation: "in my class(범위) + '가장 높은' → 최상급. high는 the highest입니다."
+              },
+              {
+                prompt: "(2) This puzzle is _____ than the last one. (difficult)",
+                sentence: "This puzzle is _____ than the last one. (difficult)",
+                blocks: ["more difficult", "difficulter", "the most difficult", "difficult"],
+                answer: ["more difficult"],
+                explanation: "than이 있으므로 비교급. difficult는 3음절 이상이므로 more difficult입니다."
+              },
+              {
+                prompt: "(3) The weather today is _____ than yesterday. (bad)",
+                sentence: "The weather today is _____ than yesterday. (bad)",
+                blocks: ["worse", "badder", "worst", "more bad"],
+                answer: ["worse"],
+                explanation: "than이 있으므로 비교급. bad의 불규칙 비교급은 worse입니다."
+              }
+            ],
+            audioKey: "quiz_a_7"
+          },
+          {
+            id: 8,
+            type: "multiple_choice",
+            question: "다음 우리말을 영어로 바르게 옮긴 것은?",
+            context: "파란색 상자가 셋 중 제일 크다.",
+            options: [
+              "① The blue box is the biggest in the three.",
+              "② The blue box is the biggest of the three.",
+              "③ The blue box is the most big in the tree.",
+              "④ The blue box is the most biggest of the three.",
+              "⑤ The blue box is the very biggest of the three."
+            ],
+            answer: 1,
+            explanation: "최상급 the biggest + 「of+복수 비교 대상」을 씁니다. ① in the three(of여야 함), ③ most big(big은 -est) + tree(오타), ④ most + biggest(중복), ⑤ very + 최상급(불가) 모두 틀립니다.",
+            audioKey: "quiz_a_8"
+          }
+        ]
+      },
+
+      // ===== CHAPTER 2: There is/are =====
+      {
+        id: 2,
+        name: "Potion of Presence",
+        nameKo: "존재의 물약",
+        topic: "There is/are",
+        potionColor: "#e0913f",
+        recipe: [
+          {
+            // Section 1) 기본 개념
+            step: 1,
+            title: "기본 개념",
+            titleEn: "What is 'There is/are'?",
+            content: "<strong>There is/are</strong>는 <strong>'어떤 사람이나 대상이 있다'</strong>는 사실을 나타내는 표현입니다.",
+            examples: [
+              { en: "<u>There is</u> a book on the table.", ko: "탁자 위에 책 한 권이 있습니다.", highlight: "There is" },
+              { en: "<u>There is</u> a bird in the tree.", ko: "나무에 새 한 마리가 있습니다.", highlight: "There is" },
+              { en: "<u>There are</u> clouds in the sky.", ko: "하늘에 구름이 있습니다.", highlight: "There are" }
+            ],
+            audioKey: "recipe_thr_1"
+          },
+          {
+            // Section 2) There is/are 표현의 기본 규칙
+            step: 2,
+            title: "기본 규칙",
+            titleEn: "Singular vs. Plural",
+            content: "문장에서 <em>주어 역할</em>을 하는 것은 <strong>be동사 뒤의 명사(구)</strong>입니다. 그 명사가 <strong>단수면 is</strong>, <strong>복수면 are</strong>를 씁니다. <strong>water, salt, butter, bread</strong>처럼 셀 수 없는 명사는 <strong>단수</strong>로 취급합니다.",
+            examples: [
+              { en: "There <u>is</u> a computer on the desk.", ko: "책상 위에 컴퓨터 한 대가 있습니다.", highlight: "is" },
+              { en: "There <u>are</u> pictures on the wall.", ko: "벽에 사진들이 있습니다.", highlight: "are" }
+            ],
+            audioKey: "recipe_thr_2"
+          },
+          {
+            // Section 3) There is/are 부정문
+            step: 3,
+            title: "부정문",
+            titleEn: "Negative Sentences",
+            content: "<strong>be동사 뒤에 not</strong>을 붙입니다. be동사와 not은 <strong>축약</strong>할 수 있습니다.",
+            transform: [
+              { before: "is not", after: "isn't" },
+              { before: "are not", after: "aren't" }
+            ],
+            examples: [
+              { en: "There <u>is not</u> a cup on the shelf. = There <u>isn't</u> a cup on the shelf.", ko: "선반 위에 컵이 없습니다.", highlight: "isn't" },
+              { en: "There <u>are not</u> flowers in the garden. = There <u>aren't</u> flowers in the garden.", ko: "정원에 꽃이 없습니다.", highlight: "aren't" }
+            ],
+            audioKey: "recipe_thr_3"
+          },
+          {
+            // Section 4) There is/are 의문문 (워크시트 번호는 3)으로 잘못 매겨져 있어 4)로 정정)
+            step: 4,
+            title: "의문문",
+            titleEn: "Questions",
+            content: "<strong>be동사와 there의 순서를 바꿔</strong> 「<strong>Be동사 + there + 주어 ~?</strong>」로 씁니다.",
+            examples: [
+              { en: "<u>Is there</u> a dog in the backyard?", ko: "뒷마당에 강아지 한 마리가 있나요?", highlight: "Is there" },
+              { en: "<u>Are there</u> children in the playground?", ko: "운동장에 아이들이 있나요?", highlight: "Are there" },
+              { en: "<u>Were there</u> any guests at the party?", ko: "파티에 손님들이 있었나요?", highlight: "Were there" }
+            ],
+            audioKey: "recipe_thr_4"
+          },
+          {
+            // Section 5) There is/are 의문문의 대답 (워크시트 번호는 4)로 잘못 매겨져 있어 5)로 정정)
+            step: 5,
+            title: "의문문의 대답",
+            titleEn: "Answering the Questions",
+            content: "긍정은 「<strong>Yes, there + be동사.</strong>」, 부정은 「<strong>No, there + be동사 + not.</strong>」으로 답합니다. be동사와 not은 줄여 쓸 수 있습니다.",
+            pattern: {
+              question: "Is there a library near your house?",
+              yesAnswer: "Yes, there is.",
+              noAnswer: "No, there isn't."
+            },
+            examples: [
+              { en: "A: <u>Is there</u> a library near your house?", ko: "당신의 집 근처에 도서관이 있나요?", highlight: "Is there" },
+              { en: "B: Yes, there is. / No, there isn't.", ko: "네, 있어요. / 아니요, 없어요.", highlight: "Yes, there is" },
+              { en: "A: <u>Were there</u> any mistakes in my report?", ko: "제 보고서에 실수가 있었나요?", highlight: "Were there" },
+              { en: "B: Yes, there were. / No, there weren't.", ko: "네, 있었어요. / 아니요, 없었어요.", highlight: "Yes, there were" }
+            ],
+            audioKey: "recipe_thr_5"
+          }
+        ],
+        exercises: [
+          {
+            id: 1,
+            type: "multiple_choice",
+            question: "다음 빈칸에 들어갈 말로 알맞지 <em>않은</em> 것은?",
+            context: "There is ________ over there.",
+            options: [
+              "① snow",
+              "② a park",
+              "③ a red car",
+              "④ two cats",
+              "⑤ a large dog"
+            ],
+            answer: 3,
+            explanation: "There is 다음에는 단수 명사나 셀 수 없는 명사가 옵니다. ④ two cats는 복수이므로 There are와 함께 써야 합니다. (① snow는 셀 수 없는 명사로 is와 어울림)",
+            audioKey: "quiz_b_1"
+          },
+          {
+            id: 2,
+            type: "multiple_choice",
+            question: "빈칸에 들어갈 말이 나머지와 <em>다른</em> 하나는?",
+            options: [
+              "① There ________ pandas in the zoo.",
+              "② There ________ some water in the bottle.",
+              "③ There ________ not many books on the shelf.",
+              "④ There ________ a lot of people on the subway.",
+              "⑤ There ________ some students in the library."
+            ],
+            answer: 1,
+            explanation: "② some water는 셀 수 없는 명사라 단수 취급 → is. 나머지 ①③④⑤의 주어(pandas, books, people, students)는 모두 복수이므로 are가 들어갑니다.",
+            audioKey: "quiz_b_2"
+          },
+          {
+            id: 3,
+            type: "multiple_choice",
+            question: "다음 중 어법상 <em>어색한</em> 문장은?",
+            options: [
+              "① Is there butter in the pan?",
+              "② Is there old computers on the desk?",
+              "③ Are there many people at the party?",
+              "④ There is not a cloud in the sky today.",
+              "⑤ There aren't enough chairs for everyone."
+            ],
+            answer: 1,
+            explanation: "② old computers는 복수이므로 Is가 아니라 Are there old computers ~?로 써야 합니다. (① butter는 셀 수 없는 명사라 Is와 어울림)",
+            audioKey: "quiz_b_3"
+          },
+          {
+            id: 4,
+            type: "multiple_choice",
+            question: "밑줄 친 부분이 어법상 <em>어색한</em> 것은?",
+            options: [
+              "① Are there <u>apples</u> at the market?",
+              "② There aren't <u>many students</u> at the gym.",
+              "③ There aren't <u>much cheese</u> on the pizza.",
+              "④ There are <u>some mistakes</u> in the report.",
+              "⑤ There were <u>twenty questions</u> on the exam."
+            ],
+            answer: 2,
+            explanation: "③ cheese는 셀 수 없는 명사이므로 복수 취급하는 aren't와 함께 쓸 수 없습니다. There isn't much cheese on the pizza.로 써야 합니다.",
+            audioKey: "quiz_b_4"
+          },
+          {
+            id: 5,
+            type: "word_blocks",
+            question: "다음 빈칸에 알맞은 be동사를 쓰시오. (현재 시제)",
+            subQuestions: [
+              {
+                prompt: "(1) _____ there an empty seat on the bus?",
+                sentence: "_____ there an empty seat on the bus?",
+                blocks: ["Is", "Are", "Am", "Be"],
+                answer: ["Is"],
+                explanation: "an empty seat(단수)에 대한 의문문이므로 Is there ~?로 씁니다."
+              },
+              {
+                prompt: "(2) There _____ five members in Yuna's family.",
+                sentence: "There _____ five members in Yuna's family.",
+                blocks: ["are", "is", "am", "be"],
+                answer: ["are"],
+                explanation: "five members(복수)가 주어이므로 are를 씁니다."
+              },
+              {
+                prompt: "(3) _____ there problems with your computer?",
+                sentence: "_____ there problems with your computer?",
+                blocks: ["Are", "Is", "Am", "Be"],
+                answer: ["Are"],
+                explanation: "problems(복수)에 대한 의문문이므로 Are there ~?로 씁니다."
+              }
+            ],
+            audioKey: "quiz_b_5"
+          },
+          {
+            id: 6,
+            type: "multiple_choice",
+            question: "다음 질문에 대한 대답으로 알맞은 것은?",
+            context: "Is there a good restaurant around here?",
+            options: [
+              "① Yes, it is.",
+              "② Yes, there is.",
+              "③ No, it isn't.",
+              "④ Yes, there are.",
+              "⑤ No, there aren't."
+            ],
+            answer: 1,
+            explanation: "There is/are 의문문의 대답은 there를 그대로 써서 Yes, there is. / No, there isn't.로 합니다. 단수 의문문(Is there ~?)이므로 ④ there are, ⑤ there aren't도 부적절하고, it으로 받는 ①③도 틀립니다.",
+            audioKey: "quiz_b_6"
+          },
+          {
+            id: 7,
+            type: "word_blocks",
+            question: "괄호 안에서 알맞은 것을 골라 빈칸에 쓰시오.",
+            subQuestions: [
+              {
+                prompt: "(1) Is there _____ near here? (a bank / banks)",
+                sentence: "Is there _____ near here?",
+                blocks: ["a bank", "banks"],
+                answer: ["a bank"],
+                explanation: "Is there(단수)에 대한 질문이므로 단수 명사 a bank를 씁니다."
+              },
+              {
+                prompt: "(2) There were _____ on the wall. (a birthday balloon / birthday balloons)",
+                sentence: "There were _____ on the wall.",
+                blocks: ["birthday balloons", "a birthday balloon"],
+                answer: ["birthday balloons"],
+                explanation: "were(복수)와 함께 쓰이므로 복수 명사 birthday balloons를 씁니다."
+              },
+              {
+                prompt: "(3) There aren't _____ in this city. (a museum / many museums)",
+                sentence: "There aren't _____ in this city.",
+                blocks: ["many museums", "a museum"],
+                answer: ["many museums"],
+                explanation: "aren't(복수 부정)와 함께 쓰이므로 복수 명사 many museums를 씁니다."
+              }
+            ],
+            audioKey: "quiz_b_7"
+          },
+          {
+            id: 8,
+            type: "word_blocks",
+            question: "다음 글의 빈칸에 is와 are 중 알맞은 것을 쓰시오.",
+            context: "There (1)_____ a beautiful park near my house. In the park, there (2)_____ a small lake. There (3)_____ flowers around the lake. Some families are having a picnic in the park.",
+            subQuestions: [
+              {
+                prompt: "(1) There _____ a beautiful park near my house.",
+                sentence: "There _____ a beautiful park near my house.",
+                blocks: ["is", "are"],
+                answer: ["is"],
+                explanation: "a beautiful park(단수)가 주어이므로 is를 씁니다."
+              },
+              {
+                prompt: "(2) In the park, there _____ a small lake.",
+                sentence: "In the park, there _____ a small lake.",
+                blocks: ["is", "are"],
+                answer: ["is"],
+                explanation: "a small lake(단수)가 주어이므로 is를 씁니다."
+              },
+              {
+                prompt: "(3) There _____ flowers around the lake.",
+                sentence: "There _____ flowers around the lake.",
+                blocks: ["are", "is"],
+                answer: ["are"],
+                explanation: "flowers(복수)가 주어이므로 are를 씁니다."
+              }
+            ],
+            audioKey: "quiz_b_8"
+          }
+        ]
+      }
+    ]
   }
 ];
