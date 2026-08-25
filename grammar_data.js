@@ -2346,5 +2346,394 @@ const GRAMMAR_LESSONS = [
         ]
       }
     ]
+  },
+  {
+    id: 6,
+    title: "Grammar Potion Lab",
+    subtitle: "to부정사 & 접속사 that",
+    introLines: [
+      "Welcome back, master apprentice! Two new potions await you today.",
+      "오늘은 동사를 명사로 바꾸는 물약과, 문장과 문장을 이어 붙이는 물약을 만듭니다.",
+      "🧪 Potion of Infinity (무한의 물약) — to부정사의 비밀",
+      "⚗️ Potion of Connection (연결의 물약) — 접속사 that의 힘",
+      "레시피를 배우고, 퀴즈를 풀어 물약을 완성하세요!"
+    ],
+    chapters: [
+      // ===== CHAPTER 1: to부정사 =====
+      {
+        id: 1,
+        name: "Potion of Infinity",
+        nameKo: "무한의 물약",
+        topic: "to부정사",
+        potionColor: "#5fb0a0",
+        recipe: [
+          {
+            // Section 1) 기본 개념
+            step: 1,
+            title: "기본 개념",
+            titleEn: "What is a To-Infinitive?",
+            content: "<strong>to부정사</strong>는 「<strong>to + 동사원형</strong>」의 형태로 쓰고, 문장 안에서 <strong>명사, 형용사, 부사</strong>의 역할을 합니다.<br><br>to부정사만을 <em>목적어</em>로 취하는 동사로는 <strong>want, hope, decide, plan</strong> 등이 있습니다.",
+            examples: [
+              { en: "I want <u>to play</u> soccer.", ko: "나는 축구를 하고 싶다.", highlight: "to play" },
+              { en: "She hopes <u>to become</u> a doctor.", ko: "그녀는 의사가 되기를 희망한다.", highlight: "to become" },
+              { en: "We plan <u>to watch</u> a movie tonight.", ko: "우리는 오늘 밤 영화를 보려고 계획하고 있다.", highlight: "to watch" }
+            ],
+            audioKey: "recipe_inf_1"
+          },
+          {
+            // Section 2) to부정사(명사 역할) — sub-rule ①②③ 번호 보존
+            // (① 주어, ② 목적어, ③ 보어)
+            step: 2,
+            title: "to부정사(명사 역할)",
+            titleEn: "To-Infinitives as Nouns",
+            content: "to부정사는 문장에서 <strong>명사</strong>로 쓰일 수 있습니다. 해석은 <strong>'~하는 것', '~하기'</strong> 등으로 합니다.<br><br><strong>①</strong> <strong>주어</strong>로 쓰이는 to부정사<br><strong>②</strong> <strong>목적어</strong>로 쓰이는 to부정사<br><strong>③</strong> <strong>보어</strong>로 쓰이는 to부정사",
+            examples: [
+              { en: "<u>To cook</u> can be a fun activity.", ko: "요리하는 것은 즐거운 활동이 될 수 있습니다.", highlight: "To cook" },
+              { en: "My dream is <u>to live</u> a happy life.", ko: "내 꿈은 행복한 삶을 사는 것입니다.", highlight: "to live" },
+              { en: "① <u>To watch</u> dramas is fun.", ko: "드라마를 보는 것은 재밌습니다.", highlight: "To watch" },
+              { en: "① <u>To help</u> others brings happiness.", ko: "다른 사람들을 돕는 것은 행복을 가져다 줍니다.", highlight: "To help" },
+              { en: "① <u>To wear</u> a helmet can save your life.", ko: "헬멧을 쓰는 것은 당신의 목숨을 구할 수 있습니다.", highlight: "To wear" },
+              { en: "② I love <u>to play</u> the guitar.", ko: "나는 기타 치는 것을 정말 좋아합니다.", highlight: "to play" },
+              { en: "② They decided <u>to clean</u> the room.", ko: "그들은 방을 청소하기로 결정했습니다.", highlight: "to clean" },
+              { en: "② Kate wanted <u>to write</u> a book.", ko: "Kate는 책을 쓰고 싶었습니다.", highlight: "to write" },
+              { en: "③ My dream is <u>to write</u> a book.", ko: "내 꿈은 책을 쓰는 것이다.", highlight: "to write" },
+              { en: "③ His favorite hobby is <u>to draw</u> pictures.", ko: "그가 가장 좋아하는 취미는 그림을 그리는 것이다.", highlight: "to draw" },
+              { en: "③ Their plan is <u>to go</u> on a trip next summer.", ko: "그들의 계획은 내년 여름에 여행을 가는 것이다.", highlight: "to go" }
+            ],
+            audioKey: "recipe_inf_2"
+          }
+        ],
+        exercises: [
+          {
+            id: 1,
+            type: "word_blocks",
+            question: "밑줄 친 부분의 역할을 고르시오.",
+            subQuestions: [
+              {
+                prompt: "(1) I like <u>to read</u> books in my free time.",
+                sentence: "to read의 역할 → _____",
+                blocks: ["주어", "목적어", "보어"],
+                answer: ["목적어"],
+                explanation: "like(좋아하다)의 대상이 to read books이므로 동사의 목적어로 쓰인 to부정사입니다."
+              },
+              {
+                prompt: "(2) <u>To be</u> kind to your friends is important.",
+                sentence: "To be의 역할 → _____",
+                blocks: ["주어", "목적어", "보어"],
+                answer: ["주어"],
+                explanation: "To be kind to your friends가 문장 맨 앞에서 '~하는 것은'으로 해석되므로 주어입니다."
+              },
+              {
+                prompt: "(3) My goal is <u>to become</u> a doctor.",
+                sentence: "to become의 역할 → _____",
+                blocks: ["주어", "목적어", "보어"],
+                answer: ["보어"],
+                explanation: "be동사 is 뒤에서 주어 My goal을 설명하므로 보어로 쓰인 to부정사입니다."
+              }
+            ],
+            audioKey: "quiz_a_1"
+          },
+          {
+            id: 2,
+            type: "multiple_choice",
+            question: "빈칸에 들어갈 말로 알맞지 <em>않은</em> 것은?",
+            context: "We ________ to go camping this weekend.",
+            options: [
+              "① planned",
+              "② finished",
+              "③ hoped",
+              "④ wanted",
+              "⑤ decided"
+            ],
+            answer: 1,
+            explanation: "plan, hope, want, decide는 to부정사를 목적어로 취하지만, finish는 to부정사를 목적어로 쓰지 않습니다. (finish는 동명사 -ing를 목적어로 취함)",
+            audioKey: "quiz_a_2"
+          },
+          {
+            id: 3,
+            type: "multiple_choice",
+            question: "다음 중 어법상 올바른 문장은?",
+            options: [
+              "① She loves play the piano.",
+              "② He decided staying home.",
+              "③ They plan joining the tennis club.",
+              "④ Did she finish to washing the dishes?",
+              "⑤ I don't want to eat spaghetti for lunch."
+            ],
+            answer: 4,
+            explanation: "⑤ want + to부정사(to eat)로 올바릅니다. ① loves to play, ② decided to stay, ③ plan to join으로 써야 하고, ④ finish 뒤에는 to부정사를 쓸 수 없습니다(finish washing).",
+            audioKey: "quiz_a_3"
+          },
+          {
+            id: 4,
+            type: "multiple_choice",
+            question: "밑줄 친 to의 쓰임이 나머지와 <em>다른</em> 하나는?",
+            options: [
+              "① Emma is kind <u>to</u> everyone.",
+              "② The store is open from 9 <u>to</u> 6.",
+              "③ They went <u>to</u> Paris last summer.",
+              "④ I decided <u>to</u> go to the concert.",
+              "⑤ She walked <u>to</u> school yesterday."
+            ],
+            answer: 3,
+            explanation: "④ to go는 「to + 동사원형」의 to부정사입니다. 나머지 ①②③⑤의 to는 뒤에 명사가 와서 '~에게, ~까지, ~로'를 뜻하는 전치사입니다.",
+            audioKey: "quiz_a_4"
+          },
+          {
+            id: 5,
+            type: "multiple_choice",
+            question: "다음 중 밑줄 친 to부정사의 쓰임이 <보기>와 같은 것은?",
+            context: "<보기> His hope is <u>to have</u> a pet.",
+            options: [
+              "① He likes <u>to ask</u> questions.",
+              "② Our dream is <u>to go</u> to space.",
+              "③ You need <u>to be</u> more careful.",
+              "④ <u>To swim</u> alone can be dangerous.",
+              "⑤ I hope <u>to hear</u> good news from you."
+            ],
+            answer: 1,
+            explanation: "<보기>의 to have는 be동사 뒤에서 주어를 설명하는 보어입니다. ② is to go도 보어입니다. ①③⑤는 목적어, ④는 주어로 쓰였습니다.",
+            audioKey: "quiz_a_5"
+          },
+          {
+            id: 6,
+            type: "multiple_choice",
+            question: "밑줄 친 부분의 역할이 같은 것끼리 짝지어진 것은?",
+            options: [
+              "① His job is <u>to drive</u> buses. / <u>To eat</u> healthy is important.",
+              "② Does he love <u>to solve</u> puzzles? / <u>To read</u> webtoons is my hobby.",
+              "③ <u>To learn</u> about history is fun. / Do you plan <u>to go</u> to the concert?",
+              "④ I want <u>to do</u> well on the exam. / The boy's dream is <u>to win</u> a gold medal.",
+              "⑤ My sister hopes <u>to win</u> the song contest. / What do you want <u>to say</u>?"
+            ],
+            answer: 4,
+            explanation: "⑤는 둘 다 동사(hopes, want)의 목적어입니다. ① 보어 / 주어, ② 목적어 / 주어, ③ 주어 / 목적어, ④ 목적어 / 보어로 서로 다릅니다.",
+            audioKey: "quiz_a_6"
+          },
+          {
+            id: 7,
+            type: "multiple_choice",
+            question: "밑줄 친 말 대신 괄호 안에 주어진 말로 바꿔 쓸 수 <em>없는</em> 것은?",
+            options: [
+              "① I <u>hope</u> to see you again. (want)",
+              "② She <u>wants</u> to take a cooking class. (decides)",
+              "③ They didn't <u>like</u> to go to bed early. (enjoy)",
+              "④ Did you <u>decide</u> to buy the new phone? (plan)",
+              "⑤ He <u>plans</u> to go to the library tomorrow. (hopes)"
+            ],
+            answer: 2,
+            explanation: "enjoy는 to부정사를 목적어로 취하지 않으므로 to go 앞에 쓸 수 없습니다. want, decide, plan, hope는 모두 to부정사를 목적어로 취합니다.",
+            audioKey: "quiz_a_7"
+          },
+          {
+            id: 8,
+            type: "word_blocks",
+            question: "우리말과 의미가 같도록 빈칸에 알맞은 말을 <보기>에서 골라 문장을 완성하시오.",
+            context: "<보기> hope - ride / plan - go / want - take",
+            subQuestions: [
+              {
+                prompt: "(1) 친구와 나는 이번 주말에 놀이동산에 갈 계획이다.",
+                sentence: "My friends and I _____ _____ _____ to the amusement park.",
+                blocks: ["plan", "to", "go", "hope", "want"],
+                answer: ["plan", "to", "go"],
+                explanation: "'~할 계획이다'는 plan + to부정사 → plan to go."
+              },
+              {
+                prompt: "(2) 우리는 롤러코스터 타기를 희망한다.",
+                sentence: "We _____ _____ _____ the roller coaster.",
+                blocks: ["hope", "to", "ride", "plan", "take"],
+                answer: ["hope", "to", "ride"],
+                explanation: "'~하기를 희망한다'는 hope + to부정사 → hope to ride."
+              },
+              {
+                prompt: "(3) 우리는 사진을 많이 찍고 싶다.",
+                sentence: "We _____ _____ _____ lots of pictures.",
+                blocks: ["want", "to", "take", "hope", "ride"],
+                answer: ["want", "to", "take"],
+                explanation: "'~하고 싶다'는 want + to부정사 → want to take."
+              }
+            ],
+            audioKey: "quiz_a_8"
+          }
+        ]
+      },
+
+      // ===== CHAPTER 2: 접속사 that =====
+      {
+        id: 2,
+        name: "Potion of Connection",
+        nameKo: "연결의 물약",
+        topic: "접속사 that",
+        potionColor: "#c77dd6",
+        recipe: [
+          {
+            // Section 1) 접속사의 기본 개념
+            step: 1,
+            title: "접속사의 기본 개념",
+            titleEn: "What is a Conjunction?",
+            content: "<strong>접속사</strong>란 말을 서로 이어주는 <em>접착제</em>와 같은 역할을 합니다. 접속사는 <strong>단어와 단어, 구와 구, 절과 절</strong>을 이어줍니다.",
+            examples: [
+              { en: "I will have apples <u>or</u> bananas for lunch.", ko: "나는 사과나 바나나를 점심으로 먹을 것이다.", highlight: "or" },
+              { en: "She is good at playing tennis <u>and</u> drawing pictures.", ko: "그녀는 테니스 치기와 그림 그리기를 잘합니다.", highlight: "and" }
+            ],
+            audioKey: "recipe_that_1"
+          },
+          {
+            // Section 2) 접속사 that (that절의 역할 + that 생략 모두 포함)
+            step: 2,
+            title: "접속사 that",
+            titleEn: "The Conjunction 'that'",
+            content: "<strong>that</strong>은 접속사로 <strong>절과 절</strong>을 이어줍니다. 해석은 <strong>'~라는 것'</strong>으로 합니다. 접속사 that이 포함된 절을 <strong>that절</strong>이라고 하고, that절은 문장 안에서 <em>명사 역할</em>을 하며 <strong>목적어, 보어</strong>로 사용됩니다.<br><br>동사 뒤의 that절은 동사의 <strong>목적어</strong> 역할을 하며, 이때 <strong>that은 생략할 수 있습니다</strong>.",
+            examples: [
+              { en: "We know <u>that</u> the sun rises in the east.", ko: "우리는 태양이 동쪽에서 뜨는 것을 알고 있다.", highlight: "that" },
+              { en: "Good news is <u>that</u> Bryan finally got a job.", ko: "좋은 소식은 Bryan이 마침내 취직을 했다는 것입니다.", highlight: "that" },
+              { en: "I believe <u>(that)</u> Mr. Kim is the best teacher in our school.", ko: "나는 김 선생님이 우리 학교에서 최고의 선생님이라고 믿습니다.", highlight: "(that)" },
+              { en: "We think <u>(that)</u> he is lying.", ko: "우리는 그가 거짓말을 하고 있다고 생각합니다.", highlight: "(that)" },
+              { en: "I guess <u>(that)</u> Henry is about 20 years old.", ko: "나는 Henry가 20살 쯤이라고 추측합니다.", highlight: "(that)" },
+              { en: "They heard <u>(that)</u> the scientist won a Nobel Prize.", ko: "그들은 그 과학자가 노벨상을 수상했다는 것을 들었습니다.", highlight: "(that)" }
+            ],
+            audioKey: "recipe_that_2"
+          }
+        ],
+        exercises: [
+          {
+            id: 1,
+            type: "word_blocks",
+            question: "빈칸에 공통으로 들어갈 말을 쓰시오.",
+            subQuestions: [
+              {
+                prompt: "∙ I think _____ swimming is a good exercise.<br>∙ Do you guess _____ he will like the gift?",
+                sentence: "I think _____ swimming is a good exercise. / Do you guess _____ he will like the gift?",
+                blocks: ["that", "what", "this", "to"],
+                answer: ["that", "that"],
+                allowReuse: true,
+                explanation: "think, guess 뒤에 절(주어+동사)이 이어지므로 절과 절을 잇는 접속사 that이 공통으로 들어갑니다."
+              }
+            ],
+            audioKey: "quiz_b_1"
+          },
+          {
+            id: 2,
+            type: "multiple_choice",
+            question: "다음 중 밑줄 친 that이 접속사로 쓰인 문장은?",
+            options: [
+              "① Everybody knows about <u>that</u>.",
+              "② Who is <u>that</u> boy next to Mina?",
+              "③ Do you see <u>that</u> bird in the tree?",
+              "④ He thinks <u>that</u> the plan is very good.",
+              "⑤ <u>That</u> cute puppy is playing with a ball."
+            ],
+            answer: 3,
+            explanation: "④ thinks 뒤에 절(the plan is very good)이 이어지므로 접속사 that입니다. ①은 대명사 '그것', ②③⑤는 명사 앞에서 '저 ~'를 뜻하는 지시형용사입니다.",
+            audioKey: "quiz_b_2"
+          },
+          {
+            id: 3,
+            type: "multiple_choice",
+            question: "빈칸에 들어갈 말로 알맞지 <em>않은</em> 것은?",
+            context: "Do you think that ________?",
+            options: [
+              "① the best movie",
+              "② she will join us",
+              "③ they know the news",
+              "④ he is telling the truth",
+              "⑤ we can finish the work"
+            ],
+            answer: 0,
+            explanation: "접속사 that 뒤에는 주어와 동사를 갖춘 절이 와야 합니다. ① the best movie는 명사구라 동사가 없으므로 올 수 없습니다.",
+            audioKey: "quiz_b_3"
+          },
+          {
+            id: 4,
+            type: "multi_select",
+            question: "다음 대화의 밑줄 친 that과 쓰임이 같은 것을 <em>모두</em> 고르시오.",
+            context: "A: Did you hear <u>that</u> the team won the game?\nB: Yes, Alex told me about that.",
+            options: [
+              "① We didn't know about <u>that</u>.",
+              "② He said <u>that</u> he had a headache.",
+              "③ <u>That</u> shirt looks very comfortable.",
+              "④ Can you believe <u>that</u> the story is real?",
+              "⑤ She doesn't like horror movies <u>that</u> much."
+            ],
+            answers: [1, 3],
+            explanations: [
+              "① 대명사 '그것' (✗)",
+              "② said 뒤의 절을 이끄는 접속사 that (✓)",
+              "③ 명사 shirt를 꾸미는 지시형용사 '저' (✗)",
+              "④ believe 뒤의 절을 이끄는 접속사 that (✓)",
+              "⑤ '그렇게, 그 정도로'를 뜻하는 부사 (✗)"
+            ],
+            audioKey: "quiz_b_4"
+          },
+          {
+            id: 5,
+            type: "multiple_choice",
+            question: "밑줄 친 that의 쓰임이 나머지와 <em>다른</em> 하나는?",
+            options: [
+              "① <u>That</u> is my favorite book.",
+              "② Can you believe <u>that</u> story?",
+              "③ Do you see <u>that</u> car over there?",
+              "④ <u>That</u> jacket is too small for you.",
+              "⑤ I hope <u>that</u> he will get better soon."
+            ],
+            answer: 4,
+            explanation: "⑤ hope 뒤에 절(he will get better soon)이 이어지므로 접속사 that입니다. ①은 대명사, ②③④는 명사 앞의 지시형용사로 모두 '저것/저 ~'를 가리킵니다.",
+            audioKey: "quiz_b_5"
+          },
+          {
+            id: 6,
+            type: "multiple_choice",
+            question: "다음 중 빈칸에 that을 쓸 수 <em>없는</em> 문장은?",
+            options: [
+              "① He wants ________ visit there again.",
+              "② I didn't know ________ you were sick.",
+              "③ She believes ________ her children are smart.",
+              "④ Do they believe ________ he is a good player?",
+              "⑤ I heard ________ you're interested in science."
+            ],
+            answer: 0,
+            explanation: "① wants 뒤에 동사원형 visit이 바로 오므로 to부정사의 to가 들어가야 합니다(wants to visit). 나머지는 모두 뒤에 절이 이어져 접속사 that을 쓸 수 있습니다.",
+            audioKey: "quiz_b_6"
+          },
+          {
+            id: 7,
+            type: "multiple_choice",
+            question: "다음 중 밑줄 친 that을 생략할 수 <em>없는</em> 것은?",
+            options: [
+              "① I think <u>that</u> the music is too loud.",
+              "② Did you see <u>that</u> movie last night?",
+              "③ They thought <u>that</u> the party was fun.",
+              "④ She hopes <u>that</u> the rain will stop soon.",
+              "⑤ Do you know <u>that</u> today is Jimin's birthday?"
+            ],
+            answer: 1,
+            explanation: "② that movie의 that은 명사를 꾸미는 지시형용사 '저'라서 생략하면 뜻이 달라집니다. ①③④⑤는 동사 뒤 목적어 절을 이끄는 접속사 that이라 생략할 수 있습니다.",
+            audioKey: "quiz_b_7"
+          },
+          {
+            id: 8,
+            type: "word_blocks",
+            question: "다음 우리말을 영어로 옮길 때 빈칸에 알맞은 말을 쓰시오.",
+            subQuestions: [
+              {
+                prompt: "(1) 그는 모든 것이 좋아질 거라고 생각한다.",
+                sentence: "_____ _____ _____ everything will be okay.",
+                blocks: ["He", "thinks", "that", "think", "what"],
+                answer: ["He", "thinks", "that"],
+                explanation: "주어 He(3인칭 단수)에 맞춰 thinks, 그 뒤에 절을 이끄는 접속사 that → He thinks that."
+              },
+              {
+                prompt: "(2) 나는 우리가 곧 만날 수 있다고 믿는다.",
+                sentence: "_____ _____ _____ we can meet soon.",
+                blocks: ["I", "believe", "that", "believes", "what"],
+                answer: ["I", "believe", "that"],
+                explanation: "주어 I 뒤에 believe, 그 뒤에 절을 이끄는 접속사 that → I believe that."
+              }
+            ],
+            audioKey: "quiz_b_8"
+          }
+        ]
+      }
+    ]
   }
 ];
