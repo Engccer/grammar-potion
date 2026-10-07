@@ -1226,7 +1226,7 @@ function loadExercise() {
     renderWordBlocks(ex);
   }
 
-  announce(`문제 ${State.currentExIndex + 1}: ${ex.question.replace(/<[^>]+>/g, '')}`);
+  announce(`문제 ${State.currentExIndex + 1}: ${ex.question.replace(/<\/?[a-zA-Z][^>]*>/g, '')}`);
 }
 
 // --- Multiple Choice ---
@@ -1355,6 +1355,7 @@ function renderWordBlocks(ex) {
   let qHtml = `<div class="question-label">Q${State.currentExIndex + 1}</div>`;
   qHtml += `<div class="question-text">${ex.question}</div>`;
   if (ex.context) qHtml += `<div class="context-text">${ex.context}</div>`;
+  if (ex.contextHint) qHtml += `<div style="font-size:0.85rem;color:var(--text-dim);margin-top:4px">${ex.contextHint}</div>`;
   qCard.innerHTML = qHtml;
 
   const optArea = document.getElementById('options-area');
