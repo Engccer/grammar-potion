@@ -15,6 +15,7 @@ Word Bomb 통합 앱과 동일 패턴:
 |------|---------|------|------|
 | L1 | ElevenLabs v3 | Seojin | MP3 (audio/mpeg) |
 | L2 | ElevenLabs v3 | Seojin | MP3 (audio/mpeg) |
+| L7 | Gemini TTS | Kore | MP3 (audio/mpeg) |
 
 두 레슨 모두 Seojin(`BaW4Cx7nYOh1XNVQBrK2`) 보이스로 통일. 한국어 중심 나레이션, intro는 영어+한국어 혼합. 이전 Gemini Kore WAV 원본은 `audio/L1-gemini-backup/`에 보관.
 

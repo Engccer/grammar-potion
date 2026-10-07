@@ -2735,5 +2735,443 @@ const GRAMMAR_LESSONS = [
         ]
       }
     ]
+  },
+  // ===== LESSON 7: to부정사(부사 역할) & 시간의 부사절 =====
+  {
+    id: 7,
+    title: "Grammar Potion Lab",
+    subtitle: "to부정사(부사 역할) & 시간의 부사절",
+    introLines: [
+      "Welcome back, master apprentice! Two new potions are bubbling today.",
+      "오늘은 문장에 이유와 목적을 더하는 물약과, 시간을 더하는 물약을 만듭니다.",
+      "🧪 Potion of Purpose (목적의 물약): to부정사의 부사 역할",
+      "⏳ Potion of Time (시간의 물약): 시간의 부사절 when, before, after",
+      "레시피를 배우고, 퀴즈를 풀어 물약을 완성하세요!"
+    ],
+    chapters: [
+      // ===== CHAPTER 1: to부정사(부사 역할) =====
+      {
+        id: 1,
+        name: "Potion of Purpose",
+        nameKo: "목적의 물약",
+        topic: "to부정사(부사 역할)",
+        potionColor: "#e0a050",
+        recipe: [
+          {
+            // Section 1) 기본 개념
+            step: 1,
+            title: "기본 개념",
+            titleEn: "To-Infinitives as Adverbs",
+            content: "<strong>부사</strong>는 문장 내에서 동사, 형용사, 다른 부사, 또는 문장 전체의 의미를 더해주는 역할을 합니다. to부정사는 문장 안에서 <strong>‘부사’</strong>로 쓰일 수 있으며 <strong>‘~하기 위해’, ‘~해서’, ‘~하기에’</strong> 등으로 해석합니다.",
+            examples: [
+              { en: "I got up early <u>to prepare</u> breakfast.", ko: "나는 아침 식사를 준비하기 위해 일찍 일어났습니다.", highlight: "to prepare" },
+              { en: "<u>To learn</u> more, I ask questions.", ko: "더 많이 배우기 위해, 저는 질문을 합니다.", highlight: "To learn" }
+            ],
+            audioKey: "recipe_adv_1"
+          },
+          {
+            // Section 2) 목적을 나타내는 to부정사
+            step: 2,
+            title: "목적을 나타내는 to부정사",
+            titleEn: "Purpose",
+            content: "행동이나 상황의 <strong>목적</strong>을 나타낼 때 쓰고, <strong>‘~하기 위해서’</strong>로 해석합니다.",
+            examples: [
+              { en: "We recycle <u>to reduce</u> waste.", ko: "우리는 쓰레기를 줄이기 위해 재활용합니다.", highlight: "to reduce" },
+              { en: "<u>To stay</u> healthy, eat fruits.", ko: "건강을 유지하기 위해, 과일을 드세요.", highlight: "To stay" }
+            ],
+            audioKey: "recipe_adv_2"
+          },
+          {
+            // Section 3) 이유, 원인을 나타내는 to부정사
+            step: 3,
+            title: "이유, 원인을 나타내는 to부정사",
+            titleEn: "Reason and Cause",
+            content: "<strong>감정의 원인</strong>을 나타낼 때 쓰고, <strong>‘~해서’, ‘~하기 때문에’</strong>로 해석합니다.",
+            examples: [
+              { en: "I’m so glad <u>to meet</u> you.", ko: "당신을 만나서 정말 기뻐요.", highlight: "to meet" },
+              { en: "They were excited <u>to see</u> the singer in person.", ko: "그들은 그 가수를 직접 봐서 신났습니다.", highlight: "to see" }
+            ],
+            audioKey: "recipe_adv_3"
+          },
+          {
+            // Section 4) 결과를 나타내는 to부정사
+            step: 4,
+            title: "결과를 나타내는 to부정사",
+            titleEn: "Result",
+            content: "행동 이후에 <strong>결과</strong>로 일어난 일을 나타낼 때 쓰고 <strong>‘(…해서) ~하다’</strong>로 해석합니다.",
+            examples: [
+              { en: "The boy grew up <u>to be</u> a great musician.", ko: "그 소년은 자라서 훌륭한 음악가가 되었습니다.", highlight: "to be" },
+              { en: "Greg lived <u>to be</u> ninety.", ko: "Greg는 90살까지 살았습니다.", highlight: "to be" }
+            ],
+            audioKey: "recipe_adv_4"
+          },
+          {
+            // Section 5) 형용사를 수식하는 to부정사
+            step: 5,
+            title: "형용사를 수식하는 to부정사",
+            titleEn: "Modifying Adjectives",
+            content: "<strong>형용사 뒤</strong>에서 형용사의 의미를 구체적으로 한정할 때 쓰고, <strong>‘~하기에’</strong>로 해석합니다.",
+            examples: [
+              { en: "The quiz is fun <u>to solve</u>.", ko: "그 퀴즈는 풀기에 재미있다.", highlight: "to solve" },
+              { en: "The question was difficult <u>to answer</u>.", ko: "그 질문은 대답하기에 어려웠다.", highlight: "to answer" }
+            ],
+            audioKey: "recipe_adv_5"
+          }
+        ],
+        exercises: [
+          {
+            id: 1,
+            type: "multiple_choice",
+            question: "대화의 빈칸에 들어갈 동사 play의 형태로 알맞은 것은?",
+            context: "A: Why did they go to the park?<br>B: They went there ________ soccer.",
+            options: [
+              "① play",
+              "② plays",
+              "③ to play",
+              "④ played",
+              "⑤ to playing"
+            ],
+            answer: 2,
+            explanation: "Why로 공원에 간 이유를 물었으므로 목적을 나타내는 to부정사 「to + 동사원형」을 씁니다. to play soccer는 '축구를 하기 위해'라는 뜻입니다. ⑤ to playing은 to 뒤에 동사원형이 아니라서 틀립니다.",
+            audioKey: "quiz_a_1"
+          },
+          {
+            id: 2,
+            type: "word_blocks",
+            question: "다음 설명을 읽고, 질문에 대한 답을 to부정사를 이용하여 쓰시오.",
+            context: "They are going to the gym. They’ll exercise for an hour.",
+            subQuestions: [
+              {
+                prompt: "Q: Why are they going to the gym?",
+                sentence: "A: They are going to the gym _____ _____ for an hour.",
+                blocks: ["to", "exercise", "exercises", "exercising", "will"],
+                answer: ["to", "exercise"],
+                explanation: "체육관에 가는 목적이 운동하는 것이므로 목적의 to부정사 to exercise를 씁니다. '한 시간 동안 운동하기 위해 체육관에 가고 있다'는 뜻입니다."
+              }
+            ],
+            audioKey: "quiz_a_2"
+          },
+          {
+            id: 3,
+            type: "multiple_choice",
+            question: "다음 우리말 문장을 영어로 나타낸 것은?",
+            context: "건강을 유지하기 위해 그녀는 매일 요가를 한다.",
+            options: [
+              "① She does yoga stay healthy every day.",
+              "② She stays healthy to do yoga every day.",
+              "③ She does yoga staying healthy every day.",
+              "④ To stay healthy, she does yoga every day.",
+              "⑤ When she does yoga every day, she stays healthy."
+            ],
+            answer: 3,
+            explanation: "'건강을 유지하기 위해'는 목적의 to부정사 To stay healthy로 나타내고, 문장 앞에 올 때는 뒤에 콤마를 씁니다. ②는 '요가를 하기 위해 건강을 유지한다'로 목적이 뒤바뀌었고, ⑤는 '요가를 할 때 건강하다'라는 뜻이라 우리말과 다릅니다.",
+            audioKey: "quiz_a_3"
+          },
+          {
+            id: 4,
+            type: "multiple_choice",
+            question: "밑줄 친 부분의 우리말 해석이 <em>어색한</em> 것은?",
+            options: [
+              "① We hurried <u>to arrive</u> on time. (도착하려고)",
+              "② The book is interesting <u>to read</u>. (읽기 위해)",
+              "③ I was excited <u>to see</u> the concert. (보게 되어)",
+              "④ He was happy <u>to get</u> a new tablet. (받아서)",
+              "⑤ She went to the library <u>to return</u> the book. (반납하기 위해)"
+            ],
+            answer: 1,
+            explanation: "② to read는 형용사 interesting을 꾸미는 to부정사라 '읽기에'로 해석합니다(그 책은 읽기에 재미있다). ①⑤는 목적, ③④는 감정의 원인으로 알맞게 해석했습니다.",
+            audioKey: "quiz_a_4"
+          },
+          {
+            id: 5,
+            type: "multiple_choice",
+            question: "밑줄 친 부분의 쓰임이 다음과 같은 것은?",
+            context: "What should I do <u>to improve</u> my English?",
+            options: [
+              "① I stopped working <u>to have</u> lunch.",
+              "② He doesn’t like <u>to wake</u> up early.",
+              "③ What do you want <u>to do</u> after school?",
+              "④ She was very happy <u>to see</u> her friends.",
+              "⑤ The boy grew up <u>to be</u> a great scientist."
+            ],
+            answer: 0,
+            explanation: "to improve는 '영어를 향상시키기 위해'라는 목적의 to부정사입니다. ① to have도 '점심을 먹기 위해'라는 목적입니다. ②③은 동사의 목적어(명사 역할), ④는 감정의 원인, ⑤는 결과를 나타냅니다.",
+            audioKey: "quiz_a_5"
+          },
+          {
+            id: 6,
+            type: "word_blocks",
+            question: "주어진 우리말과 의미가 같도록 괄호 안의 단어들을 사용하여 문장을 완성하시오.",
+            subQuestions: [
+              {
+                prompt: "(1) 그는 아이들을 보기 위해 집에 일찍 왔다. (his kids, see)",
+                sentence: "He came home early _____ _____ _____ _____.",
+                blocks: ["to", "see", "his", "kids", "seeing"],
+                answer: ["to", "see", "his", "kids"],
+                explanation: "'~하기 위해'는 목적의 to부정사 「to + 동사원형」이므로 to see his kids입니다."
+              },
+              {
+                prompt: "(2) 나는 사진을 찍기 위해 스마트폰을 사용한다. (take, pictures)",
+                sentence: "I use my smartphone _____ _____ _____.",
+                blocks: ["to", "take", "pictures", "takes", "taking"],
+                answer: ["to", "take", "pictures"],
+                explanation: "'사진을 찍기 위해'는 목적의 to부정사 to take pictures입니다."
+              }
+            ],
+            audioKey: "quiz_a_6"
+          },
+          {
+            id: 7,
+            type: "multiple_choice",
+            question: "밑줄 친 부분의 쓰임이 같은 것끼리 짝지어진 것은?",
+            options: [
+              "① <u>To sleep</u> well is important. / He was glad <u>to join</u> the team.",
+              "② I have something <u>to tell</u> you. / She hopes <u>to travel</u> the world.",
+              "③ Do you have a lot of work <u>to do</u>? / They want <u>to go</u> camping this weekend.",
+              "④ We studied hard <u>to get</u> good grades. / My dream is <u>to help</u> children in Africa.",
+              "⑤ <u>To protect</u> herself, she wore a helmet. / They went to the park <u>to walk</u> their dog."
+            ],
+            answer: 4,
+            explanation: "⑤는 둘 다 '~하기 위해'라는 목적의 to부정사입니다. ① 주어 / 감정의 원인, ② 명사 something을 꾸밈 / 목적어, ③ 명사 work를 꾸밈 / 목적어, ④ 목적 / 보어로 서로 다릅니다.",
+            audioKey: "quiz_a_7"
+          },
+          {
+            id: 8,
+            type: "word_blocks",
+            question: "빈칸에 들어갈 말을 <보기>에서 골라 알맞은 형태로 써서 목적의 의미를 나타내시오.",
+            context: "<보기> catch / go / get / see",
+            subQuestions: [
+              {
+                prompt: "(1) 그는 공을 잡기 위해 빨리 달렸다.",
+                sentence: "He ran fast _____ _____ the ball.",
+                blocks: ["to", "catch", "go", "get", "see"],
+                answer: ["to", "catch"],
+                explanation: "공을 잡기 위해 달렸으므로 to catch the ball입니다."
+              },
+              {
+                prompt: "(2) 그들은 좋은 자리를 얻기 위해 일찍 떠났다.",
+                sentence: "They left early _____ _____ good seats.",
+                blocks: ["to", "catch", "go", "get", "see"],
+                answer: ["to", "get"],
+                explanation: "좋은 자리를 얻기 위해 일찍 떠났으므로 to get good seats입니다."
+              },
+              {
+                prompt: "(3) 우리는 여행을 가기 위해 돈을 모았다.",
+                sentence: "We saved money _____ _____ on a trip.",
+                blocks: ["to", "catch", "go", "get", "see"],
+                answer: ["to", "go"],
+                explanation: "go on a trip은 '여행을 가다'라는 뜻이므로 to go on a trip입니다."
+              },
+              {
+                prompt: "(4) 나는 더 잘 보기 위해 불을 켰다.",
+                sentence: "I turned on the light _____ _____ better.",
+                blocks: ["to", "catch", "go", "get", "see"],
+                answer: ["to", "see"],
+                explanation: "더 잘 보기 위해 불을 켰으므로 to see better입니다."
+              }
+            ],
+            audioKey: "quiz_a_8"
+          }
+        ]
+      },
+
+      // ===== CHAPTER 2: 시간의 부사절 =====
+      {
+        id: 2,
+        name: "Potion of Time",
+        nameKo: "시간의 물약",
+        topic: "시간의 부사절",
+        potionColor: "#6fa8dc",
+        recipe: [
+          {
+            // Section 1) 기본 개념
+            step: 1,
+            title: "기본 개념",
+            titleEn: "Adverb Clauses",
+            content: "접속사로 시작되는 절이 마치 부사처럼 다른 절의 의미를 더해줄 때 <strong>‘부사절’</strong>이라고 합니다.",
+            examples: [
+              { en: "<u>When I hear that song</u>, I feel happy.", ko: "내가 그 노래를 들을 때, 나는 행복하다.", highlight: "When I hear that song" }
+            ],
+            audioKey: "recipe_time_1"
+          },
+          {
+            // Section 2) 접속사 when (워크시트에 설명 문장 없이 예문만 있음)
+            step: 2,
+            title: "접속사 when",
+            titleEn: "The Conjunction 'when'",
+            content: "",
+            examples: [
+              { en: "I listen to music <u>when I’m free</u>.", ko: "나는 시간이 날 때 음악을 듣습니다.", highlight: "when I’m free" },
+              { en: "<u>When I feel tired</u>, I take a nap.", ko: "내가 피곤할 때, 나는 낮잠을 잡니다.", highlight: "When I feel tired" }
+            ],
+            audioKey: "recipe_time_2"
+          },
+          {
+            // Section 3) 접속사 before/after
+            step: 3,
+            title: "접속사 before/after",
+            titleEn: "The Conjunctions 'before' and 'after'",
+            content: "접속사 <strong>before</strong>는 이전에 일어난 일을 나타내며 <strong>‘~하기 전에’</strong>라는 의미입니다. 접속사 <strong>after</strong>는 나중에 일어난 일을 나타내며 <strong>‘~한 후에’</strong>라는 의미입니다.",
+            examples: [
+              { en: "I read a book <u>before I go to bed</u>.", ko: "나는 자기 전에 책을 읽습니다.", highlight: "before I go to bed" },
+              { en: "<u>After Kevin did his homework</u>, he played outside.", ko: "Kevin은 숙제를 한 후에, 밖에서 놀았습니다.", highlight: "After Kevin did his homework" }
+            ],
+            audioKey: "recipe_time_3"
+          },
+          {
+            // Section 4) 시간의 부사절의 특징
+            step: 4,
+            title: "시간의 부사절의 특징",
+            titleEn: "Present Tense for the Future",
+            content: "시간의 부사절에서 <strong>‘미래’</strong>의 시간을 나타내더라도 동사는 <strong>현재 시제</strong>로 씁니다.",
+            examples: [
+              { en: "<u>When Amy arrives</u>, we will have dinner.", ko: "Amy가 도착할 때, 우리는 저녁을 먹을 겁니다.", highlight: "When Amy arrives" },
+              { en: "<u>After I finish my homework</u>, I will play computer games.", ko: "나는 숙제를 끝내고 나서 컴퓨터 게임을 할 것이다.", highlight: "After I finish my homework" }
+            ],
+            audioKey: "recipe_time_4"
+          }
+        ],
+        exercises: [
+          {
+            id: 1,
+            type: "word_blocks",
+            question: "다음 두 문장의 뜻이 같도록 빈칸에 알맞은 말을 쓰시오.",
+            context: "I had breakfast, and then I started studying.",
+            subQuestions: [
+              {
+                prompt: "아침을 먹고 나서 공부를 시작했습니다.",
+                sentence: "= _____ I had breakfast, I started studying.",
+                blocks: ["After", "Before", "When", "And"],
+                answer: ["After"],
+                explanation: "and then(그러고 나서)은 아침을 먼저 먹고 공부를 나중에 했다는 뜻입니다. 먼저 한 일을 부사절로 만들 때는 After를 씁니다."
+              }
+            ],
+            audioKey: "quiz_b_1"
+          },
+          {
+            id: 2,
+            type: "multiple_choice",
+            question: "빈칸에 공통으로 들어갈 말로 가장 알맞은 것은?",
+            context: "∙ You should be careful ________ you cross the street.<br>∙ Did you call me ________ I was sleeping?",
+            options: [
+              "① and",
+              "② but",
+              "③ or",
+              "④ when",
+              "⑤ that"
+            ],
+            answer: 3,
+            explanation: "'길을 건널 때 조심해야 한다', '내가 자고 있을 때 전화했니?'라는 뜻이므로 '~할 때'를 뜻하는 접속사 when이 공통으로 들어갑니다.",
+            audioKey: "quiz_b_2"
+          },
+          {
+            id: 3,
+            type: "multiple_choice",
+            question: "문장의 의미상 밑줄 친 부분의 쓰임이 <em>어색한</em> 것은?",
+            options: [
+              "① Let's go out <u>after</u> it stops raining.",
+              "② He loved chocolate <u>when</u> he was a child.",
+              "③ <u>After</u> I finish this book, I’ll lend it to you.",
+              "④ Brush your teeth first <u>before</u> you wake up.",
+              "⑤ <u>When</u> he heard the news, he was very excited."
+            ],
+            answer: 3,
+            explanation: "④ 잠에서 깨기 전에 이를 닦을 수는 없으므로 의미가 어색합니다. after(깬 후에)가 자연스럽습니다. 나머지는 시간의 순서가 자연스럽습니다.",
+            audioKey: "quiz_b_3"
+          },
+          {
+            id: 4,
+            type: "word_blocks",
+            question: "우리말과 의미가 같도록 빈칸에 알맞은 접속사를 쓰시오.",
+            subQuestions: [
+              {
+                prompt: "(1) 너는 수영하기 전에 준비운동을 해야 한다.",
+                sentence: "You need to warm up _____ you swim.",
+                blocks: ["before", "after", "when", "that"],
+                answer: ["before"],
+                explanation: "'~하기 전에'는 접속사 before입니다."
+              },
+              {
+                prompt: "(2) 도움이 필요했을 때 그녀는 내게 전화했다.",
+                sentence: "She called me _____ she needed help.",
+                blocks: ["before", "after", "when", "that"],
+                answer: ["when"],
+                explanation: "'~할 때'는 접속사 when입니다."
+              },
+              {
+                prompt: "(3) 그는 숙제를 끝낸 뒤에 핸드폰 게임을 했다.",
+                sentence: "_____ he finished his homework, he played a mobile game.",
+                blocks: ["After", "Before", "When", "That"],
+                answer: ["After"],
+                explanation: "'~한 뒤에'는 접속사 after이고, 문장 맨 앞이므로 After로 씁니다."
+              }
+            ],
+            audioKey: "quiz_b_4"
+          },
+          {
+            id: 5,
+            type: "multiple_choice",
+            question: "의미상 자연스럽도록 빈칸에 들어갈 말이 순서대로 바르게 짝지어진 것은?",
+            context: "∙ She takes a nap ________ she’s tired.<br>∙ ________ you leave, close all the windows.<br>∙ He got better ________ he took the medicine.",
+            options: [
+              "① before – After – after",
+              "② when – Before – after",
+              "③ before – Before – after",
+              "④ when – After – before",
+              "⑤ after – Before – before"
+            ],
+            answer: 1,
+            explanation: "피곤할 때(when) 낮잠을 자고, 떠나기 전에(Before) 창문을 모두 닫고, 약을 먹은 후에(after) 나아졌다는 뜻이 자연스럽습니다.",
+            audioKey: "quiz_b_5"
+          },
+          {
+            id: 6,
+            type: "multiple_choice",
+            question: "다음 글의 밑줄 친 ①~⑤ 중 어법상 <em>어색한</em> 것은?",
+            options: [
+              "① <u>School starts at eight every morning.</u>",
+              "② <u>Before I go to class, I prepare my books.</u>",
+              "③ <u>When my friends and I have a break, we talk about our favorite subjects.</u>",
+              "④ <u>After school ends, I will join the sports club.</u>",
+              "⑤ <u>Before I will go home, I will check my homework for the next day.</u>"
+            ],
+            answer: 4,
+            explanation: "시간의 부사절에서는 미래의 일이라도 동사를 현재 시제로 씁니다. ⑤ Before I will go home을 Before I go home으로 고쳐야 합니다. ④ After school ends는 현재 시제를 바르게 썼습니다.",
+            audioKey: "quiz_b_6"
+          },
+          {
+            id: 7,
+            type: "multiple_choice",
+            question: "밑줄 친 <u>When</u>의 쓰임이 나머지와 <em>다른</em> 하나는?",
+            options: [
+              "① <u>When</u> did she first meet him?",
+              "② <u>When</u> will you be back home?",
+              "③ <u>When</u> do you usually have dinner?",
+              "④ <u>When</u> did you hear that he was sick?",
+              "⑤ <u>When</u> he opened the gift, he was surprised."
+            ],
+            answer: 4,
+            explanation: "⑤ When은 '~할 때'라는 뜻으로 두 절을 잇는 접속사입니다. ①~④의 When은 '언제'를 묻는 의문사입니다.",
+            audioKey: "quiz_b_7"
+          },
+          {
+            id: 8,
+            type: "word_blocks",
+            question: "밑줄 친 부분을 어법에 맞게 고쳐 쓰시오.",
+            // (1)은 최종본에 어법 오류가 없는 결함 문항이라 제외, 워크시트 라벨 (2) 유지
+            subQuestions: [
+              {
+                prompt: "(2) <u>After school will be over</u>, I’ll go to the gym.",
+                sentence: "_____ _____ _____ _____, I’ll go to the gym.",
+                blocks: ["After", "school", "is", "over", "will"],
+                answer: ["After", "school", "is", "over"],
+                explanation: "시간의 부사절에서는 미래의 일이라도 현재 시제를 씁니다. will be를 is로 고쳐 After school is over로 씁니다."
+              }
+            ],
+            audioKey: "quiz_b_8"
+          }
+        ]
+      }
+    ]
   }
 ];
